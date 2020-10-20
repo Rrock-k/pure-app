@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'ProbaPro-Regular';
+  src: url('webFonts/ProbaPro/font.woff2') format('woff2'),
+    url('webFonts/ProbaPro/font.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ProbaPro-Light';
+  src: url('webFonts/ProbaPro/ProbaPro-Light.ttf') format('truetype');
+  font-weight: 400;
+  font-style: lighter;
+}
+
+@font-face {
+  font-family: 'ProbaPro-ExtraLight';
+  src: url('webFonts/ProbaPro/ProbaPro-ExtraLight.eot');
+  src: url('webFonts/ProbaPro/ProbaPro-ExtraLight.eot?#iefix') format('embedded-opentype'),
+    url('webFonts/ProbaPro/ProbaPro-ExtraLight.woff') format('woff'),
+    url('webFonts/ProbaPro/ProbaPro-ExtraLight.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ProbaPro';
+  src: url('webFonts/ProbaPro/ProbaPro-Bold.ttf') format('truetype');
+  font-weight: 1200;
+  font-style: bold;
+}

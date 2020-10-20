@@ -1,0 +1,82 @@
+/* INSTA SLIDER */
+/* ------------ */
+
+.slider {
+  width: 100%;
+  height: max-content;
+  padding: 0;
+
+  overflow-x: hidden;
+  display: flex;
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.slider * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.slider-movable-container {
+  display: flex;
+
+  transition: 0.3s;
+}
+
+.slide {
+  transition: 0.3s;
+  position: relative;
+  overflow: visible;
+}
+
+.notransition * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+}
+
+.slide-image-container {
+  padding: 0 2%;
+}
+
+.slide-image {
+  object-fit: cover;
+  transition: 0.1s;
+
+  margin: 0;
+  flex: 0 0;
+}
+
+.slide-image:hover {
+  filter: brightness(104%) opacity(85%) grayscale(5%);
+}
+
+.btn-slider {
+  position: absolute;
+  top: 0%;
+  width: 8%;
+
+  background: none;
+  border: none;
+
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+#insta-goLeft {
+  left: 0;
+}
+
+#insta-goRight {
+  right: 0;
+  flex-direction: row-reverse;
+}
+
+.arrow-icon {
+  max-width: 24px;
+}
