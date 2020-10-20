@@ -4,6 +4,8 @@ import ShopHeader from './ShopHeader'
 import ShopNav from './ShopNav'
 import ShopItems from './ShopItems'
 
+console.log('LOOK I ADDED THIS CONSOLE LOG! LOL')
+
 const HEADER_HIDDEN = true
 
 export default function Shop({ isAdmin }) {
