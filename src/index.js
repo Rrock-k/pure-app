@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
-import './fonts/MyFontsWebfontsKit/MyFontsWebfontsKit.css'
 import './index.css'
 import App from './App.js'
 import * as serviceWorker from './serviceWorker'

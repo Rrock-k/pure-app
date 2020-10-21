@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'ProbaPro-Regular';
-  src: url('webFonts/ProbaPro/font.woff2') format('woff2'),
-    url('webFonts/ProbaPro/font.woff') format('woff');
+  src: url('webFonts/ProbaPro/ProbaPro-Regular.woff2') format('woff2'),
+    url('webFonts/ProbaPro/ProbaPro-Regular.woff') format('woff');
   font-weight: 800;
   font-style: normal;
 }
