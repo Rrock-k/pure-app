@@ -1,9 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
-import { LanguageSwitchScope } from '../utils/translation'
 
 import handleScrollbarWidth from './utils/handleScrollbarWidth'
-
-import { useMobileMenuContext as iii } from '../App'
 
 const MobileMenuContext = createContext({})
 
