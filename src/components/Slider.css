@@ -6,10 +6,9 @@
   height: max-content;
   padding: 0;
 
-  overflow-x: hidden;
+  overflow: hidden;
   display: flex;
   position: relative;
-  margin-bottom: 50px;
 }
 
 .slider * {
@@ -46,11 +45,10 @@
   object-fit: cover;
   transition: 0.1s;
 
-  margin: 0;
   flex: 0 0;
 }
 
-.slide-image:hover {
+.hoveron .slide-image:hover {
   filter: brightness(104%) opacity(85%) grayscale(5%);
 }
 

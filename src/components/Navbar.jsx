@@ -1,26 +1,27 @@
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import React from 'react'
 
 import Language from './Language'
 
-import logo from '../images/logo_bez_fona.png'
-import magnifyingGlass from '../icons/magnifying-glass.svg'
-import instagramLogo from '../icons/instagram-logo.svg'
-import shoppingBag from '../icons/shopping-bag.svg'
-import openMenu from '../icons/open-menu.svg'
+import logo from '../assets/images/logo_bez_fona.png'
+import magnifyingGlass from '../assets/icons/magnifying-glass.svg'
+import instagramLogo from '../assets/icons/instagram-logo.svg'
+import shoppingBag from '../assets/icons/shopping-bag.svg'
+import openMenuIcon from '../assets/icons/open-menu.svg'
+import { useMobileMenuContext } from '../pure-common/MobileMenuAndContext'
 
-const Navbar = props => {
+const Navbar = () => {
   const history = useHistory()
+  // const { openMenu } = useMobileMenuContext()
+  const { openMenu } = useMobileMenuContext()
+
   return (
     <nav className='navbar'>
       <div className='mobile-logo-container'>
-        <img
-          className='mobile-logo'
-          onClick={() => history.push('/')}
-          src={logo}
-          alt='PURE LOGO'
-        ></img>
+        <Link to='/home'>
+          <img className='mobile-logo' src={logo} alt='PURE LOGO'></img>
+        </Link>
       </div>
       <div className='navbar-items'>
         <div className='navbar-item'>
@@ -45,9 +46,9 @@ const Navbar = props => {
         <div className='navbar-item hamburger-menu-item'>
           <img
             className='navbar-icon hamburger-menu-icon'
-            src={openMenu}
+            src={openMenuIcon}
             alt='Open Menu'
-            onClick={props.openMobileMenu}
+            onClick={openMenu}
           ></img>
         </div>
       </div>

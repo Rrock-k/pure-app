@@ -2,13 +2,11 @@ import React from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import urlArray from '../../data/menuItems'
+import urlArray from './data/menuItems'
 
 export default function ShopNav({ activeUrl, isAdmin }) {
   const [isHidden, setIsHidden] = useState(false)
   const classNameIfHidden = isHidden ? ' shop-nav-hidden' : ''
-
-  console.log(activeUrl)
 
   const hideNav = () => {
     setIsHidden(true)
@@ -43,12 +41,9 @@ export default function ShopNav({ activeUrl, isAdmin }) {
           </div>
         ))}
         <div>
-          <Link
-            style={{ fontSize: '0.6rem', whiteSpace: 'nowrap', margin: '4rem 0 0' }}
-            onClick={hideNav}
-          >
+          <button className='hide-nav-button' onClick={hideNav}>
             Скрыть меню
-          </Link>
+          </button>
         </div>
       </div>
 

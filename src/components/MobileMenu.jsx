@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-import urlArray from '../data/menuItems'
+import urlArray from '../pure-common/data/menuItems'
+
+const addShopRoute = href => '/shop/' + href
+
 const urlArrayMobile = [
   { href: '/', name: 'Главная' },
-  ...urlArray,
+  ...urlArray.map(item => ({
+    ...item,
+    href: '/shop/' + item.href,
+    submenu: item.submenu?.map(subitem => ({ ...subitem, href: addShopRoute(subitem.href) })),
+  })),
   { href: '/delivery', name: 'Доставка' },
   { href: '/about', name: 'О нас' },
 ]
@@ -21,6 +28,13 @@ const getAnchorTemplate = (item, closeMenu) => (
 )
 
 export default function MobileMenu(props) {
+  useEffect(() => {
+    console.log('Mobile menu has been mounted')
+    return () => {
+      console.log('Mobile menu has been unmounted')
+    }
+  }, [])
+
   const { isOpened, close } = props
 
   const visibility = isOpened ? 'visible' : 'hidden'

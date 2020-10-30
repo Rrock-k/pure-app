@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { useHoverContext } from '../pure-common/HoverContextWrapper'
 
 import menuItemsRaw from '../pure-common/data/menuItems'
+import { useLanguageContext } from './LanguageContextWrapper'
 
 const addShopRoute = href => '/shop/' + href
 
@@ -18,7 +19,13 @@ const menuItemsData = menuItemsRaw
 menuItemsData.push({ href: '/delivery', name: 'Доставка' }, { href: '/about', name: 'О нас' })
 
 const Menu = props => {
+  const { language } = useLanguageContext()
+  const langRu = language === 'ru'
+  const langEn = language === 'en'
+
   const globalHoverIsOn = useHoverContext()
+  console.log('hoverOn? : ')
+  console.log(globalHoverIsOn)
 
   const [dropdownsAreShowing, setDropdownsAreShowing] = useState(false)
 
@@ -28,7 +35,7 @@ const Menu = props => {
     menu.style.zIndex = -1000
     setTimeout(() => {
       menu.style.zIndex = null
-    }, 300)
+    }, 1000)
 
     turnOffDropdowns()
   }
@@ -65,7 +72,8 @@ const Menu = props => {
             <div className='menu-item-dropdown' onClick={clickHandlerFunc}>
               {!globalHoverIsOn && (
                 <Link to={menuItem.href} onClick={blurMe}>
-                  Все
+                  {langRu && 'Все'}
+                  {langEn && 'All'}
                 </Link>
               )}
               {menuItem.submenu.map(({ name, href }) => (

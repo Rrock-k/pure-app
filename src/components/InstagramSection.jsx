@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 
 import downloadInstagramImages from '../effects/downloadInstagramImages'
-import Slider from './common/Slider'
+import Slider from './Slider'
 
 const sliderProps = {
   className: 'insta-slider-element',

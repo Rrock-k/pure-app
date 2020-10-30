@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 
-import left from '../../icons/chevron-left.svg'
-import right from '../../icons/chevron-right.svg'
+import left from '../assets/icons/chevron-left.svg'
+import right from '../assets/icons/chevron-right.svg'
+import { LanguageSwitchScope } from '../utils/translation'
 
 import './Slider.css'
 
@@ -121,13 +122,9 @@ export default function Slider({
 
 function getPagesCountDefault(width) {
   const getCount = width => {
-    // console.log('width', width)
-    // console.log('window.height: ' + window.innerHeight)
     if (width > 1300) return 5.4
     if (width > 1000) return 3.8
-    if (width / window.innerHeight > 2) return 5.6
-    if (width / window.innerHeight > 1.5) return 4.2
-
+    if (width / window.innerHeight > 1.5) return 4
     if (width > 700) return 3.6
 
     return 1.4
@@ -225,9 +222,6 @@ function SetUpSliderSwipeEvents(goRight, goLeft, className, pagesCount) {
   }
 
   const slider = document.getElementById(className)
-  console.log('-------------')
-  console.log('addEventLisnr for ' + className)
-  console.log('-------------')
   slider.addEventListener('mousedown', onMouseDown)
   slider.addEventListener('mouseup', onMouseUp)
   slider.addEventListener('touchstart', onTouchStart)
@@ -235,9 +229,6 @@ function SetUpSliderSwipeEvents(goRight, goLeft, className, pagesCount) {
   slider.addEventListener('touchend', onTouchEnd)
 
   return () => {
-    console.log('-------------')
-    console.log('removeEventLisnr')
-    console.log('-------------')
     slider.removeEventListener('mousedown', onMouseDown)
     slider.removeEventListener('mouseup', onMouseUp)
     slider.removeEventListener('touchstart', onTouchStart)

@@ -1,22 +1,20 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import Navbar from './Navbar'
 import Menu from './Menu'
 
-import logo from '../images/logo_bez_fona.png'
+import logo from '../assets/images/logo_bez_fona.png'
 
-const Header = props => {
+const Header = () => {
   let history = useHistory()
+
   return (
     <div className='header-container'>
-      <Navbar openMobileMenu={props.openMobileMenu} />
-      <img
-        className='main-logo'
-        onClick={() => history.push('/')}
-        src={logo}
-        alt='I am in pure logo'
-      />
+      <Navbar />
+      <Link to='/home'>
+        <img className='main-logo' src={logo} alt='I am in pure logo' />
+      </Link>
       <Menu />
     </div>
   )

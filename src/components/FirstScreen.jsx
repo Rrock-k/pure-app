@@ -1,20 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import Banner from './Banner'
 import Header from './Header'
 
-export default function FirstScreen({ openMobileMenu, bannerNeeded }) {
+export default function FirstScreen({ bannerNeeded } = {}) {
+  useEffect(() => {
+    console.log('FirstScreen did mount')
+
+    return () => {
+      console.log('FirstScreen did unmount')
+    }
+  })
+
   if (bannerNeeded)
     return (
       <div className={'first-screen'}>
-        <Header openMobileMenu={openMobileMenu} />
-        {<Banner />}
+        <Header />
+        <Banner />
         <div className='first-screen-margin'></div>
       </div>
     )
   return (
     <div>
-      <Header openMobileMenu={openMobileMenu} />
+      <Header />
     </div>
   )
 }

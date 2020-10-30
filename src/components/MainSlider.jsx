@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react'
 
-import img from '../images/banner/main-banner.png'
-import img1 from '../images/models/earrings-crystal.png'
-import img2 from '../images/models/earrings-crystal2.png'
-import img3 from '../images/models/earrings-crystal3.png'
+import img from '../assets/images/banner/main-banner.png'
+import img1 from '../assets/images/models/earrings-crystal.png'
+import img2 from '../assets/images/models/earrings-crystal2.png'
+import img3 from '../assets/images/models/earrings-crystal3.png'
+import { translate } from '../utils/translation'
 
-import Slider from './common/Slider'
+import Slider from './Slider'
 
 const sliderProps = {
   heightToWidthFactor: 1.2,
-
   className: 'main-slider',
-
   additionalElements: [
     null,
     <h5 className='slider-subtitle'>Серьги Crystal clear</h5>,
@@ -22,6 +21,14 @@ const sliderProps = {
 }
 
 function MainSlider() {
+  useEffect(() => {
+    console.log('MainSlider did mount')
+
+    return () => {
+      console.log('MainSlider did unmount')
+    }
+  })
+
   const [images, setImages] = useState([img1, img, img2, img, img3, img, img3])
   const [width, setWidth] = useState()
 
@@ -38,7 +45,9 @@ function MainSlider() {
     handleResize()
 
     window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
   }, [])
 
   const isRendering = images?.length > 0 && width
@@ -46,6 +55,7 @@ function MainSlider() {
   return (
     <div className='slider-container'>
       {isRendering && <h3>Новые модели</h3>}
+      {/* <Slider {...sliderProps} width={1000} images={images} pagesCount={3} /> */}
       <Slider {...sliderProps} width={width} images={images} />
     </div>
   )

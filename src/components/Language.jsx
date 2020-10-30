@@ -1,21 +1,22 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useLanguageContext } from './LanguageContextWrapper'
 
 const Language = () => {
+  const { setLanguage } = useLanguageContext()
+
   return (
     <div className='language-switch navbar-item'>
-      <a>RU</a>
+      <button onClick={() => setLanguage('ru')}>RU</button>
 
-      <a
+      <button
         style={{
-          flexShrink: '1',
           margin: '0 min(3px, 3vmin)',
           fontSize: 'min(27px, 14vh)',
         }}
       >
         I
-      </a>
-      <a>EN</a>
+      </button>
+      <button onClick={() => setLanguage('en')}>EN</button>
     </div>
   )
 }

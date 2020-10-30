@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import { useLanguageContext } from '../components/LanguageContextWrapper'
 
-import { getShopItems, PHOTOS_URL, getProductsUrl } from '../../utils/apiQueries'
-import { mapCategoryToQuery } from '../../utils/mapCategoryToQuery'
+import { useHoverContext } from './HoverContextWrapper'
+
+import { getShopItems, PHOTOS_URL } from './utils/apiQueries'
+import { mapCategoryToQuery } from './utils/mapCategoryToQuery'
 
 export default function ShopItems({ category, isAdmin = false }) {
   const [shopItemRows, setShopItemRows] = useState([])
+
+  const history = useHistory()
 
   useEffect(() => {
     let queries = mapCategoryToQuery(category)
 
     if (!queries.length) queries = [queries]
-
-    console.log('CATEGORY QUERY IS EXECUTING')
-
-    console.log('for: ' + category)
-    console.log(queries)
 
     Promise.all(queries.map(query => getShopItems(query))).then(responses => {
       let responsesArray = []
@@ -58,15 +58,22 @@ export default function ShopItems({ category, isAdmin = false }) {
   )
 }
 
-function ShopItem({ _id, mainPhotoUrl, secondPhotoUrl, name, priceRub, isAdmin }) {
+function ShopItem({ isAdmin, ...props }) {
+  const { _id, mainPhotoUrl, secondPhotoUrl, name, priceRub, linkName } = props
+  const productUrl = linkName ? '/shop/products/' + linkName : '/shop/products/' + _id
+
+  const hoverOn = useHoverContext()
+
   return (
     <div className='shop-item'>
-      <div className='shop-item-image-div'>
-        {secondPhotoUrl && (
-          <img className='shop-item-image-second' src={PHOTOS_URL + secondPhotoUrl} alt={name} />
-        )}
-        <img className='shop-item-image-first' src={PHOTOS_URL + mainPhotoUrl} alt={name} />
-      </div>
+      <Link to={{ pathname: productUrl, query: props }}>
+        <div className='shop-item-image-div'>
+          {secondPhotoUrl && hoverOn && (
+            <img className='shop-item-image-second' src={PHOTOS_URL + secondPhotoUrl} alt={name} />
+          )}
+          <img className='shop-item-image-first' src={PHOTOS_URL + mainPhotoUrl} alt={name} />
+        </div>
+      </Link>
       <div className='shop-item-text'>
         <p>{name}</p>
         <p>{priceRub} р.</p>

@@ -4,7 +4,7 @@ import ShopHeader from './ShopHeader'
 import ShopNav from './ShopNav'
 import ShopItems from './ShopItems'
 
-console.log('LOOK I ADDED THIS CONSOLE LOG! LOL')
+import './styles/Shop.css'
 
 const HEADER_HIDDEN = true
 
