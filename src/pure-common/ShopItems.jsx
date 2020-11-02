@@ -4,36 +4,25 @@ import { Link, useHistory } from 'react-router-dom'
 import { useHoverContext } from './HoverContextWrapper'
 
 import { getShopItems, PHOTOS_URL } from './utils/apiQueries'
-import { mapCategoryToQuery } from './utils/mapCategoryToQuery'
+import { mapToQuery } from './utils/mapToQuery'
 
-export default function ShopItems({ category, isAdmin = false }) {
+export default function ShopItems({ isAdmin = false, items }) {
   const [shopItemRows, setShopItemRows] = useState([])
 
-  const history = useHistory()
-
   useEffect(() => {
-    let queries = mapCategoryToQuery(category)
-
-    if (!queries.length) queries = [queries]
-
-    Promise.all(queries.map(query => getShopItems(query))).then(responses => {
-      let responsesArray = []
-      responses.forEach(res => (responsesArray = [...responsesArray, ...res.data]))
-
-      if (responsesArray.length === 0) return setShopItemRows([])
-      let resultArray = []
-      responsesArray.forEach((item, index) => {
-        if (index % 2 === 0) resultArray.push([item])
-        else resultArray[Math.floor(index / 2)].push(item)
-      })
-
-      const lastItemRow = resultArray[resultArray.length - 1]
-      const secondChildIsBlank = !lastItemRow[1]
-      if (secondChildIsBlank) lastItemRow.push(null)
-
-      setShopItemRows(resultArray)
+    if (items.length === 0) return setShopItemRows([])
+    let resultArray = []
+    items.forEach((item, index) => {
+      if (index % 2 === 0) resultArray.push([item])
+      else resultArray[Math.floor(index / 2)].push(item)
     })
-  }, [category])
+
+    const lastItemRow = resultArray[resultArray.length - 1]
+    const secondChildIsBlank = !lastItemRow[1]
+    if (secondChildIsBlank) lastItemRow.push(null)
+
+    setShopItemRows(resultArray)
+  }, [items])
 
   return (
     <div className='shop-items'>

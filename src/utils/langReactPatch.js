@@ -1,20 +1,48 @@
 import React, { useContext } from 'react'
 
-import { LanguageContext, currentLanguage } from '../components/LanguageContextWrapper'
+import { LanguageContext, currentLanguage } from '../components/contexts/LanguageContext'
 import { getLocale, noLocalisationList, translate } from './translation'
+
+console.log('language patch code execution')
 
 const modes = {
   PROD: 'prod',
   DEV: 'dev',
   TEST: 'test',
 }
-const MODE = modes.TEST
+const MODE = modes.PROD
 
 const createElementInitial = React.createElement
+
+React.createElement = (type, props, ...children) => {
+  if (MODE !== 'test') {
+    return createElementInitial(type, props, ...children)
+    return createElementInitial(
+      type,
+      props,
+      ...children.map(child => {
+        if (typeof child === 'string') {
+          const translation = translate(child, currentLanguage)
+          if (translation) {
+            return translation
+          }
+          return child
+        }
+        return child
+      })
+    )
+  } else return testCreateElement(type, props, ...children)
+}
+
+// next code is experimental
 
 let previousFilePath = null
 let filePath = null
 let filename = null
+let previousComponent = null
+let weAreInsideComponent = null
+let componentTree = []
+let lastReactElementInTree = true
 const phrasesByFiles = {}
 
 window.show = function () {
@@ -34,27 +62,26 @@ window.show = function () {
     const keysInFile = noLocalisationList[filename]
     for (const key in keysInFile) {
       const languages = Array.from(keysInFile[key])
-      languages.forEach(lang => console.log(lang, ': ', key))
+      languages.forEach(lang => console.log(key, ' - ', lang))
     }
   }
 }
 
-React.createElement = (type, props, ...children) => {
-  if (MODE !== 'test') {
-    return createElementInitial(
-      type,
-      props,
-      ...children.map(child => {
-        if (typeof child === 'string') {
-          return translate(child, currentLanguage) || child
-        }
-        return child
-      })
-    )
-  } else return testCreateElement(type, props, ...children)
-}
-
 function testCreateElement(type, props, ...children) {
+  let thisComponent = type.name || type.prototype?.name
+  if (thisComponent) {
+    console.log(thisComponent)
+    weAreInsideComponent = thisComponent
+    if (thisComponent !== previousComponent) {
+      if (lastReactElementInTree) {
+        weAreInsideComponent = componentTree.pop()
+        lastReactElementInTree = true
+      }
+      componentTree.push(thisComponent)
+      previousComponent = thisComponent
+    }
+  }
+
   const filePath = props?.__source?.fileName
 
   if (filePath && filePath !== previousFilePath) {
@@ -68,10 +95,11 @@ function testCreateElement(type, props, ...children) {
 
   let isNotTranslated = false
   const translatedChildren = children.map(child => {
+    if (child?.type?.name || child?.type?.prototype?.name) lastReactElementInTree = false
     if (typeof child !== 'string') return child
     // console.log('-----------')
     // console.log(filename, child)
-    const locale = getLocale(filename, child, currentLanguage)
+    const locale = getLocale(weAreInsideComponent, child, currentLanguage)
     if (locale) return locale
     const translation = translate(child, currentLanguage)
     if (translation === child) isNotTranslated = true

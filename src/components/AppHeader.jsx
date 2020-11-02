@@ -1,9 +1,14 @@
 import React, { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 
 import Banner from './Banner'
+import FixedMenu from './FixedMenu'
 import Header from './Header'
 
-export default function FirstScreen({ bannerNeeded } = {}) {
+export default function AppHeader() {
+  const { pathname } = useLocation()
+  const bannerNeeded = pathname === '/home' ? true : false
+
   useEffect(() => {
     console.log('FirstScreen did mount')
 
@@ -15,6 +20,8 @@ export default function FirstScreen({ bannerNeeded } = {}) {
   if (bannerNeeded)
     return (
       <div className={'first-screen'}>
+        <FixedMenu />
+
         <Header />
         <Banner />
         <div className='first-screen-margin'></div>
@@ -22,6 +29,7 @@ export default function FirstScreen({ bannerNeeded } = {}) {
     )
   return (
     <div>
+      <FixedMenu />
       <Header />
     </div>
   )

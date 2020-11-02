@@ -1,6 +1,48 @@
 {
-  "Banner": {
-    "text": { "ru": "новая коллекция кимоно", "en": "new kimono collection" },
-    "small-text": { "ru": "готова к предзаказу", "en": "ready for preorder" }
+  "home": {
+    "sections": {
+      "clothes_section": {
+        "img_alt": { "ru": "раздел одежда", "en": "clothes section" }
+      }
+    }
+  },
+  "main_slider": {
+    "earrings_crystal_clear": { "ru": "Серьги Crystal Clear", "en": "Crystal Clear Earrings" },
+    "kimono": { "ru": "Кимоно", "en": "Kimono" },
+    "title": { "ru": "Новые модели", "en": "New Models" }
+  },
+  "common": {
+    "banner": {
+      "text": {
+        "ru": "новая коллекция кимоно",
+        "en": "new kimono collection",
+        "ha": "кимоношки просто бомба"
+      },
+      "text-small": {
+        "ru": "готова к предзаказу",
+        "en": "ready for preorder",
+        "ha": "ты будешь королевой"
+      }
+    }
+  },
+  "navigation": {
+    "о нас": { "en": "About us", "ru": "О нас", "ha": "Сюда всё равно никто не заходит" },
+    "одежда": { "en": "Сlothes", "ru": "Одежда" },
+    "украшения": { "en": "Jewelry", "ru": "Украшения", "ha": "Золото!!!" },
+    "кимоно": { "en": "Kimono", "ru": "Кимоно", "ha": "Кимоношечки" },
+    "подписаться": { "en": "Subscribe", "ru": "Подписаться" },
+    "главная": { "en": "Homepage", "ru": "Главная" },
+    "новинки": { "en": "New", "ru": "Новинки", "ha": "Новиночки" },
+    "подвески": { "en": "Pendants", "ru": "Подвески" },
+    "кольца": { "en": "Rings", "ru": "Кольца" },
+    "серьги": { "en": "Earrings", "ru": "Серьги" },
+    "комплекты": { "en": "Sets", "ru": "Комплекты" },
+    "женские": { "en": "Women", "ru": "Женские" },
+    "мужские": { "en": "Men", "ru": "Мужские" },
+    "конструктор": { "en": "Constructor", "ru": "Конструктор" },
+    "аксессуары": { "en": "Accessories", "ru": "Аксессуары", "ha": "Цацки" },
+    "подарки": { "en": "Gifts", "ru": "Подарки" },
+    "скидки": { "en": "Discount", "ru": "Скидки", "ha": "Халява" },
+    "доставка": { "en": "Delivery", "ru": "Доставка", "ha": "деливери" }
   }
 }

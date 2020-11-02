@@ -7,7 +7,7 @@ import './index.css'
 import App from './App.js'
 import * as serviceWorker from './serviceWorker'
 import { HoverContextWrapper } from './pure-common/HoverContextWrapper'
-import { LanguageContextWrapper } from './components/LanguageContextWrapper'
+import { LanguageContext } from './components/contexts/LanguageContext'
 
 console.log('index.js started execution')
 
@@ -16,9 +16,9 @@ const RenderReactDOM = () =>
     <React.StrictMode>
       <Router>
         <HoverContextWrapper>
-          <LanguageContextWrapper setRerender={() => {}}>
+          <LanguageContext setRerender={() => {}}>
             <App />
-          </LanguageContextWrapper>
+          </LanguageContext>
         </HoverContextWrapper>
       </Router>
     </React.StrictMode>,

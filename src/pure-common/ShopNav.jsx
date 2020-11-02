@@ -20,7 +20,7 @@ export default function ShopNav({ activeUrl, isAdmin }) {
     el.style.marginLeft = '0'
   }
 
-  const getAnchorTemplate = item => (
+  const getLinkTemplate = item => (
     <Link
       className={item.href === activeUrl ? 'shop-nav-active' : undefined}
       id={item.href}
@@ -36,10 +36,11 @@ export default function ShopNav({ activeUrl, isAdmin }) {
       <div className={'shop-nav' + classNameIfHidden}>
         {urlArray.map(item => (
           <div>
-            {getAnchorTemplate(item)}
-            {item.submenu?.map(getAnchorTemplate)}
+            {getLinkTemplate(item)}
+            {item.submenu?.map(getLinkTemplate)}
           </div>
         ))}
+        <div>{getLinkTemplate({ href: '', name: 'Все товары' })}</div>
         <div>
           <button className='hide-nav-button' onClick={hideNav}>
             Скрыть меню

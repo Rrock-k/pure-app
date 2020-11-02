@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 
 import left from '../assets/icons/chevron-left.svg'
 import right from '../assets/icons/chevron-right.svg'
-import { LanguageSwitchScope } from '../utils/translation'
 
 import './Slider.css'
 
@@ -30,8 +29,9 @@ export default function Slider({
   const goRight = () => setPage(page => getNewPageNumber(page + 1, pagesCount, length))
 
   useEffect(() => {
-    setPage(page => getNewPageNumber(page, pagesCount, length, { afterResize: true }))
-    return SetUpSliderSwipeEvents(goRight, goLeft, className, pagesCount)
+    setPage(page => getNewPageNumber(page, pagesCount, length, { sliderWasResized: true }))
+    const cleanerFunction = SetUpSliderSwipeEvents(goRight, goLeft, className, pagesCount)
+    return cleanerFunction
   }, [pagesCount, length])
 
   const translateX = halfWidth - page * pageWidth + pageWidth / 2
@@ -121,32 +121,20 @@ export default function Slider({
 }
 
 function getPagesCountDefault(width) {
-  const getCount = width => {
-    if (width > 1300) return 5.4
-    if (width > 1000) return 3.8
-    if (width / window.innerHeight > 1.5) return 4
-    if (width > 700) return 3.6
-
-    return 1.4
-  }
-  // you can insert additional conditions if needed
-  return getCount(width)
+  if (width > 1300) return 5.4
+  if (width > 1000) return 3.8
+  if (width / window.innerHeight > 1.5) return 3.5
+  if (width > 700) return 3.6
+  if (width / window.innerHeight > 0.9) return 2
+  return 1.4
 }
 
 function calculateSliderParameters(width, images, pagesCount) {
   const length = images.length
-
   const pagesToTheSide = getPagesToTheSide(pagesCount)
-
   const pageWidth = width / pagesCount
-
   const halfWidth = width / 2
-
-  const ARROW_WIDTH_FACTOR = 1.7
-  const wholePagesCount = Math.floor(pagesCount)
-  const wholePagesWidth = wholePagesCount * pageWidth
   const arrowWidth = 20
-
   const paddingForArrows = arrowWidth / 3
 
   return { length, pagesToTheSide, pageWidth, halfWidth, arrowWidth, paddingForArrows }
@@ -176,7 +164,7 @@ function getNewPageNumber(page, pagesCount, length, options) {
   // console.log('leftmostPosition: ' + leftmostPosition)
   // console.log('rightmostPosititon: ' + rightmostPosititon)
 
-  if (options?.afterResize) {
+  if (options?.sliderWasResized) {
     if (page < leftmostPosition) return leftmostPosition
     if (page > rightmostPosititon) return rightmostPosititon
   }

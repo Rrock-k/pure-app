@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useHoverContext } from '../pure-common/HoverContextWrapper'
 
 import menuItemsRaw from '../pure-common/data/menuItems'
+import { t } from '../utils/translation'
 
 const addShopRoute = href => '/shop/' + href
 
@@ -17,30 +18,22 @@ const menuItemsData = menuItemsRaw
 
 menuItemsData.push({ href: '/delivery', name: 'Доставка' }, { href: '/about', name: 'О нас' })
 
-const Menu = props => {
+export default function Menu({ fixed, hidden }) {
   const globalHoverIsOn = useHoverContext()
-
   const [dropdownsAreShowing, setDropdownsAreShowing] = useState(false)
 
-  function clickHandlerFunc(e) {
-    const { currentTarget: menu } = e
+  const turnOnDropdowns = () => setDropdownsAreShowing(true)
+  const turnOffDropdowns = () => setDropdownsAreShowing(false)
+  const blurMe = e => e.currentTarget.blur()
 
+  function clickHandlerFunc({ currentTarget: menu }) {
+    const zIndexBefore = menu.style.zIndex
     menu.style.zIndex = -1000
     setTimeout(() => {
-      menu.style.zIndex = null
+      menu.style.zIndex = zIndexBefore
     }, 300)
-
     turnOffDropdowns()
   }
-
-  const turnOnDropdowns = () => {
-    setDropdownsAreShowing(true)
-  }
-  const turnOffDropdowns = () => {
-    setDropdownsAreShowing(false)
-  }
-
-  const blurMe = e => e.currentTarget.blur()
 
   let menuItemClassList = 'menu-link-div'
   if (globalHoverIsOn || dropdownsAreShowing) menuItemClassList += ' show-dropdowns'
@@ -49,14 +42,18 @@ const Menu = props => {
     if (globalHoverIsOn || (!globalHoverIsOn && !menuitem.submenu))
       return (
         <Link to={menuitem.href} onClick={turnOnDropdowns}>
-          {menuitem.name}
+          {t('navigation.' + menuitem.name)}
         </Link>
       )
-    return <button onClick={turnOnDropdowns}>{menuitem.name}</button>
+    return <button>{menuitem.name}</button>
   }
 
+  let className = fixed ? 'menu menu-fixed' : 'menu'
+  if (hidden) className += ' ' + 'menu-fixed-hidden'
+  const id = fixed ? 'menu-fixed' : 'main-menu'
+
   return (
-    <div className='menu'>
+    <div className={className} id={id}>
       {menuItemsData.map(menuItem => (
         <div className={menuItemClassList}>
           <MenuLink menuitem={menuItem} />
@@ -80,5 +77,3 @@ const Menu = props => {
     </div>
   )
 }
-
-export default Menu

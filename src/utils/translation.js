@@ -1,5 +1,6 @@
 import translationMap from './translationMap'
 import localeTranslationMap from './localeTranslationMap'
+import { currentLanguage } from '../components/contexts/LanguageContext'
 
 export const noTranslationAvailable = new Set()
 export const noLocalisationList = {}
@@ -22,12 +23,12 @@ export function translate(phrase, lang) {
   return result
 }
 
-export function getLocale(filename, key, language) {
+export function getLocale(component, key, language) {
   let foundKey
 
-  const translationMap = localeTranslationMap[filename]
+  const translationMap = localeTranslationMap[component]
   if (!translationMap) {
-    registerNoMatch(filename, key, language)
+    registerNoMatch(component, key, language)
     return null
   }
 
@@ -35,7 +36,7 @@ export function getLocale(filename, key, language) {
     foundKey = translationMap[key][language]
   } catch (err) {
     console.log('ERROR')
-    registerNoMatch(filename, key, language)
+    registerNoMatch(component, key, language)
     return null
   }
 
@@ -54,4 +55,27 @@ function registerNoMatch(filename, key, language) {
   }
   if (!noLocalisationList[filename][key]) addKey()
   else noLocalisationList[filename][key].add(language)
+}
+
+export function t(query) {
+  query = query.toLowerCase()
+  const [firstQueryPart, ...queryParts] = query.split('.')
+
+  let result = localeTranslationMap[firstQueryPart]
+  try {
+    if (queryParts.length) {
+      queryParts.forEach(key => {
+        result = result[key]
+      })
+    }
+    result = result[currentLanguage]
+  } catch (err) {
+    console.error(
+      `Locale for ${query} not found:
+
+    ${err.stack}`
+    )
+  }
+  if (typeof result === 'string') return result
+  return query
 }

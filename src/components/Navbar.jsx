@@ -44,12 +44,13 @@ const Navbar = () => {
         </div>
 
         <div className='navbar-item hamburger-menu-item'>
-          <img
-            className='navbar-icon hamburger-menu-icon'
-            src={openMenuIcon}
-            alt='Open Menu'
-            onClick={openMenu}
-          ></img>
+          <button onClick={openMenu}>
+            <img
+              className='navbar-icon hamburger-menu-icon'
+              src={openMenuIcon}
+              alt='Open Menu'
+            ></img>
+          </button>
         </div>
       </div>
     </nav>

@@ -8,7 +8,7 @@
   // Example:
   "My first snippet": {
     "prefix": "ruen",
-    "body": ["{{ ru: 'lol', en: 'lol' }[lang]}"],
+    "body": "{ \"ru\": \"плейсхолдер\", \"en\": \"placeholder\" }",
     "description": "My first snippet"
   }
 }
