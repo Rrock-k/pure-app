@@ -15,6 +15,7 @@
 /* SHOP HEADER */
 
 .shop-header {
+  z-index: 9999;
   position: relative;
   width: auto;
   text-align: right;

@@ -9,9 +9,9 @@ export default function FixedMenu() {
 
   useEffect(() => {
     const navMenu = document.getElementById('main-menu')
-    const { top: menuTop } = getCoords(navMenu)
 
     const handleScroll = () => {
+      const { top: menuTop } = getCoords(navMenu)
       const paddingDifference = 16
       if (menuTop + paddingDifference < window.scrollY) setShowMenuOnTop(true)
       else setShowMenuOnTop(false)
