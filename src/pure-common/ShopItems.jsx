@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-import { useHoverContext } from './HoverContextWrapper'
+import { contexts } from '../config/setup'
 
-import { getShopItems, PHOTOS_URL } from './utils/apiQueries'
-import { mapToQuery } from './utils/mapToQuery'
+import { PHOTOS_URL } from './utils/apiQueries'
+
+const {
+  useLanguageContext = () => ({
+    language: 'ru',
+  }),
+  useHoverContext,
+} = contexts
 
 export default function ShopItems({ isAdmin = false, items }) {
   const [shopItemRows, setShopItemRows] = useState([])
@@ -47,10 +53,43 @@ export default function ShopItems({ isAdmin = false, items }) {
 }
 
 function ShopItem({ isAdmin, ...props }) {
-  const { _id, mainPhotoUrl, secondPhotoUrl, name, priceRub, linkName } = props
+  const { _id, mainPhotoUrl, secondPhotoUrl, linkName } = props
+  let { name: nameRu, nameEn, priceRub, priceUsd, discountRub = 0, discountUsd = 0 } = props
+  let name, price, discount, currency, priceStr, priceBeforeDicsount
+
   const productUrl = linkName ? '/shop/products/' + linkName : '/shop/products/' + _id
 
   const hoverOn = useHoverContext()
+  let { language } = useLanguageContext()
+
+  if (language === 'ru') {
+    name = nameRu
+    price = priceRub
+    discount = discountRub
+    currency = 'руб.'
+  } else {
+    name = nameEn
+    price = priceUsd
+    discount = discountUsd
+    currency = '$'
+  }
+
+  let priceClassList = 'shop-item-price'
+  if (discount) {
+    priceClassList += ' discounted-price'
+    priceBeforeDicsount = (
+      <s>
+        <p>
+          {price} {currency}
+        </p>
+      </s>
+    )
+  }
+  priceStr = (
+    <p className={priceClassList}>
+      <span>{`${price - discount} ${currency}`}</span>
+    </p>
+  )
 
   return (
     <div className='shop-item'>
@@ -64,7 +103,8 @@ function ShopItem({ isAdmin, ...props }) {
       </Link>
       <div className='shop-item-text'>
         <p>{name}</p>
-        <p>{priceRub} р.</p>
+        {priceBeforeDicsount}
+        {priceStr}
       </div>
       <div className='shop-item-link-container'>
         {isAdmin && (

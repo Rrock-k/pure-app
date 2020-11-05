@@ -2,7 +2,7 @@ import { Link, useHistory } from 'react-router-dom'
 
 import React from 'react'
 
-import Language from './Language'
+import LanguageSwitcher from './LanguageSwitcher'
 
 import logo from '../assets/images/logo_bez_fona.png'
 import magnifyingGlass from '../assets/icons/magnifying-glass.svg'
@@ -27,7 +27,7 @@ const Navbar = () => {
         <div className='navbar-item'>
           <img className='navbar-icon' src={shoppingBag} alt='Search'></img>
         </div>
-        <Language />
+        <LanguageSwitcher className='navbar-item' />
         {false && (
           <div className='navbar-item'>
             <img className='navbar-icon' src={magnifyingGlass} alt='Search'></img>

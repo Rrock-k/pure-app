@@ -1,0 +1,97 @@
+{
+  "home": {
+    "main_slider": {
+      "earrings_crystal_clear": { "ru": "Серьги Crystal Clear", "en": "Crystal Clear Earrings" },
+      "kimono": { "ru": "Кимоно", "en": "Kimono" },
+      "title": { "ru": "Новые модели", "en": "New Models" }
+    },
+    "sections": {
+      "section_clothes": {
+        "img_alt": { "ru": "раздел одежда", "en": "clothes section" },
+        "title": { "ru": "Одежда", "en": "Clothes" },
+        "p1": {
+          "ru": "наша одежда изготавливается из натуральных материалов: шелка, льна и хлопка",
+          "en": "our clothes is producted of natural materials: silk, linen and cotton"
+        },
+        "p2": {
+          "ru": "все процесы от окраски тканей до финального пошивавыполнены вручную",
+          "en": "all processes from dying of materials to final sewing are done by hands"
+        },
+        "p3": {
+          "ru": "1оо% ручная работа наша продукция произаодится на острове бали",
+          "en": "100% handcrafted. our goods are made in Bali island"
+        },
+        "button": { "ru": "посмотреть все модели", "en": "open all models" }
+      },
+      "section_jewelry": {
+        "img_alt": { "ru": "раздел украшения", "en": "clothes section" },
+        "title": { "ru": "Украшения", "en": "Ukrashenia" },
+        "p1": {
+          "ru": "наша одежда изготавливается из натуральных материалов: шелка, льна и хлопка",
+          "en": "our clothes is producted of natural materials: silk, linen and cotton"
+        },
+        "p2": {
+          "ru": "все процесы от окраски тканей до финального пошивавыполнены вручную",
+          "en": "all processes from dying of materials to final sewing are done by hands"
+        },
+        "p3": {
+          "ru": "1оо% ручная работа наша продукция произаодится на острове бали",
+          "en": "100% handcrafted. our goods are made in Bali island"
+        },
+        "p4": {
+          "ru": "1оо% ручная работа наша продукция произаодится на острове бали",
+          "en": "100% handcrafted. our goods are made in Bali island"
+        },
+        "button": { "ru": "посмотреть все модели", "en": "open all models" }
+      },
+      "section_instagram": {
+        "title": {
+          "ru": "следите за нашими новостями в инстаграм @i.am.in.pure",
+          "en": "follow us on instagram @i.am.in.pure"
+        }
+      },
+      "section_about": {
+        "title": {
+          "ru": "О нас",
+          "en": "About us"
+        },
+        "p1": {
+          "ru": "ла ла ла все такое все и еще всякое много чего разного и всяческого рзнообразногоё",
+          "en": "lorem ipsum dolor sit amet consectetur adipisicing elit. saepe tenetur"
+        },
+        "p2": {
+          "ru": "всяческого рзнообразного вдзз сяческого рзнообразного",
+          "en": "so diverse oh my god how amazing it is"
+        }
+      },
+      "section_subscription": {
+        "label": {
+          "ru": "Подпишись на нашу рассылку",
+          "en": "Subscribe to receive our news"
+        },
+        "subscripbe_button": {
+          "ru": "Подписаться",
+          "en": "Subscribe"
+        },
+        "agreement_checkbox_subtitle": {
+          "ru": "даю согласие на обработку персональных данных",
+          "en": "I agree all the agreements of law"
+        }
+      }
+    }
+  },
+  "common": {
+    "banner": {
+      "text": {
+        "ru": "новая коллекция кимоно",
+        "en": "new kimono collection",
+        "ha": "кимоношки просто бомба"
+      },
+      "text-small": {
+        "ru": "готова к предзаказу",
+        "en": "ready for preorder",
+        "ha": "ты будешь королевой"
+      }
+    }
+  }
+}

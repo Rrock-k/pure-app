@@ -20,12 +20,24 @@
   text-align: right;
   padding-top: 0.3em;
   padding-bottom: 0.3em;
-  margin-right: calc(2 * var(--shop-margin));
   box-sizing: border-box;
+  margin: 1rem calc(2 * var(--shop-margin));
+}
+
+.shop-sort-button-container {
+  margin-left: auto;
+  width: max-content;
+}
+
+.shop-sort-button-container:focus-within {
+}
+
+.shop-sort-button-container button:focus {
+  outline: none;
 }
 
 .shop-header button {
-  margin: 1rem calc(2 * var(--shop-margin)) 1rem 0;
+  margin: 0 calc(2 * var(--shop-margin)) 0 0;
   padding: 0;
   font-size: 0.8rem;
   letter-spacing: 0.03rem;
@@ -63,7 +75,6 @@
 .shop-sort-dropdown {
   background-color: white;
   padding: 0 1rem;
-  transition: 0.35s;
   height: 0px;
   overflow: hidden;
   position: absolute;
@@ -73,7 +84,7 @@
 
 .shop-sort-dropdown.opened,
 .shop-sort-dropdown:hover {
-  padding: 1rem;
+  padding: 1rem 1rem;
   height: auto;
 }
 
@@ -170,7 +181,7 @@
 }
 
 .shop-nav-active {
-  font-weight: 400;
+  font-weight: 500;
   color: #222 !important;
 }
 
@@ -233,22 +244,6 @@
   margin: 0 var(--shop-margin);
 }
 
-.shop-item-text {
-  padding: 0 0.3rem;
-}
-
-.shop-item p {
-  width: 100%;
-  color: rgb(36, 36, 36);
-
-  font-size: 0.7rem;
-  text-transform: none;
-
-  margin: 0.8em 0;
-  line-height: 1.5;
-  word-wrap: break-word;
-}
-
 .shop-item-image-div {
   width: 100%;
   padding-top: 150%;
@@ -283,6 +278,40 @@
   opacity: 0;
 }
 
+.shop-item-text {
+  padding: 0 0.3rem;
+}
+
+.shop-item p {
+  width: 100%;
+  color: rgb(14, 14, 14);
+
+  font-size: 0.8rem;
+  font-weight: 400;
+
+  text-transform: none;
+
+  margin: 0.5rem 0;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.shop-item .shop-item-price {
+  margin: 0.4rem 0;
+}
+
+.shop-item .shop-item-price span {
+  font-size: 0.8rem;
+  text-transform: none;
+}
+
+.shop-item-text s p {
+  font-size: 0.7rem;
+  line-height: 1;
+  margin: 0;
+}
+
+/* admin button*/
 .shop-item-link-container {
   flex: 10 0 auto;
 
@@ -291,7 +320,7 @@
   align-items: flex-end;
 }
 
-.shop-item a.btn {
+.shop-item-link-container a.btn {
   font-size: min(0.7rem, 2.7vw);
   padding: min(4px, 1vw) min(8px, 2vw);
 }

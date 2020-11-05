@@ -1,5 +1,5 @@
 import React from 'react'
-import { t } from '../utils/translation'
+import { t } from '../pure-common/utils/translation'
 
 const Banner = props => {
   return (

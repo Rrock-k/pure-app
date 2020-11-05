@@ -2,9 +2,12 @@ import React, { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
 import urlArray from '../pure-common/data/menuItems'
-import { t } from '../utils/translation'
+import { t } from '../pure-common/utils/translation'
+import { useLanguageContext } from './contexts/LanguageContext'
+import LanguageSwitcher from './LanguageSwitcher'
 
 export default function MobileMenu(props) {
+  const { language, setLanguage } = useLanguageContext()
   const firstFocusableElement = useRef()
   const lastFocusableElement = useRef()
 
@@ -21,15 +24,13 @@ export default function MobileMenu(props) {
     console.log('Mobile menu is opened or closed')
     setTimeout(() => {
       firstFocusableElement.current.focus()
+      firstFocusableElement.current.blur()
     }, 100)
   }, [isOpened])
 
   const visibility = isOpened ? 'visible' : 'hidden'
   const opacity = isOpened ? '1' : '0'
   const transition = isOpened ? '0.35s' : '0.25s'
-
-  // console.log(lastFocusableElement)
-  // console.log(firstFocusableElement)
 
   return (
     <div
@@ -82,6 +83,9 @@ export default function MobileMenu(props) {
               </React.Fragment>
             )
           })}
+          <div className='mobile-menu-item-div'>
+            <LanguageSwitcher className='mobile-menu-language-switcher' />
+          </div>
         </div>
       </div>
       <button

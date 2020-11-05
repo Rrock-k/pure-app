@@ -1,15 +1,15 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 
-const HoverContext = createContext(true)
+const Context = createContext(true)
 
-export function HoverContextWrapper({ children, ...props }) {
+export function HoverContext({ children, ...props }) {
   const isHoverTurnedOn = useCheckIfTouchScreen()
 
-  return <HoverContext.Provider value={isHoverTurnedOn}>{children}</HoverContext.Provider>
+  return <Context.Provider value={isHoverTurnedOn}>{children}</Context.Provider>
 }
 
 export function useHoverContext() {
-  return useContext(HoverContext)
+  return useContext(Context)
 }
 
 function useCheckIfTouchScreen() {

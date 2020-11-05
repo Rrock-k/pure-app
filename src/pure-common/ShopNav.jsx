@@ -3,8 +3,9 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import urlArray from './data/menuItems'
+import { t } from './utils/translation'
 
-export default function ShopNav({ activeUrl, isAdmin }) {
+export default function ShopNav({ activeUrl = '' }) {
   const [isHidden, setIsHidden] = useState(false)
   const classNameIfHidden = isHidden ? ' shop-nav-hidden' : ''
 
@@ -24,10 +25,10 @@ export default function ShopNav({ activeUrl, isAdmin }) {
     <Link
       className={item.href === activeUrl ? 'shop-nav-active' : undefined}
       id={item.href}
-      to={(isAdmin ? '/shop-editor/' : '/shop/') + item.href}
+      to={'/shop/' + item.href}
     >
       {<div className={item.href === activeUrl ? 'active' : undefined} id='shop-nav-arrow'></div>}
-      {item.name}
+      {t(`navigation.${item.name}`)}
     </Link>
   )
 
@@ -40,10 +41,10 @@ export default function ShopNav({ activeUrl, isAdmin }) {
             {item.submenu?.map(getLinkTemplate)}
           </div>
         ))}
-        <div>{getLinkTemplate({ href: '', name: 'Все товары' })}</div>
+        <div>{getLinkTemplate({ href: '', name: 'все товары' })}</div>
         <div>
           <button className='hide-nav-button' onClick={hideNav}>
-            Скрыть меню
+            {t('shop.nav.hide_menu')}
           </button>
         </div>
       </div>
@@ -52,7 +53,7 @@ export default function ShopNav({ activeUrl, isAdmin }) {
         className={isHidden ? 'unhide-nav-button' : ' unhide-nav-button unhide-nav-button-hide'}
         onClick={unhideNav}
       >
-        Показать меню
+        {t('shop.nav.show_menu')}
       </button>
     </>
   )

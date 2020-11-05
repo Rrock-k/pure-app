@@ -1,5 +1,5 @@
 import React from 'react'
-import { t } from '../../utils/translation'
+import { t } from '../../pure-common/utils/translation'
 
 import clothes from '../../assets/images/sections/clothes.png'
 import jewelry from '../../assets/images/sections/jewelry.png'
@@ -10,30 +10,33 @@ export default function Sections() {
       <div className='section'>
         <img
           src={clothes}
-          alt={t('home.sections.clothes_section.img_alt')}
+          alt={t('home.sections.section_clothes.img_alt')}
           className='section-img section-clothes'
         />
         <div className='section-foreground'>
           <div className='section-text-container'>
-            <h1>одежда</h1>
-            <p>наша одежда изготавливается из натуральных материалов: шелка, льна и хлопка</p>
-            <p>все процесы от окраски тканей до финального пошивавыполнены вручную</p>
-            <p>1оо% ручная работа наша продукция произаодится на острове бали</p>
-            <button>посмотреть все модели</button>
+            <h1>{t('home.sections.section_clothes.title')}</h1>
+            <p>{t('home.sections.section_clothes.p1')}</p>
+            <p>{t('home.sections.section_clothes.p2')}</p>
+            <p>{t('home.sections.section_clothes.p3')}</p>
+            <button>{t('home.sections.section_clothes.button')}</button>
           </div>
         </div>
       </div>
 
       <div className='section'>
-        <img src={jewelry} alt='раздел украшения' className='section-img section-clothes' />
+        <img
+          src={jewelry}
+          alt={t('home.sections.section_jewelry.img_alt')}
+          className='section-img section-jewelry'
+        />
         <div className='section-foreground'>
           <div className='section-text-container'>
-            <h1>украшения</h1>
-            <p>тоже ченить написать бла бла блаьла ьла ьла</p>
-            <p>ьла ьлаь ла ал фщоцаашшщш щоаср лсвгифвзшмв офща ф ффвс </p>
-            <p>щлащоаф ырафа еще немного текста</p>
-            <p>какой то текст новый забыл перевести</p>
-            <button>посмотреть все модели</button>
+            <h1>{t('home.sections.section_jewelry.title')}</h1>
+            <p>{t('home.sections.section_jewelry.p1')}</p>
+            <p>{t('home.sections.section_jewelry.p2')}</p>
+            <p>{t('home.sections.section_jewelry.p3')}</p>
+            <button>{t('home.sections.section_jewelry.button')}</button>
           </div>
         </div>
       </div>

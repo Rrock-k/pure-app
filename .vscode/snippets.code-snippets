@@ -8,7 +8,7 @@
   // Example:
   "My first snippet": {
     "prefix": "ruen",
-    "body": "{ \"ru\": \"плейсхолдер\", \"en\": \"placeholder\" }",
+    "body": "{\n\t\"ru\": \"плейсхолдер\",\n\t\"en\": \"placeholder\"\n}",
     "description": "My first snippet"
   }
 }

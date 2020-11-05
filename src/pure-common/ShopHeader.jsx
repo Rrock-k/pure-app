@@ -1,33 +1,42 @@
 import React from 'react'
+import { createRef } from 'react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { contexts } from '../config/setup'
+import { t } from './utils/translation'
+
+const btnRef = createRef()
+
+const { useLanguageContext } = contexts
+
+const tThis = path => t('shop.header.' + path)
 
 export default function ShopHeader({ setSortingFunc, setFilterFunc }) {
   const [isDropdowned, setIsDropdowned] = useState(false)
   const [optionsIndex, setOptionsIndex] = useState(0)
+  const { language } = useLanguageContext()
 
   let dropdownClasses = 'shop-sort-dropdown '
   if (isDropdowned) dropdownClasses += 'opened'
 
   const options = [
     {
-      name: 'рекомендуем',
+      name: tThis('options.recommend'),
       setterFunc: () => setSortingFunc(),
     },
     {
-      name: 'цена по возрастанию',
+      name: tThis('options.price_asc'),
       setterFunc: () => setSortingFunc(() => (p1, p2) => p1.priceRub - p2.priceRub),
     },
     {
-      name: 'цена по убыванию',
+      name: tThis('options.price_desc'),
       setterFunc: () => setSortingFunc(() => (p1, p2) => p2.priceRub - p1.priceRub),
     },
     {
-      name: 'только новинки',
+      name: tThis('options.new'),
       setterFunc: () => setFilterFunc(() => p => p.flagNew),
     },
     {
-      name: 'по скидке',
+      name: tThis('options.discount'),
       setterFunc: () => setFilterFunc(() => p => p.flagDiscount),
     },
   ]
@@ -49,12 +58,14 @@ export default function ShopHeader({ setSortingFunc, setFilterFunc }) {
     <div className='shop-header'>
       <div
         className='shop-sort-button-container'
-        onClick={e => {
+        onClick={() => {
           setIsDropdowned(() => !isDropdowned)
+          btnRef.current.blur()
         }}
       >
-        <button>
-          Сортировка: {options[optionsIndex]['name']}
+        <button ref={btnRef}>
+          {tThis('sort_label')}
+          {options[optionsIndex]['name']}
           <div className='shop-sort-arrow-box'>
             <span className='shop-sort-arrow'></span>
           </div>

@@ -4,9 +4,11 @@ import img from '../assets/images/banner/main-banner.png'
 import img1 from '../assets/images/models/earrings-crystal.png'
 import img2 from '../assets/images/models/earrings-crystal2.png'
 import img3 from '../assets/images/models/earrings-crystal3.png'
-import { t } from '../utils/translation'
+import { t } from '../pure-common/utils/translation'
 
 import Slider from './Slider'
+
+const tThis = path => t('home.main_slider.' + path)
 
 function MainSlider() {
   useEffect(() => {
@@ -44,10 +46,10 @@ function MainSlider() {
     className: 'main-slider',
     additionalElements: [
       null,
-      <h5 className='slider-subtitle'>{t('main_slider.earrings_crystal_clear')}</h5>,
-      <h5 className='slider-subtitle'>{t('main_slider.kimono')}</h5>,
-      <h5 className='slider-subtitle'>{t('main_slider.earrings_crystal_clear')}</h5>,
-      <h5 className='slider-subtitle'>{t('main_slider.earrings_crystal_clear')}</h5>,
+      <h5 className='slider-subtitle'>{tThis('earrings_crystal_clear')}</h5>,
+      <h5 className='slider-subtitle'>{tThis('kimono')}</h5>,
+      <h5 className='slider-subtitle'>{tThis('earrings_crystal_clear')}</h5>,
+      <h5 className='slider-subtitle'>{tThis('earrings_crystal_clear')}</h5>,
     ],
   }
 
@@ -55,7 +57,7 @@ function MainSlider() {
 
   return (
     <div className='slider-container'>
-      {isRendering && <h3>{t('main_slider.title')}</h3>}
+      {isRendering && <h3>{tThis('title')}</h3>}
       <Slider {...sliderProps} {...{ width, images, pagesCount }} />
     </div>
   )

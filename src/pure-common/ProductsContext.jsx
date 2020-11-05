@@ -8,11 +8,7 @@ const Context = createContext()
 export function ProductsContext({ children }) {
   const [products, setProducts] = useState([])
 
-  console.log('ProductsContext component is rendering')
-  console.log(products)
-
   const getProducts = ({ whatToShow }) => {
-    console.log(whatToShow)
     if (!products) return []
     const query = mapToQuery(whatToShow)
 

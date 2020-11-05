@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 
 import downloadInstagramImages from '../effects/downloadInstagramImages'
+import { t } from '../pure-common/utils/translation'
 import Slider from './Slider'
 
 const sliderProps = {
@@ -35,7 +36,7 @@ export default function InstagramSection() {
 
   return (
     <div className='instagram-section'>
-      <h5>следите за нашими новостями в инстаграм @i.am.in.pure</h5>
+      <h5>{t('home.sections.section_instagram.title')}</h5>
       <Slider {...sliderProps} width={width} images={images} />
     </div>
   )

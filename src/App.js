@@ -1,25 +1,21 @@
-import React, { useState, useEffect, createContext, useContext } from 'react'
+import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 
 import './App.css'
+import { contexts } from './config/setup'
 
 import MobileMenu from './components/MobileMenu'
 import AppHeader from './components/AppHeader'
 import Home from './components/Home/Home'
-import Shop from './pure-common/Shop'
-import ShopProduct from './pure-common/ShopProduct'
 import About from './components/About'
 import Delivery from './components/Delivery'
+import AppFooter from './components/AppFooter'
+import ShopProduct from './pure-common/ShopProduct'
+import Shop from './pure-common/Shop'
 
-import FastLanguageSwitch from './components/dev-and-test/FastLanguageSwitch'
+// import FastLanguageSwitch from './components/dev-and-test/FastLanguageSwitch'
 
-import { useHoverContext } from './pure-common/HoverContextWrapper'
-import { MobileMenuAndContext } from './pure-common/MobileMenuAndContext'
-
-import { ProductsContext } from './pure-common/ProductsContext'
-import { useLanguageContext } from './components/contexts/LanguageContext'
-
-export const MobileMenuContext = createContext({})
+const { useHoverContext, MobileMenuAndContext, ProductsContext, useLanguageContext } = contexts
 
 function App() {
   console.log('App function body')
@@ -33,26 +29,26 @@ function App() {
 
       {/* prettier-ignore */}
       <div className={classList}>
-        
           <ProductsContext>
             <MobileMenuAndContext MobileMenu={MobileMenu}>
               {/* <FastLanguageSwitch /> */}
+
               <AppHeader  />
 
               <Switch>
                 <Route path='/home'                      render={() => <Home />} />
-                <Route path='/shop/products:name'        render={() => <ShopProduct/>} />
-                <Route path='/shop/products'             render={() => <ShopProduct/>} />
+                <Route path='/shop/products/:name'       render={() => <ShopProduct/>} />
                 <Route path='/shop/:whatToShow'          render={() => <Shop />} />
-                <Route path='/shop/'                     render={() => <Shop />} />
+                <Route path='/shop'                      render={() => <Shop />} />
                 <Route path='/about'                     render={() => <About />} />
                 <Route path='/delivery'                  render={() => <Delivery />} />
                 <Redirect to='/home' />
               </Switch>
 
+              <AppFooter/>
+
             </MobileMenuAndContext>
           </ProductsContext>
-
       </div>
     </>
   )

@@ -1,0 +1,42 @@
+{
+  "shop": {
+    "header": {
+      "options": {
+        "recommend": {
+          "ru": "рекомендуем",
+          "en": "recommended"
+        },
+        "price_asc": {
+          "ru": "цена по возрастанию",
+          "en": "by price ascending"
+        },
+        "price_desc": {
+          "ru": "цена по убыванию",
+          "en": "by price descending"
+        },
+        "new": {
+          "ru": "новинки",
+          "en": "new"
+        },
+        "discount": {
+          "ru": "со скидкой",
+          "en": "discount"
+        }
+      },
+      "sort_label": {
+        "ru": "Сортировка: ",
+        "en": "Sorting: "
+      }
+    },
+    "nav": {
+      "hide_menu": {
+        "ru": "Скрыть меню",
+        "en": "Hide menu"
+      },
+      "show_menu": {
+        "ru": "Показать меню",
+        "en": "Show menu"
+      }
+    }
+  }
+}

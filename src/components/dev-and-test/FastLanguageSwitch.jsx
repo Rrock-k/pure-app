@@ -1,5 +1,5 @@
 import React from 'react'
-import { noTranslationAvailable } from '../../utils/translation'
+import { noTranslationAvailable } from '../../pure-common/utils/translation'
 import { useLanguageContext } from '../contexts/LanguageContext'
 
 export default function FastLanguageSwitch() {

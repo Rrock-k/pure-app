@@ -1,13 +1,15 @@
 import React from 'react'
-import './utils/langReactPatch'
 
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
+
 import './index.css'
+import { contexts } from './config/setup'
+
 import App from './App.js'
 import * as serviceWorker from './serviceWorker'
-import { HoverContextWrapper } from './pure-common/HoverContextWrapper'
-import { LanguageContext } from './components/contexts/LanguageContext'
+
+const { HoverContext, LanguageContext } = contexts
 
 console.log('index.js started execution')
 
@@ -15,11 +17,11 @@ const RenderReactDOM = () =>
   ReactDOM.render(
     <React.StrictMode>
       <Router>
-        <HoverContextWrapper>
-          <LanguageContext setRerender={() => {}}>
+        <HoverContext>
+          <LanguageContext>
             <App />
           </LanguageContext>
-        </HoverContextWrapper>
+        </HoverContext>
       </Router>
     </React.StrictMode>,
     document.getElementById('root')

@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import { useHoverContext } from '../pure-common/HoverContextWrapper'
-
 import menuItemsRaw from '../pure-common/data/menuItems'
-import { t } from '../utils/translation'
+import { t } from '../pure-common/utils/translation'
+import { contexts } from '../config/setup'
+
+const { useHoverContext } = contexts
 
 const addShopRoute = href => '/shop/' + href
 
@@ -67,7 +68,7 @@ export default function Menu({ fixed, hidden }) {
               )}
               {menuItem.submenu.map(({ name, href }) => (
                 <Link to={href} onClick={blurMe} key={href}>
-                  {name}
+                  {t(`navigation.${name}`)}
                 </Link>
               ))}
             </div>
