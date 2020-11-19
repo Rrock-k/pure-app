@@ -50,13 +50,13 @@ export default function Menu({ fixed, hidden }) {
   }
 
   let className = fixed ? 'menu menu-fixed' : 'menu'
-  if (hidden) className += ' ' + 'menu-fixed-hidden'
+  if (hidden) className = `${className} menu-fixed-hidden`
   const id = fixed ? 'menu-fixed' : 'main-menu'
 
   return (
     <div className={className} id={id}>
       {menuItemsData.map(menuItem => (
-        <div className={menuItemClassList}>
+        <div className={menuItemClassList} key={menuItem.name}>
           <MenuLink menuitem={menuItem} />
 
           {menuItem.submenu && (

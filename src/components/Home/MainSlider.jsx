@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 
-import img from '../assets/images/banner/main-banner.png'
-import img1 from '../assets/images/models/earrings-crystal.png'
-import img2 from '../assets/images/models/earrings-crystal2.png'
-import img3 from '../assets/images/models/earrings-crystal3.png'
-import { t } from '../pure-common/utils/translation'
+import img from '../../assets/images/banner/main-banner.png'
+import img1 from '../../assets/images/models/earrings-crystal.png'
+import img2 from '../../assets/images/models/earrings-crystal2.png'
+import img3 from '../../assets/images/models/earrings-crystal3.png'
+import img4 from '../../assets/images/models/1.jpg'
+import { t } from '../../pure-common/utils/translation'
 
-import Slider from './Slider'
+import Slider from '../Slider'
 
 const tThis = path => t('home.main_slider.' + path)
 
@@ -18,9 +19,22 @@ function MainSlider() {
     }
   }, [])
 
-  const [images, setImages] = useState([img1, img, img2, img, img3, img, img3])
+  // const [images, setImages] = useState([img1, img4, img2, img3, img1, img, img2, img3])
+  const images = [img1, img4, img2, img3, img1, img, img2, img3]
   const [width, setWidth] = useState()
   const [pagesCount, setPagesCount] = useState()
+
+  const sliderProps = {
+    heightToWidthFactor: 1.5,
+    className: 'main-slider',
+    additionalElements: [
+      null,
+      <h5 className='slider-subtitle'>{tThis('earrings_crystal_clear')}</h5>,
+      <h5 className='slider-subtitle'>{tThis('kimono')}</h5>,
+      <h5 className='slider-subtitle'>{tThis('earrings_crystal_clear')}</h5>,
+      <h5 className='slider-subtitle'>{tThis('earrings_crystal_clear')}</h5>,
+    ],
+  }
 
   useEffect(() => {
     const slider = document.getElementById(sliderProps.className)
@@ -39,19 +53,7 @@ function MainSlider() {
     return () => {
       window.removeEventListener('resize', handleResize)
     }
-  }, [])
-
-  const sliderProps = {
-    heightToWidthFactor: 1.2,
-    className: 'main-slider',
-    additionalElements: [
-      null,
-      <h5 className='slider-subtitle'>{tThis('earrings_crystal_clear')}</h5>,
-      <h5 className='slider-subtitle'>{tThis('kimono')}</h5>,
-      <h5 className='slider-subtitle'>{tThis('earrings_crystal_clear')}</h5>,
-      <h5 className='slider-subtitle'>{tThis('earrings_crystal_clear')}</h5>,
-    ],
-  }
+  }, [sliderProps.className])
 
   const isRendering = images?.length > 0 && width
 
@@ -71,8 +73,8 @@ function stopTransitionAnimationTemorarily(element) {
 }
 
 function getPagesCount(width) {
-  if (width > 1300) return 5.4
-  if (width > 1000) return 3.8
+  if (width > 1400) return 5.4
+  if (width > 1000) return 5.6
   if (width / window.innerHeight > 1.5) return 4
   if (width > 700) return 3.6
   if (width / window.innerHeight > 0.9) return 2

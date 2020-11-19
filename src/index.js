@@ -16,7 +16,7 @@ console.log('index.js started execution')
 const RenderReactDOM = () =>
   ReactDOM.render(
     <React.StrictMode>
-      <Router>
+      <Router onUpdate={() => console.log('ROUTER UPDATE')}>
         <HoverContext>
           <LanguageContext>
             <App />

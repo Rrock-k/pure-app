@@ -7,19 +7,16 @@ const devUrl = `http://${hostname}:${port}/`
 const isLocalhost = hostname === 'localhost' || hostname.startsWith('192')
 let BASE_URL = isLocalhost ? devUrl : productionUrl
 
+const getAuthHeaderOption = () => ({ Authorization: `Bearer ${localStorage.getItem('jwt')}` })
+
 export const PHOTOS_URL = BASE_URL + 'images/uploads/'
 
-export function getAllPhotosUrls() {
-  return BASE_URL + 'api/images/'
-}
-
-export function getImagesUploadUrl() {
-  return BASE_URL + 'api/upload/'
-}
-
-export function getProductsUrl() {
-  return BASE_URL + 'api/products/'
-}
+export const getAllPhotosUrls = () => BASE_URL + 'api/images/'
+export const getImagesUploadUrl = () => BASE_URL + 'api/upload/'
+export const getProductsUrl = () => BASE_URL + 'api/products/'
+export const getAuthUrl = () => BASE_URL + 'api/auth/'
+export const getUsersUrl = () => BASE_URL + 'api/users/'
+export const getFileUploadUrl = () => BASE_URL + 'api/upload-file'
 
 export function getProducts() {
   return axios({
@@ -41,9 +38,66 @@ export function getShopItems(query) {
   })
 }
 
+export function postProduct(product) {
+  return axios({
+    method: 'post',
+    url: getProductsUrl(),
+    headers: getAuthHeaderOption(),
+    data: product,
+  })
+}
+
+export function changeProduct(id, product) {
+  return axios({
+    method: 'put',
+    url: `${getProductsUrl()}${id}`,
+    headers: getAuthHeaderOption(),
+    data: product,
+  })
+}
+
 export function deleteProduct(id) {
   return axios({
     method: 'delete',
     url: `${getProductsUrl()}${id}`,
+    headers: getAuthHeaderOption(),
   })
+}
+
+export function uploadImage(image, objectId) {
+  const data = new FormData()
+  data.append('image', image, `${objectId || 'missing_object_id'}-${image.name}`)
+  console.log(data)
+  console.log(image)
+
+  return axios({
+    url: getImagesUploadUrl(),
+    method: 'post',
+    headers: getAuthHeaderOption(),
+    data,
+    onUploadProgress: function (progressEvent) {
+      var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total)
+      console.log(`${percentCompleted} upload percent completed for ${image.name}`)
+    },
+  })
+}
+
+export function uploadFile(file) {
+  const data = new FormData()
+  data.append('file', file, `${file.name}`)
+
+  return axios({
+    method: 'post',
+    url: getFileUploadUrl(),
+    headers: getAuthHeaderOption(),
+    data,
+  })
+}
+
+export function loginUser(userData) {
+  return axios.post(getAuthUrl(), userData)
+}
+
+export function registerUser(userData) {
+  return axios.post(getUsersUrl(), userData)
 }

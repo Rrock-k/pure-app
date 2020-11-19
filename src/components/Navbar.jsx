@@ -1,4 +1,4 @@
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import React from 'react'
 
@@ -10,12 +10,10 @@ import instagramLogo from '../assets/icons/instagram-logo.svg'
 import shoppingBag from '../assets/icons/shopping-bag.svg'
 import openMenuIcon from '../assets/icons/open-menu.svg'
 import { useMobileMenuContext } from '../pure-common/MobileMenuAndContext'
+// import UserAccountIcon from './UserAccountIcon'
 
 const Navbar = () => {
-  const history = useHistory()
-  // const { openMenu } = useMobileMenuContext()
   const { openMenu } = useMobileMenuContext()
-
   return (
     <nav className='navbar'>
       <div className='mobile-logo-container'>
@@ -33,7 +31,8 @@ const Navbar = () => {
             <img className='navbar-icon' src={magnifyingGlass} alt='Search'></img>
           </div>
         )}
-        <div className='navbar-item'>
+
+        <div className='navbar-item' id='instagram-navbar-icon'>
           <a
             href='https://www.instagram.com/i.am.in.pure/'
             target='_blank'
@@ -42,6 +41,8 @@ const Navbar = () => {
             <img className='navbar-icon ' src={instagramLogo} alt='Shopping Cart'></img>
           </a>
         </div>
+
+        {/* <UserAccountIcon /> */}
 
         <div className='navbar-item hamburger-menu-item'>
           <button onClick={openMenu}>

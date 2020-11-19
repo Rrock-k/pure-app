@@ -7,7 +7,9 @@ const LanguageSwitcher = ({ className }) => {
   return (
     <div className={`language-switch ${className}`}>
       <button onClick={() => setLanguage('ru')}>RU</button>
-      <button className='separator'>I</button>
+      <button className='separator' tabIndex='-1'>
+        I
+      </button>
       <button onClick={() => setLanguage('en')}>EN</button>
       {/* <button className='separator'>I</button>
       <button onClick={() => setLanguage('ha')}>ХА</button> */}

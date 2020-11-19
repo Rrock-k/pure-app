@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useCallback } from 'react'
 
 import left from '../assets/icons/chevron-left.svg'
 import right from '../assets/icons/chevron-right.svg'
@@ -25,14 +26,20 @@ export default function Slider({
     paddingForArrows,
   } = calculateSliderParameters(width, images, pagesCount)
 
-  const goLeft = () => setPage(page => getNewPageNumber(page - 1, pagesCount, length))
-  const goRight = () => setPage(page => getNewPageNumber(page + 1, pagesCount, length))
+  const goLeft = useCallback(
+    () => setPage(page => getNewPageNumber(page - 1, pagesCount, length)),
+    [setPage, pagesCount, length]
+  )
+  const goRight = useCallback(
+    () => setPage(page => getNewPageNumber(page + 1, pagesCount, length)),
+    [setPage, pagesCount, length]
+  )
 
   useEffect(() => {
     setPage(page => getNewPageNumber(page, pagesCount, length, { sliderWasResized: true }))
     const cleanerFunction = SetUpSliderSwipeEvents(goRight, goLeft, className, pagesCount)
     return cleanerFunction
-  }, [pagesCount, length])
+  }, [pagesCount, length, className, goLeft, goRight])
 
   const translateX = halfWidth - page * pageWidth + pageWidth / 2
 
@@ -58,24 +65,22 @@ export default function Slider({
             className={'slide ' + className}
             style={{
               width: `${pageWidth}px`,
+              // height: `${heightToWidthFactor * pageWidth}px`,
             }}
           >
-            <div
-              className='slide-image-container'
-              style={{
-                height: `${heightToWidthFactor * pageWidth}px`,
-              }}
-            >
-              <img
-                draggable={false}
-                src={image}
-                alt={`Slide ${index + 1}`}
-                className={'slide-image ' + className}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                }}
-              />
+            <div className='slide-image-container'>
+              <div style={{ paddingTop: `${heightToWidthFactor * 100}%` }}>
+                <img
+                  draggable={false}
+                  src={image}
+                  alt={`Slide ${index + 1}`}
+                  className={'slide-image ' + className}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                  }}
+                />
+              </div>
             </div>
             {additionalElements[index]}
           </div>
@@ -87,9 +92,9 @@ export default function Slider({
         className={'btn-slider ' + className}
         onClick={() => goLeft()}
         style={{
-          height: `${heightToWidthFactor * pageWidth}px`,
           filter: page <= pagesToTheSide + 1 && `invert(40%)`,
           padding: `0 ${paddingForArrows}px`,
+          minWidth: `${pageWidth * 0.2}px`,
         }}
       >
         <img
@@ -104,9 +109,9 @@ export default function Slider({
         className={'btn-slider ' + className}
         onClick={() => goRight()}
         style={{
-          height: `${heightToWidthFactor * pageWidth}px`,
           filter: page + pagesToTheSide >= length && `invert(40%)`,
           padding: `0 ${paddingForArrows}px`,
+          minWidth: `${pageWidth * 0.2}px`,
         }}
       >
         <img
@@ -135,7 +140,7 @@ function calculateSliderParameters(width, images, pagesCount) {
   const pageWidth = width / pagesCount
   const halfWidth = width / 2
   const arrowWidth = 20
-  const paddingForArrows = arrowWidth / 3
+  const paddingForArrows = arrowWidth / 3 + 10
 
   return { length, pagesToTheSide, pageWidth, halfWidth, arrowWidth, paddingForArrows }
 }

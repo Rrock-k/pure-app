@@ -9,9 +9,10 @@ const handleScrollbarWidth = marginIsNeeded => {
   } else
     setTimeout(() => {
       document.body.removeAttribute('style')
-      const wrapper = document.getElementById('xnav-wrapper')
+      const wrapper = document.getElementById('mobile-menu')
       if (wrapper) wrapper.scrollTo(0, 0)
-    }, 150)
+      console.log('handleScrollbarWidth executed')
+    }, 250)
 }
 
 export default handleScrollbarWidth

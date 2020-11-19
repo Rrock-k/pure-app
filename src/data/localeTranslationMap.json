@@ -69,6 +69,10 @@
           "ru": "Подпишись на нашу рассылку",
           "en": "Subscribe to receive our news"
         },
+        "text": {
+          "ru": "мы ценим наше и ваше время и не собираемся заваливать вас рекламой и информационным спамом. подписывайтесь на рассылку если хотите получать новости о специальных предложениях, скидках и новых коллекциях",
+          "en": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum assumenda ducimus eaque veniam, amet neque dolore quo repudiandae laudantium est cumque aspernatur quos, nostrum distinctio consequuntur libero"
+        },
         "subscripbe_button": {
           "ru": "Подписаться",
           "en": "Subscribe"
@@ -77,6 +81,34 @@
           "ru": "даю согласие на обработку персональных данных",
           "en": "I agree all the agreements of law"
         }
+      }
+    }
+  },
+  "app-footer": {
+    "nav": {
+      "о нас": {
+        "ru": "О нас",
+        "en": "About us"
+      },
+      "доставка и оплата": {
+        "ru": "Доставка и оплата",
+        "en": "Delivery and payment"
+      },
+      "обмен и возврат": {
+        "ru": "Обмен и возврат",
+        "en": "Return and change"
+      },
+      "размерный ряд": {
+        "ru": "Размерный ряд",
+        "en": "Sizes"
+      },
+      "часто задаваемые вопросы": {
+        "ru": "Часто задаваемые вопросы",
+        "en": "Frequently asked questions"
+      },
+      "контакты": {
+        "ru": "Контакты",
+        "en": "Contacts"
       }
     }
   },

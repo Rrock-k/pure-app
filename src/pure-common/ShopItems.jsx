@@ -1,16 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-
-import { contexts } from '../config/setup'
-
-import { PHOTOS_URL } from './utils/apiQueries'
-
-const {
-  useLanguageContext = () => ({
-    language: 'ru',
-  }),
-  useHoverContext,
-} = contexts
+import { ShopItem } from './ShopItem'
 
 export default function ShopItems({ isAdmin = false, items }) {
   const [shopItemRows, setShopItemRows] = useState([])
@@ -33,7 +22,7 @@ export default function ShopItems({ isAdmin = false, items }) {
   return (
     <div className='shop-items'>
       {shopItemRows.map(([product1, product2]) => (
-        <div className='shop-item-row'>
+        <div className='shop-item-row' key={`${product1?._id}${product2?._id}`}>
           <ShopItem {...product1} isAdmin={isAdmin} />
           {product2 ? (
             <ShopItem {...product2} isAdmin={isAdmin} />
@@ -45,74 +34,9 @@ export default function ShopItems({ isAdmin = false, items }) {
 
       {Array(shopItemRows.length || 1 - 1) // blank divs to fill space and make flex work properly
         .fill()
-        .map(() => (
-          <div className='shop-item-row'></div>
+        .map((_, i) => (
+          <div className='shop-item-row' key={i} />
         ))}
-    </div>
-  )
-}
-
-function ShopItem({ isAdmin, ...props }) {
-  const { _id, mainPhotoUrl, secondPhotoUrl, linkName } = props
-  let { name: nameRu, nameEn, priceRub, priceUsd, discountRub = 0, discountUsd = 0 } = props
-  let name, price, discount, currency, priceStr, priceBeforeDicsount
-
-  const productUrl = linkName ? '/shop/products/' + linkName : '/shop/products/' + _id
-
-  const hoverOn = useHoverContext()
-  let { language } = useLanguageContext()
-
-  if (language === 'ru') {
-    name = nameRu
-    price = priceRub
-    discount = discountRub
-    currency = 'руб.'
-  } else {
-    name = nameEn
-    price = priceUsd
-    discount = discountUsd
-    currency = '$'
-  }
-
-  let priceClassList = 'shop-item-price'
-  if (discount) {
-    priceClassList += ' discounted-price'
-    priceBeforeDicsount = (
-      <s>
-        <p>
-          {price} {currency}
-        </p>
-      </s>
-    )
-  }
-  priceStr = (
-    <p className={priceClassList}>
-      <span>{`${price - discount} ${currency}`}</span>
-    </p>
-  )
-
-  return (
-    <div className='shop-item'>
-      <Link to={{ pathname: productUrl, query: props }}>
-        <div className='shop-item-image-div'>
-          {secondPhotoUrl && hoverOn && (
-            <img className='shop-item-image-second' src={PHOTOS_URL + secondPhotoUrl} alt={name} />
-          )}
-          <img className='shop-item-image-first' src={PHOTOS_URL + mainPhotoUrl} alt={name} />
-        </div>
-      </Link>
-      <div className='shop-item-text'>
-        <p>{name}</p>
-        {priceBeforeDicsount}
-        {priceStr}
-      </div>
-      <div className='shop-item-link-container'>
-        {isAdmin && (
-          <Link to={'/product/' + _id} className='btn btn-dark btn-sm'>
-            Изменить
-          </Link>
-        )}
-      </div>
     </div>
   )
 }

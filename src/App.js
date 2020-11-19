@@ -12,6 +12,8 @@ import Delivery from './components/Delivery'
 import AppFooter from './components/AppFooter'
 import ShopProduct from './pure-common/ShopProduct'
 import Shop from './pure-common/Shop'
+import ScrollToTop from './components/ScrollToTop'
+import Test from './components/Test'
 
 // import FastLanguageSwitch from './components/dev-and-test/FastLanguageSwitch'
 
@@ -29,21 +31,24 @@ function App() {
 
       {/* prettier-ignore */}
       <div className={classList}>
+          <ScrollToTop/>
           <ProductsContext>
             <MobileMenuAndContext MobileMenu={MobileMenu}>
               {/* <FastLanguageSwitch /> */}
-
-              <AppHeader  />
-
-              <Switch>
-                <Route path='/home'                      render={() => <Home />} />
-                <Route path='/shop/products/:name'       render={() => <ShopProduct/>} />
-                <Route path='/shop/:whatToShow'          render={() => <Shop />} />
-                <Route path='/shop'                      render={() => <Shop />} />
-                <Route path='/about'                     render={() => <About />} />
-                <Route path='/delivery'                  render={() => <Delivery />} />
-                <Redirect to='/home' />
-              </Switch>
+              
+              <div>
+                <AppHeader  />
+                <Switch>
+                  <Route path='/test'                      render={() => <Test />} />
+                  <Route path='/home'                      render={() => <Home />} />
+                  <Route path='/shop/products/:name'       render={() => <ShopProduct/>} />
+                  <Route path='/shop/:whatToShow'          render={() => <Shop />} />
+                  <Route path='/shop'                      render={() => <Shop />} />
+                  <Route path='/about'                     render={() => <About />} />
+                  <Route path='/delivery'                  render={() => <Delivery />} />
+                  <Redirect to='/home' />
+                </Switch>
+              </div>
 
               <AppFooter/>
 

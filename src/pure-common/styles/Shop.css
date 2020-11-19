@@ -4,6 +4,7 @@
 
 .shop-container {
   --shop-margin: min(0.7rem, 1.5vw);
+  flex: 0 1 100%;
 }
 
 .shop-main-area {
@@ -15,7 +16,7 @@
 /* SHOP HEADER */
 
 .shop-header {
-  z-index: 9999;
+  z-index: 101;
   position: relative;
   width: auto;
   text-align: right;
@@ -266,6 +267,88 @@
   z-index: 100;
 }
 
+.shop-item-like-button {
+  position: absolute;
+  z-index: 101;
+
+  --size: min(2.3rem, 8vmin);
+  bottom: calc(var(--size) / 2);
+  left: calc(var(--size) / 2);
+
+  height: var(--size);
+  width: var(--size);
+
+  border-radius: calc(var(--size) / 2);
+  background-color: rgba(255, 255, 255, 0.761);
+}
+
+/* .shop-item-flag-new {
+  position: absolute;
+  z-index: 101;
+  bottom: 0;
+  right: 0;
+
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.3rem;
+  border: 1px solid rgba(0, 0, 0, 0.686);
+  box-shadow: 0.7px 0.7px 2px rgba(0, 0, 0, 0.412);
+
+  font-size: 0.6rem;
+  letter-spacing: 0.3px;
+  font-weight: 700;
+  color: rgb(36, 36, 36);
+  transform: translate(18%, 40%);
+  background-color: rgba(250, 250, 250, 0.953);
+} */
+
+/* .shop-item-flag-new {
+  position: absolute;
+  z-index: 101;
+  bottom: 3%;
+  right: -1%;
+
+  padding: 0 0.4rem;
+
+  text-transform: lowercase;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background-color: rgba(166, 235, 139, 0.974);
+} */
+
+/* .shop-item-flag-new {
+  position: absolute;
+  z-index: 101;
+  bottom: 0.7rem;
+  right: 0.7rem;
+
+  padding: 0.2rem 0.4rem;
+
+  font-size: 0.75rem;
+  font-weight: 500;
+  background-color: rgba(255, 255, 255, 0.796);
+} */
+
+.shop-item-image-div {
+  overflow: hidden;
+}
+
+.shop-item-flag-new {
+  font-family: futura-pt, ProbaPro, ProbaPro-Regular ;
+
+  position: absolute;
+  z-index: 101;
+  bottom: 5%;
+  right: -1.5%;
+
+  padding: 0.2rem 0.5rem 0.2rem 0.4rem;
+
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: rgb(30, 43, 56);
+  background-color: rgba(228, 228, 228, 0.713);
+}
+
 .shop-item-image-first {
   width: 100%;
   object-fit: cover;
@@ -299,17 +382,30 @@
 
 .shop-item .shop-item-price {
   margin: 0.4rem 0;
+  font-weight: 600;
 }
 
-.shop-item .shop-item-price span {
-  font-size: 0.8rem;
+.shop-item .shop-item-price {
+  font-family: futura-pt, ProbaPro, ProbaPro-Regular;
+  letter-spacing: 0.7px;
+  font-weight: 700;
+
+  font-size: 0.9rem;
   text-transform: none;
 }
 
-.shop-item-text s p {
-  font-size: 0.7rem;
+.shop-item-text s span {
+  font-family: futura-pt, ProbaPro, ProbaPro-Regular ;
+  letter-spacing: 0.7px;
+  font-weight: 400;
+
+  font-size: 0.8rem;
   line-height: 1;
   margin: 0;
+}
+
+.shop-item-price.discounted-price {
+  color: #bb1f2e;
 }
 
 /* admin button*/
@@ -324,12 +420,6 @@
 .shop-item-link-container a.btn {
   font-size: min(0.7rem, 2.7vw);
   padding: min(4px, 1vw) min(8px, 2vw);
-}
-
-/* shop-product-card */
-
-.shop-product-card {
-  background-color: rgb(200, 200, 200);
 }
 
 /* / SHOP END-------------------- */

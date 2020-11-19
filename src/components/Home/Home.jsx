@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 
-import MainSlider from '../MainSlider'
-import InstagramSection from '../InstagramSlider'
+import MainSlider from './MainSlider'
+import InstagramSection from './InstagramSlider'
 import Sections from './Sections'
 import SectionAbout from './SectionAbout'
 import SubscriptionBlock from './SubscriptionBlock'
@@ -17,7 +17,7 @@ export default function Home() {
 
   return (
     <>
-      <MainSlider />
+      {/* <MainSlider /> */}
       <Sections />
       <InstagramSection />
       <SectionAbout />

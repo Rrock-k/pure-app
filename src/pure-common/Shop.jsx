@@ -7,6 +7,7 @@ import ShopItems from './ShopItems'
 import { useProductsContext } from './ProductsContext'
 
 import './styles/Shop.css'
+import { useEffect } from 'react'
 
 export default function Shop({ isAdmin }) {
   const [sortingFunc, setSortingFunc] = useState()
@@ -14,11 +15,19 @@ export default function Shop({ isAdmin }) {
   const { whatToShow } = useParams()
   const { getProducts } = useProductsContext()
 
-  let items = getProducts({ whatToShow })
+  useEffect(() => {
+    console.log('Shop mounted')
+    return () => console.log('Shop unmounted')
+  }, [])
+
+  let items
   if (typeof whatToShow === 'undefined') {
     console.log('whatToShow is undefined')
     items = getProducts({ whatToShow: null })
+  } else {
+    items = getProducts({ whatToShow })
   }
+
   items = items
     .filter(item => item.isPublished)
     .filter(filterFunc || (() => true))

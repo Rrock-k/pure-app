@@ -10,26 +10,25 @@ export default function AppHeader() {
   const bannerNeeded = pathname === '/home' ? true : false
 
   useEffect(() => {
-    console.log('FirstScreen did mount')
+    console.log('AppHeader did mount')
 
     return () => {
-      console.log('FirstScreen did unmount')
+      console.log('AppHeader did unmount')
     }
   })
 
   if (bannerNeeded)
     return (
       <div className={'first-screen'}>
-        <FixedMenu />
-
+        {/* <FixedMenu /> */}
         <Header />
         <Banner />
-        <div className='first-screen-margin'></div>
+        <div id='first-screen-margin'></div>
       </div>
     )
   return (
-    <div>
-      <FixedMenu />
+    <div id='app-header'>
+      {/* <FixedMenu /> */}
       <Header />
     </div>
   )

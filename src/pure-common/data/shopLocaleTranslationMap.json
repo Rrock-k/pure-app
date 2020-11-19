@@ -3,8 +3,8 @@
     "header": {
       "options": {
         "recommend": {
-          "ru": "рекомендуем",
-          "en": "recommended"
+          "ru": "без сортировки",
+          "en": "without sort"
         },
         "price_asc": {
           "ru": "цена по возрастанию",
@@ -25,7 +25,7 @@
       },
       "sort_label": {
         "ru": "Сортировка: ",
-        "en": "Sorting: "
+        "en": "Sort: "
       }
     },
     "nav": {
