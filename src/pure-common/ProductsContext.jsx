@@ -9,7 +9,7 @@ export function ProductsContext({ children }) {
   const [products, setProducts] = useState([])
 
   const getProducts = useCallback(
-    ({ whatToShow }) => {
+    ({ whatToShow } = {}) => {
       if (!products) return []
       const query = mapToQuery(whatToShow)
 
@@ -21,6 +21,7 @@ export function ProductsContext({ children }) {
           if (Array.isArray(product[key])) return product[key].includes(query[key])
           return query[key] === product[key]
         }
+        return false
       })
     },
     [products]

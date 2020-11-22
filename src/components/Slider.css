@@ -46,12 +46,13 @@
 }
 
 .slide {
-  transition: 0.3s;
+  flex: 0 0 auto;
   position: relative;
   overflow: visible;
 }
 
-.notransition * {
+.notransition *,
+.notransition {
   -webkit-transition: none !important;
   -moz-transition: none !important;
   -o-transition: none !important;
@@ -62,6 +63,11 @@
   margin: 0 4%;
 
   position: relative;
+}
+
+.slide-image-container * {
+  -webkit-user-drag: none;
+  user-drag: none;
 }
 
 @media (min-width: 1000px) {

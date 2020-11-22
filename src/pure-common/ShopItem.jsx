@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { PHOTOS_URL } from './utils/apiQueries'
 
 import { contexts } from '../config/setup'
+import PriceElement from './PriceElement'
 const {
   useLanguageContext = () => ({
     language: 'ru',
@@ -18,39 +19,16 @@ export function ShopItem({ isAdmin, ...props }) {
     secondPhotoUrl,
     secondPhotoSrc,
     linkName,
-    flagNew,
+    flagPreorder,
   } = props
   let { name: nameRu, nameEn, priceRub, priceUsd, discountRub = 0, discountUsd = 0 } = props
-  let name, price, discount, currency, priceStr, priceBeforeDicsount
 
   const productUrl = linkName ? '/shop/products/' + linkName : '/shop/products/' + _id
 
   const hoverOn = useHoverContext()
   let { language } = useLanguageContext()
 
-  if (language === 'ru') {
-    name = nameRu
-    price = priceRub
-    discount = discountRub
-    currency = '₽'
-    priceStr = `${price - discount} ${currency}`
-  } else {
-    name = nameEn
-    price = priceUsd
-    discount = discountUsd
-    currency = '$'
-    priceStr = `${currency}${price - discount}`
-  }
-
-  let priceClassList = 'shop-item-price'
-  if (discount && price) {
-    priceClassList += ' discounted-price'
-    priceBeforeDicsount = (
-      <s>
-        <span>{price}</span>
-      </s>
-    )
-  }
+  let name = language === 'ru' ? nameRu : nameEn
 
   return (
     <div className='shop-item'>
@@ -69,12 +47,19 @@ export function ShopItem({ isAdmin, ...props }) {
             alt={name}
           />
           <div className='shop-item-like-button'>.</div>
-          {flagNew && <div className='shop-item-flag-new'>предзаказ</div>}
+          {flagPreorder && <div className='shop-item-flag-new'>предзаказ</div>}
         </div>
       </Link>
       <div className='shop-item-text'>
         <p>{name}</p>
-        {priceBeforeDicsount} {price && <span className={priceClassList}>{priceStr}</span>}
+        <PriceElement
+          {...{
+            priceRub,
+            priceUsd,
+            discountRub,
+            discountUsd,
+          }}
+        />
       </div>
       <div className='shop-item-link-container'>
         {isAdmin && _id && (

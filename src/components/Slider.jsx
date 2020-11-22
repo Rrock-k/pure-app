@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useRef } from 'react'
 import { useCallback } from 'react'
 
 import left from '../assets/icons/chevron-left.svg'
@@ -13,8 +14,12 @@ export default function Slider({
   additionalElements = [],
   className = 'default-slider',
   pagesCount,
+  newPage = null,
+  noTransition = false,
 }) {
-  const [page, setPage] = useState(null)
+  const slideImageRef = useRef()
+  const [slideHeight, setSlideHeight] = useState()
+  const [page, setPage] = useState(newPage)
   pagesCount = pagesCount || getPagesCountDefault(width)
 
   const {
@@ -36,12 +41,20 @@ export default function Slider({
   )
 
   useEffect(() => {
-    setPage(page => getNewPageNumber(page, pagesCount, length, { sliderWasResized: true }))
+    const el = [...document.getElementsByClassName('slide-image-container')][0]
+    if (el && el.offsetHeight) setSlideHeight(el.offsetHeight)
+  }, [width, pagesCount, images, heightToWidthFactor])
+
+  useEffect(() => {
+    setPage(page =>
+      getNewPageNumber(newPage || page, pagesCount, length, { sliderWasResized: true })
+    )
     const cleanerFunction = SetUpSliderSwipeEvents(goRight, goLeft, className, pagesCount)
     return cleanerFunction
-  }, [pagesCount, length, className, goLeft, goRight])
+  }, [pagesCount, length, className, goLeft, goRight, newPage])
 
   const translateX = halfWidth - page * pageWidth + pageWidth / 2
+  const classIfNoTransition = noTransition ? 'notransition' : ''
 
   const template = <div className={className + ' slider'} id={className}></div>
 
@@ -54,7 +67,7 @@ export default function Slider({
   return (
     <div className={className + ' slider'} id={className}>
       <div
-        className='slider-movable-container'
+        className={'slider-movable-container ' + classIfNoTransition}
         style={{
           transform: `translateX(${translateX}px)`,
         }}
@@ -65,21 +78,39 @@ export default function Slider({
             className={'slide ' + className}
             style={{
               width: `${pageWidth}px`,
-              // height: `${heightToWidthFactor * pageWidth}px`,
             }}
           >
             <div className='slide-image-container'>
-              <div style={{ paddingTop: `${heightToWidthFactor * 100}%` }}>
-                <img
-                  draggable={false}
-                  src={image}
-                  alt={`Slide ${index + 1}`}
-                  className={'slide-image ' + className}
+              <div
+                style={{
+                  paddingTop: `${heightToWidthFactor * 100}%`,
+                }}
+              >
+                <div
                   style={{
-                    width: '100%',
-                    height: '100%',
+                    position: 'absolute',
+                    top: 0,
+                    bottom: 0,
+                    right: 0,
+                    left: 0,
+                    overflow: 'hidden',
                   }}
-                />
+                >
+                  {typeof image === 'string' ? (
+                    <img
+                      draggable={false}
+                      src={image}
+                      alt={`Slide ${index + 1}`}
+                      className={'slide-image ' + className}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                      }}
+                    />
+                  ) : (
+                    image
+                  )}
+                </div>
               </div>
             </div>
             {additionalElements[index]}
@@ -95,6 +126,7 @@ export default function Slider({
           filter: page <= pagesToTheSide + 1 && `invert(40%)`,
           padding: `0 ${paddingForArrows}px`,
           minWidth: `${pageWidth * 0.2}px`,
+          height: `${slideHeight}px`,
         }}
       >
         <img
@@ -112,6 +144,7 @@ export default function Slider({
           filter: page + pagesToTheSide >= length && `invert(40%)`,
           padding: `0 ${paddingForArrows}px`,
           minWidth: `${pageWidth * 0.2}px`,
+          height: `${slideHeight}px`,
         }}
       >
         <img

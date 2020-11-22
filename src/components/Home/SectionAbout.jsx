@@ -8,7 +8,7 @@ const tThis = path => t(tPath + path)
 export default function SectionAbout() {
   return (
     <div className='about'>
-      <img src={aboutImg} alt='раздел о нас' className='section-img' />
+      <img src={aboutImg} alt='раздел о нас' className='section-about-img' />
       <div className='about-text-container'>
         <h3>{tThis('title')}</h3>
 

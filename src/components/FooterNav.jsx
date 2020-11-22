@@ -36,7 +36,12 @@ export default function FooterNav() {
   return (
     <div className='app-footer-nav' id='app-footer-nav'>
       {menuItemsData.map(menuItem => (
-        <Link className='app-footer-nav-link' to={menuItem.href} key={menuItem.href}>
+        <Link
+          className='app-footer-nav-link'
+          to={menuItem.href}
+          key={menuItem.href}
+          onClick={() => window.scrollTo(0, 0)}
+        >
           {tThis('nav.' + menuItem.name)}
         </Link>
       ))}

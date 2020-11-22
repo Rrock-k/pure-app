@@ -17,7 +17,7 @@ export default function Home() {
 
   return (
     <>
-      {/* <MainSlider /> */}
+      <MainSlider />
       <Sections />
       <InstagramSection />
       <SectionAbout />

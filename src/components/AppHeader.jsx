@@ -20,7 +20,7 @@ export default function AppHeader() {
   if (bannerNeeded)
     return (
       <div className={'first-screen'}>
-        {/* <FixedMenu /> */}
+        <FixedMenu />
         <Header />
         <Banner />
         <div id='first-screen-margin'></div>
@@ -28,7 +28,7 @@ export default function AppHeader() {
     )
   return (
     <div id='app-header'>
-      {/* <FixedMenu /> */}
+      <FixedMenu />
       <Header />
     </div>
   )

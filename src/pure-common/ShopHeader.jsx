@@ -88,7 +88,7 @@ export default function ShopHeader({ setSortingFunc, setFilterFunc }) {
           setIsDropdowned(() => !isDropdowned)
           btnRef.current.blur()
         }}
-        // {...onMouseEnterAndLeave}
+        {...onMouseEnterAndLeave}
       >
         <button ref={btnRef}>
           {tThis('sort_label')}

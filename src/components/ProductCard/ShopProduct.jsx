@@ -1,10 +1,10 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
 
-import './styles/ShopProduct.css'
+import './ShopProduct.css'
 
-import ShopHeader from './ShopHeader'
-import ShopNav from './ShopNav'
+import ShopHeader from '../../pure-common/ShopHeader'
+import ShopNav from '../../pure-common/ShopNav'
 import ShopProductCard from './ShopProductCard'
 
 const HEADER_HIDDEN = true

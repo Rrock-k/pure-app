@@ -10,7 +10,7 @@ import Home from './components/Home/Home'
 import About from './components/About'
 import Delivery from './components/Delivery'
 import AppFooter from './components/AppFooter'
-import ShopProduct from './pure-common/ShopProduct'
+import ShopProduct from './components/ProductCard/ShopProduct'
 import Shop from './pure-common/Shop'
 import ScrollToTop from './components/ScrollToTop'
 import Test from './components/Test'
@@ -31,7 +31,7 @@ function App() {
 
       {/* prettier-ignore */}
       <div className={classList}>
-          <ScrollToTop/>
+          <ScrollToTop showButton/>
           <ProductsContext>
             <MobileMenuAndContext MobileMenu={MobileMenu}>
               {/* <FastLanguageSwitch /> */}

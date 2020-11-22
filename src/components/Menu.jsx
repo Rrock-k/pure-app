@@ -46,7 +46,7 @@ export default function Menu({ fixed, hidden }) {
           {t('navigation.' + menuitem.name)}
         </Link>
       )
-    return <button>{menuitem.name}</button>
+    return <button>{t('navigation.' + menuitem.name)}</button>
   }
 
   let className = fixed ? 'menu menu-fixed' : 'menu'
@@ -63,7 +63,7 @@ export default function Menu({ fixed, hidden }) {
             <div className='menu-item-dropdown' onClick={clickHandlerFunc}>
               {!globalHoverIsOn && (
                 <Link to={menuItem.href} onClick={blurMe}>
-                  Все
+                  {t('navigation.все')}
                 </Link>
               )}
               {menuItem.submenu.map(({ name, href }) => (

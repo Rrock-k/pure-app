@@ -17,6 +17,8 @@ export const getProductsUrl = () => BASE_URL + 'api/products/'
 export const getAuthUrl = () => BASE_URL + 'api/auth/'
 export const getUsersUrl = () => BASE_URL + 'api/users/'
 export const getFileUploadUrl = () => BASE_URL + 'api/upload-file'
+export const getImageSrcFromImageName = imgName => PHOTOS_URL + imgName
+export const getProductCardUrl = id => `shop/products/${id || ''}`
 
 export function getProducts() {
   return axios({
