@@ -16,7 +16,7 @@ export default function ProductSlider({ product }) {
 
   const sliderProps = {
     width,
-    images,
+    slides: images,
     heightToWidthFactor: 1.5,
     className: 'product-slider',
     pagesCount: 1,
@@ -51,7 +51,7 @@ export default function ProductSlider({ product }) {
 
   return (
     <div className='product-slider-and-thumbs-wrapper'>
-      <Thumbs {...thumbsProps} />
+      {images.length > 1 && <Thumbs {...thumbsProps} />}
       <div className='product-slider-container'>
         <Slider {...sliderProps} />
       </div>

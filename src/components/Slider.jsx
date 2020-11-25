@@ -9,7 +9,7 @@ import './Slider.css'
 
 export default function Slider({
   width,
-  images = [],
+  slides = [],
   heightToWidthFactor = 1,
   additionalElements = [],
   className = 'default-slider',
@@ -17,7 +17,6 @@ export default function Slider({
   newPage = null,
   noTransition = false,
 }) {
-  const slideImageRef = useRef()
   const [slideHeight, setSlideHeight] = useState()
   const [page, setPage] = useState(newPage)
   pagesCount = pagesCount || getPagesCountDefault(width)
@@ -29,7 +28,7 @@ export default function Slider({
     halfWidth,
     arrowWidth,
     paddingForArrows,
-  } = calculateSliderParameters(width, images, pagesCount)
+  } = calculateSliderParameters(width, slides, pagesCount)
 
   const goLeft = useCallback(
     () => setPage(page => getNewPageNumber(page - 1, pagesCount, length)),
@@ -41,9 +40,9 @@ export default function Slider({
   )
 
   useEffect(() => {
-    const el = [...document.getElementsByClassName('slide-image-container')][0]
+    const el = document.querySelector(`.${className} .slide-image-container`)
     if (el && el.offsetHeight) setSlideHeight(el.offsetHeight)
-  }, [width, pagesCount, images, heightToWidthFactor])
+  }, [width, pagesCount, slides, heightToWidthFactor])
 
   useEffect(() => {
     setPage(page =>
@@ -58,9 +57,9 @@ export default function Slider({
 
   const template = <div className={className + ' slider'} id={className}></div>
 
-  if (!images.length || !width || pagesCount > images.length) return template
+  if (!slides.length || !width || pagesCount > slides.length) return template
   if (!page) {
-    setPage(setInitialPage(pagesCount, images.length))
+    setPage(setInitialPage(pagesCount, slides.length))
     return template
   }
 
@@ -72,7 +71,7 @@ export default function Slider({
           transform: `translateX(${translateX}px)`,
         }}
       >
-        {images.map((image, index) => (
+        {slides.map((image, index) => (
           <div
             key={index}
             className={'slide ' + className}
@@ -195,13 +194,6 @@ function getNewPageNumber(page, pagesCount, length, options) {
   const leftmostPosition = pagesToTheLeft + 1
   const rightmostPosititon = length - pagesToTheRight
 
-  // console.log('------------------')
-  // console.log('page: ' + page)
-  // console.log('pagesToTheSide: ' + pagesToTheLeft)
-  // console.log('length: ' + length)
-  // console.log('leftmostPosition: ' + leftmostPosition)
-  // console.log('rightmostPosititon: ' + rightmostPosititon)
-
   if (options?.sliderWasResized) {
     if (page < leftmostPosition) return leftmostPosition
     if (page > rightmostPosititon) return rightmostPosititon
@@ -219,7 +211,6 @@ function SetUpSliderSwipeEvents(goRight, goLeft, className, pagesCount) {
   const sensitivity = 30 * Math.abs(pagesCount - 2)
 
   const swipeIfEnoughMovement = deltaX => {
-    // console.log(deltaX)
     if (deltaX > sensitivity) return goRight()
     if (deltaX < -sensitivity) return goLeft()
   }

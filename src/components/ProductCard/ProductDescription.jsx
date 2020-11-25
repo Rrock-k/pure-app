@@ -2,15 +2,20 @@ import React, { useState } from 'react'
 import { contexts } from '../../config/setup'
 import PriceElement from '../../pure-common/PriceElement'
 
-const { useLanguageContext } = contexts
+const { useLanguageContext, useCartContext } = contexts
 
 export default function ProductDesctiption({ product }) {
   const [quantity, setQuantity] = useState(1)
   const { language } = useLanguageContext()
+  const cart = useCartContext()
 
   function handleQuantityChange({ target: { value } }) {
     if (value > 0) setQuantity(value)
     else if (value === '') setQuantity(value)
+  }
+
+  function handleAddToCart() {
+    cart.add(product._id, quantity)
   }
 
   const handleBlur = ({ target: { value } }) => !value && setQuantity(1)
@@ -43,7 +48,7 @@ export default function ProductDesctiption({ product }) {
         <button onClick={increment} className='product-info-minus-btn' type='button'>
           +
         </button>
-        <button className='product-info-add-to-cart-btn' type='button'>
+        <button className='product-info-add-to-cart-btn' type='button' onClick={handleAddToCart}>
           ДОБАВИТЬ В КОРЗИНУ
         </button>
       </div>

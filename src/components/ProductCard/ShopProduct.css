@@ -28,8 +28,8 @@
 
 .error-no-product-with-given-id {
   width: 80%;
-
   text-align: center;
+  margin: 0 auto;
 }
 
 .error-no-product-with-given-id hr {

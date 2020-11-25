@@ -1,0 +1,13 @@
+{
+  "errors": {
+    "\"email\" must be a valid email": {
+      "ru": "Некорректный Email"
+    },
+    "\"email\" length must be at least 5 characters long": {
+      "ru": "Email должен состоять как минимум из 5 символов"
+    },
+    "\"email\" is not allowed to be empty": {
+      "ru": "Email не должен быть пустым"
+    }
+  }
+}

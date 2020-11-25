@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { t } from '../pure-common/utils/translation'
 
 const Banner = props => {
@@ -8,6 +9,9 @@ const Banner = props => {
         <h1 className='banner-text'>{t('common.banner.text')}</h1>
         <h1 className='banner-text-small'>{t('common.banner.text-small')}</h1>
       </div>
+      <Link to='shop/kimono'>
+        <button className='btn banner-button'>Смотреть</button>
+      </Link>
     </div>
   )
 }

@@ -22,9 +22,9 @@ const Navbar = () => {
         </Link>
       </div>
       <div className='navbar-items'>
-        <div className='navbar-item'>
+        <Link to='/cart' className='navbar-item'>
           <img className='navbar-icon' src={shoppingBag} alt='Search'></img>
-        </div>
+        </Link>
         <LanguageSwitcher className='navbar-item' />
         {false && (
           <div className='navbar-item'>
@@ -32,27 +32,21 @@ const Navbar = () => {
           </div>
         )}
 
-        <div className='navbar-item' id='instagram-navbar-icon'>
-          <a
-            href='https://www.instagram.com/i.am.in.pure/'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <img className='navbar-icon ' src={instagramLogo} alt='Shopping Cart'></img>
-          </a>
-        </div>
+        <a
+          href='https://www.instagram.com/i.am.in.pure/'
+          target='_blank'
+          rel='noopener noreferrer'
+          className='navbar-item'
+          id='instagram-navbar-icon'
+        >
+          <img className='navbar-icon ' src={instagramLogo} alt='Instagram Icon'></img>
+        </a>
 
         {/* <UserAccountIcon /> */}
 
-        <div className='navbar-item hamburger-menu-item'>
-          <button onClick={openMenu}>
-            <img
-              className='navbar-icon hamburger-menu-icon'
-              src={openMenuIcon}
-              alt='Open Menu'
-            ></img>
-          </button>
-        </div>
+        <button className='navbar-item hamburger-menu-item' onClick={openMenu}>
+          <img className='navbar-icon hamburger-menu-icon' src={openMenuIcon} alt='Open Menu'></img>
+        </button>
       </div>
     </nav>
   )

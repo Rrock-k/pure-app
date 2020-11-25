@@ -19,10 +19,8 @@ function MainSlider() {
     }
   }, [])
 
-  // const [images, setImages] = useState([img1, img4, img2, img3, img1, img, img2, img3])
-
   const { getProducts } = useProductsContext()
-  const [images, setImages] = useState()
+  const [slides, setSlides] = useState()
   const [width, setWidth] = useState()
   const [pagesCount, setPagesCount] = useState()
   const [additionalElements, setAdditionalElements] = useState([])
@@ -30,13 +28,15 @@ function MainSlider() {
 
   useEffect(() => {
     setAdditionalElements([])
-    const imagesPaths = getProducts()
+    const slides = getProducts()
       .filter((product, i) => product.isPublished && i < 9)
       .map((product, index) => {
         const imageAbsolutePath = getImageSrcFromImageName(product.mainPhotoUrl)
         setAdditionalElements(arr => [
           ...arr,
-          <h5 className='slider-subtitle'>{language === 'ru' ? product.name : product.nameEn}</h5>,
+          <div className='main-slider-subtitle-wrapper'>
+            {language === 'ru' ? product.name : product.nameEn}
+          </div>,
         ])
         return (
           <Link
@@ -57,12 +57,12 @@ function MainSlider() {
           </Link>
         )
       })
-    setImages(imagesPaths)
+    setSlides(slides)
   }, [getProducts, language, setAdditionalElements])
 
   const sliderProps = {
     width,
-    images,
+    slides,
     pagesCount,
     heightToWidthFactor: 1.5,
     className: 'main-slider',
@@ -88,7 +88,7 @@ function MainSlider() {
     }
   }, [sliderProps.className])
 
-  const isRendering = images?.length > 0 && width
+  const isRendering = slides?.length > 0 && width
 
   return (
     <div className='slider-container'>

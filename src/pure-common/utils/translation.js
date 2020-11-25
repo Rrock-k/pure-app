@@ -14,8 +14,8 @@ export function changeTranslationMap(map) {
 export function t(query) {
   const currentLanguage = options.currentLanguage || 'en'
 
-  query = query.toLowerCase()
-  const [firstQueryPart, ...queryParts] = query.split('.')
+  query = '' + query
+  const [firstQueryPart, ...queryParts] = query.split('.').map(part => part.toLowerCase())
 
   let result = options.map[firstQueryPart]
 
@@ -25,7 +25,8 @@ export function t(query) {
         result = result[key]
       })
     }
-    result = result[currentLanguage]
+    if (result[currentLanguage] == '#key') return query.slice(query.lastIndexOf('.'))
+    else result = result[currentLanguage]
   } catch (err) {
     console.error(
       `Locale for ${query} not found:
@@ -34,5 +35,5 @@ export function t(query) {
     )
   }
   if (typeof result === 'string') return result
-  return query
+  return query.slice(query.lastIndexOf('.'))
 }

@@ -16,7 +16,7 @@ export default function ShopProduct({ isAdmin }) {
     <div className='shop-container'>
       {!HEADER_HIDDEN && <ShopHeader />}
       <div className='shop-main-area'>
-        <ShopNav isAdmin={isAdmin} />
+        <ShopNav isAdmin={isAdmin} activeUrl={null} />
         <ShopProductCard id={id} />
       </div>
     </div>

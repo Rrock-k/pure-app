@@ -56,12 +56,28 @@
           "en": "About us"
         },
         "p1": {
-          "ru": "ла ла ла все такое все и еще всякое много чего разного и всяческого рзнообразногоё",
-          "en": "lorem ipsum dolor sit amet consectetur adipisicing elit. saepe tenetur"
+          "ru": "PURE - это одежда и украшения ручного производства с лаконичным дизайном.",
+          "en": "Pure is a handmade clothes and jewelry brand. We try to express our appreciation  to the beauty of nature through our natural eco products. We share the joy from using our products with you."
         },
         "p2": {
-          "ru": "всяческого рзнообразного вдзз сяческого рзнообразного",
-          "en": "so diverse oh my god how amazing it is"
+          "ru": "Мы создали бренд, чтобы выразить любовь к природе через создание полезных, экологичных и эргономичных изделий из натуральных материалов. Мы хотим разделить с вами радость от комфорта использования этих изделий.",
+          "en": "Our core value is the state of a clear mind. It guides us in our actions and intentions - we try to not to harm nature and be mindful about all the stages of the manufacturing."
+        },
+        "p3": {
+          "ru": "Важнейшая ценность бренда - это поддержание ясного чистого состояния. И в нашем производстве это проявляется как внешне - мы стараемся не причинять вред окружающей среде своим производством, так и внутри - мы делаем для вас изделия из ясного состояния ума с чистой любовью.",
+          "en": "Besided, by buying our products you support Vipassana meditation centers. It is a technique that helps people reach the clear state of mind. We donate 5% of our income to the centers that spread this technique all around the world."
+        },
+        "p4": {
+          "ru": "Также эта ценность выражается в том, что покупая продукцию PURE, вы поддерживаете распространение практики достижения ясного сознания. 5% от прибыли бренда идет на развитие центров медитации Випассана по всему миру, где каждый желающий может бесплатно научиться медитации.",
+          "en": "We really enjoy making these products for you. From the pure mind with pure love!"
+        },
+        "p5": {
+          "ru": "Нам очень нравится делать эти продукты для вас с ясным умом из чистой любви!",
+          "en": "Thank you for choosing us,\nBe happy!"
+        },
+        "p6": {
+          "ru": "Благодарим вас за выбор продукции PURE",
+          "en": ""
         }
       },
       "section_subscription": {
@@ -73,15 +89,37 @@
           "ru": "мы ценим наше и ваше время и не собираемся заваливать вас рекламой и информационным спамом. подписывайтесь на рассылку если хотите получать новости о специальных предложениях, скидках и новых коллекциях",
           "en": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum assumenda ducimus eaque veniam, amet neque dolore quo repudiandae laudantium est cumque aspernatur quos, nostrum distinctio consequuntur libero"
         },
-        "subscripbe_button": {
+        "subscribe_button": {
           "ru": "Подписаться",
           "en": "Subscribe"
         },
         "agreement_checkbox_subtitle": {
           "ru": "даю согласие на обработку персональных данных",
           "en": "I agree all the agreements of law"
+        },
+        "для подписки необходимо дать согласие на обработку персональных данных": {
+          "en": "Agreement on personal data processing needed",
+          "ru": "#key"
+        },
+        "\"email\" must be a valid email": {
+          "ru": "Некорректный Email",
+          "en": "#key"
+        },
+        "\"email\" length must be at least 5 characters long": {
+          "ru": "Email должен состоять как минимум из 5 символов",
+          "en": "#key"
+        },
+        "\"email\" is not allowed to be empty": {
+          "ru": "Email не должен быть пустым",
+          "en": "#key"
         }
       }
+    }
+  },
+  "cart": {
+    "empty_cart_message": {
+      "ru": "Ваша корзина пока пуста",
+      "en": "Your cart is empty"
     }
   },
   "app-footer": {

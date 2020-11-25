@@ -17,6 +17,7 @@ export const getProductsUrl = () => BASE_URL + 'api/products/'
 export const getAuthUrl = () => BASE_URL + 'api/auth/'
 export const getUsersUrl = () => BASE_URL + 'api/users/'
 export const getFileUploadUrl = () => BASE_URL + 'api/upload-file'
+export const getSubscribersUrl = () => BASE_URL + 'api/subscribers'
 export const getImageSrcFromImageName = imgName => PHOTOS_URL + imgName
 export const getProductCardUrl = id => `shop/products/${id || ''}`
 
@@ -102,4 +103,8 @@ export function loginUser(userData) {
 
 export function registerUser(userData) {
   return axios.post(getUsersUrl(), userData)
+}
+
+export function subscribeUser(email) {
+  return axios.post(getSubscribersUrl(), { email })
 }

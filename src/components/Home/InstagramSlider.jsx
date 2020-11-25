@@ -4,10 +4,6 @@ import downloadInstagramImages from '../../effects/downloadInstagramImages'
 import { t } from '../../pure-common/utils/translation'
 import Slider from '../Slider'
 
-const sliderProps = {
-  className: 'insta-slider-element',
-}
-
 export default function InstagramSection() {
   const [images, setImages] = useState([])
   const [width, setWidth] = useState()
@@ -34,10 +30,16 @@ export default function InstagramSection() {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
+  const sliderProps = {
+    className: 'insta-slider-element',
+    slides: images,
+    width,
+  }
+
   return (
     <div className='instagram-section'>
       <h5>{t('home.sections.section_instagram.title')}</h5>
-      <Slider {...sliderProps} width={width} images={images} />
+      <Slider {...sliderProps} />
     </div>
   )
 }

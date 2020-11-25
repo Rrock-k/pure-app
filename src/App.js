@@ -14,10 +14,17 @@ import ShopProduct from './components/ProductCard/ShopProduct'
 import Shop from './pure-common/Shop'
 import ScrollToTop from './components/ScrollToTop'
 import Test from './components/Test'
+import Cart from './components/Cart/Cart'
 
 // import FastLanguageSwitch from './components/dev-and-test/FastLanguageSwitch'
 
-const { useHoverContext, MobileMenuAndContext, ProductsContext, useLanguageContext } = contexts
+const {
+  useHoverContext,
+  MobileMenuAndContext,
+  ProductsContext,
+  useLanguageContext,
+  CartContext,
+} = contexts
 
 function App() {
   console.log('App function body')
@@ -33,6 +40,7 @@ function App() {
       <div className={classList}>
           <ScrollToTop showButton/>
           <ProductsContext>
+          <CartContext>
             <MobileMenuAndContext MobileMenu={MobileMenu}>
               {/* <FastLanguageSwitch /> */}
               
@@ -46,6 +54,7 @@ function App() {
                   <Route path='/shop'                      render={() => <Shop />} />
                   <Route path='/about'                     render={() => <About />} />
                   <Route path='/delivery'                  render={() => <Delivery />} />
+                  <Route path='/cart'                      render={() => <Cart />} />
                   <Redirect to='/home' />
                 </Switch>
               </div>
@@ -53,7 +62,8 @@ function App() {
               <AppFooter/>
 
             </MobileMenuAndContext>
-          </ProductsContext>
+            </CartContext>
+            </ProductsContext>
       </div>
     </>
   )
