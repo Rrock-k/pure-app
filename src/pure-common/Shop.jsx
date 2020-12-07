@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useRouteMatch } from 'react-router-dom'
 
 import ShopHeader from './ShopHeader'
 import ShopNav from './ShopNav'
@@ -14,6 +14,10 @@ export default function Shop({ isAdmin }) {
   const [filterFunc, setFilterFunc] = useState()
   const { whatToShow } = useParams()
   const { getProducts } = useProductsContext()
+  const { path, url } = useRouteMatch()
+
+  console.log('path: ' + path)
+  console.log('url: ' + url)
 
   useEffect(() => {
     console.log('Shop mounted')

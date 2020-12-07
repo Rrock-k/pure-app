@@ -1,22 +1,21 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 
 import './App.css'
 import { contexts } from './config/setup'
 
+import ScrollToTop from './components/ScrollToTop'
 import MobileMenu from './components/MobileMenu'
 import AppHeader from './components/AppHeader'
-import Home from './components/Home/Home'
-import About from './components/About'
-import Delivery from './components/Delivery'
 import AppFooter from './components/AppFooter'
-import ShopProduct from './components/ProductCard/ShopProduct'
-import Shop from './pure-common/Shop'
-import ScrollToTop from './components/ScrollToTop'
-import Test from './components/Test'
-import Cart from './components/Cart/Cart'
 
-// import FastLanguageSwitch from './components/dev-and-test/FastLanguageSwitch'
+const Shop = React.lazy(() => import('./pure-common/Shop'))
+const Home = React.lazy(() => import('./components/Home/Home'))
+const About = React.lazy(() => import('./components/About'))
+const Delivery = React.lazy(() => import('./components/Delivery'))
+const ShopProduct = React.lazy(() => import('./components/ProductCard/ShopProduct'))
+const Test = React.lazy(() => import('./components/Test'))
+const Cart = React.lazy(() => import('./components/Cart/Cart'))
 
 const {
   useHoverContext,
@@ -42,10 +41,11 @@ function App() {
           <ProductsContext>
           <CartContext>
             <MobileMenuAndContext MobileMenu={MobileMenu}>
-              {/* <FastLanguageSwitch /> */}
               
               <div>
                 <AppHeader  />
+
+                <Suspense fallback={<center><h3>Loading...</h3></center>}>
                 <Switch>
                   <Route path='/test'                      render={() => <Test />} />
                   <Route path='/home'                      render={() => <Home />} />
@@ -57,6 +57,7 @@ function App() {
                   <Route path='/cart'                      render={() => <Cart />} />
                   <Redirect to='/home' />
                 </Switch>
+                </Suspense>
               </div>
 
               <AppFooter/>

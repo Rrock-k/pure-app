@@ -50,9 +50,18 @@ export function postProduct(product) {
   })
 }
 
-export function changeProduct(id, product) {
+export function replaceProduct(id, product) {
   return axios({
     method: 'put',
+    url: `${getProductsUrl()}${id}`,
+    headers: getAuthHeaderOption(),
+    data: product,
+  })
+}
+
+export function changeProduct(id, product) {
+  return axios({
+    method: 'patch',
     url: `${getProductsUrl()}${id}`,
     headers: getAuthHeaderOption(),
     data: product,

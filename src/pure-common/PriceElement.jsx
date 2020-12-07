@@ -1,5 +1,7 @@
 import React from 'react'
-import { useLanguageContext } from '../components/contexts/LanguageContext'
+import { contexts } from '../config/setup'
+
+const { useLanguageContext } = contexts
 
 export default function PriceElement({ priceRub, priceUsd, discountRub = 0, discountUsd = 0 }) {
   let { language } = useLanguageContext()
