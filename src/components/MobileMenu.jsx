@@ -9,17 +9,9 @@ export default function MobileMenu(props) {
   const firstFocusableElement = useRef()
   const lastFocusableElement = useRef()
 
-  useEffect(() => {
-    console.log('Mobile menu has been mounted')
-    return () => {
-      console.log('Mobile menu has been unmounted')
-    }
-  }, [])
-
   const { isOpened, close } = props
 
   useEffect(() => {
-    console.log('Mobile menu is opened or closed')
     if (isOpened)
       setTimeout(() => {
         firstFocusableElement.current.focus()
@@ -30,6 +22,14 @@ export default function MobileMenu(props) {
   const visibility = isOpened ? 'visible' : 'hidden'
   const opacity = isOpened ? '1' : '0'
   const transition = isOpened ? '0.35s' : '0.25s'
+
+  const propsForFirstMenuItem = {
+    keydownHandler: e => {
+      e.preventDefault()
+      if (e.keyCode === 9 && e.shiftKey) lastFocusableElement.current.focus()
+    },
+    reference: firstFocusableElement,
+  }
 
   return (
     <div
@@ -43,23 +43,14 @@ export default function MobileMenu(props) {
     >
       <div className='mobile-menu-nav'>
         {urlArrayMobile.map((item, index) => {
-          const propsForFirstMenuItem =
-            index === 0
-              ? {
-                  keydownHandler: e => {
-                    if (e.keyCode === 9 && e.shiftKey) {
-                      console.log('HELLO SHIFT TAB')
-                      e.preventDefault()
-                      lastFocusableElement.current.focus()
-                    }
-                  },
-                  reference: firstFocusableElement,
-                }
-              : {}
           return (
             <React.Fragment key={index}>
               <div className='mobile-menu-item-div' key={item.href}>
-                <MobileMenuLink item={item} close={close} {...propsForFirstMenuItem} />
+                <MobileMenuLink
+                  item={item}
+                  close={close}
+                  {...(index === 0 ? propsForFirstMenuItem : {})}
+                />
               </div>
               <div className='mobile-submenu'>
                 {item.submenu?.map((subitem, index) => (
@@ -100,10 +91,10 @@ const urlArrayMapped = urlArray.map(item => ({
   submenu: item.submenu?.map(subitem => ({ ...subitem, href: addShopRoute(subitem.href) })),
 }))
 const urlArrayMobile = [
-  { href: '/home', name: 'Главная' },
+  { href: '/home', name: 'главная' },
   ...urlArrayMapped,
-  { href: '/delivery', name: 'Доставка' },
-  { href: '/about', name: 'О нас' },
+  { href: '/shipping', name: 'доставка' },
+  { href: '/about', name: 'о нас' },
 ]
 
 const MobileMenuLink = ({ item, close, reference, keydownHandler }) => (

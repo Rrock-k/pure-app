@@ -1,7 +1,7 @@
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react'
 
-import * as apiQueries from './utils/apiQueries'
-import { mapToQuery } from './utils/mapToQuery'
+import * as apiQueries from '../utils/apiQueries'
+import { mapToQuery } from '../utils/mapToQuery'
 
 const Context = createContext()
 
@@ -40,12 +40,10 @@ export function ProductsContext({ children }) {
     let products
     apiQueries.getProducts().then(res => {
       products = res.data
-      console.log('Products list is fetched from server')
       setProducts(products)
     })
   }, [])
 
-  console.log('ProductsContext is rendering')
   return (
     <Context.Provider value={{ products, setProducts, getProducts, getProductById }}>
       {children}

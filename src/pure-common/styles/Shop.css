@@ -3,6 +3,8 @@
 /* ------------------------------ */
 
 .shop-container {
+  --button-height: 50px;
+
   --shop-margin: min(0.7rem, 1.5vw);
   flex: 0 1 100%;
 }
@@ -348,6 +350,10 @@
 
   font-size: 0.9rem;
   text-transform: none;
+}
+
+.shop-price-from-span {
+  font-size: 0.7rem;
 }
 
 .shop-item-text s span {

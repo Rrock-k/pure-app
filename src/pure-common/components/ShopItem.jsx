@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { PHOTOS_URL } from './utils/apiQueries'
+import { PHOTOS_URL } from '../utils/apiQueries'
 
-import { contexts } from '../config/setup'
+import { contexts } from '../../config/setup'
 import PriceElement from './PriceElement'
 const {
   useLanguageContext = () => ({
@@ -20,6 +20,9 @@ export function ShopItem({ isAdmin, ...props }) {
     secondPhotoSrc,
     linkName,
     flagPreorder,
+    priceRubVariations,
+    priceUsdVariations,
+    variations,
   } = props
   let { name: nameRu, nameEn, priceRub, priceUsd, discountRub = 0, discountUsd = 0 } = props
 
@@ -46,7 +49,7 @@ export function ShopItem({ isAdmin, ...props }) {
             src={mainPhotoSrc || PHOTOS_URL + mainPhotoUrl}
             alt={name}
           />
-          <div className='shop-item-like-button'>.</div>
+          <LikeButton />
           {flagPreorder && <div className='shop-item-flag-new'>предзаказ</div>}
         </div>
       </Link>
@@ -58,6 +61,9 @@ export function ShopItem({ isAdmin, ...props }) {
             priceUsd,
             discountRub,
             discountUsd,
+            priceRubVariations,
+            priceUsdVariations,
+            variations,
           }}
         />
       </div>
@@ -70,4 +76,9 @@ export function ShopItem({ isAdmin, ...props }) {
       </div>
     </div>
   )
+}
+
+function LikeButton() {
+  return null
+  // return <div className='shop-item-like-button'>.</div>
 }

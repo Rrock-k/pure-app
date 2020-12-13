@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import downloadInstagramImages from '../../effects/downloadInstagramImages'
 import { t } from '../../pure-common/utils/translation'
@@ -7,27 +7,27 @@ import Slider from '../Slider'
 export default function InstagramSection() {
   const [images, setImages] = useState([])
   const [width, setWidth] = useState()
+  const sliderRef = useRef()
 
   useEffect(() => {
-    async function getImages() {
-      const images = await downloadInstagramImages()
-      setImages(images)
+    downloadInstagramImages()
+      .then(result => setImages(result))
+      .catch(err => console.error(err))
+
+    const slider = sliderRef.current
+
+    if (slider) {
+      function handleResize() {
+        const width = slider.offsetWidth
+        setWidth(width)
+        stopTransitionAnimationTemorarily(slider)
+      }
+
+      handleResize()
+
+      window.addEventListener('resize', handleResize)
+      return () => window.removeEventListener('resize', handleResize)
     }
-    getImages()
-
-    const slider = document.getElementById(sliderProps.className)
-    if (!slider) return () => {}
-
-    function handleResize() {
-      const width = slider.offsetWidth
-      setWidth(width)
-      stopTransitionAnimationTemorarily(slider)
-    }
-
-    handleResize()
-
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   const sliderProps = {
@@ -39,7 +39,7 @@ export default function InstagramSection() {
   return (
     <div className='instagram-section'>
       <h5>{t('home.sections.section_instagram.title')}</h5>
-      <Slider {...sliderProps} />
+      <Slider {...sliderProps} sliderRef={sliderRef} />
     </div>
   )
 }

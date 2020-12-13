@@ -8,27 +8,27 @@ const tThis = path => t('app-footer.' + path)
 export default function FooterNav() {
   const menuItemsData = [
     {
-      name: 'О нас',
+      name: 'о нас',
       href: '/about',
     },
     {
-      name: 'Доставка и оплата',
-      href: '/delivery_and_payment',
+      name: 'доставка и оплата',
+      href: '/shipping_and_payment',
     },
     {
-      name: 'Обмен и возврат',
+      name: 'обмен и возврат',
       href: '/return',
     },
     {
-      name: 'Размерный ряд',
+      name: 'размерный ряд',
       href: '/sizing',
     },
     {
-      name: 'Часто задаваемые вопросы',
+      name: 'часто задаваемые вопросы',
       href: '/faq',
     },
     {
-      name: 'Контакты',
+      name: 'контакты',
       href: '/contacts',
     },
   ]

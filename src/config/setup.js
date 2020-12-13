@@ -4,9 +4,12 @@ import {
   addOnLanguageChangeCallback,
 } from '../components/contexts/LanguageContext'
 import { CartContext, useCartContext } from '../components/contexts/CartContext'
-import { HoverContext, useHoverContext } from '../pure-common/HoverContext'
-import { ProductsContext, useProductsContext } from '../pure-common/ProductsContext'
-import { MobileMenuAndContext, useMobileMenuContext } from '../pure-common/MobileMenuAndContext'
+import { HoverContext, useHoverContext } from '../pure-common/components/HoverContext'
+import { ProductsContext, useProductsContext } from '../pure-common/components/ProductsContext'
+import {
+  MobileMenuAndContext,
+  useMobileMenuContext,
+} from '../pure-common/components/MobileMenuAndContext'
 
 import localeTranslationMap from '../data/localeTranslationMap.json'
 import serverErrorMessagesTranslationMap from '../data/serverErrorMessagesTranslationMap.json'

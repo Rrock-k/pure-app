@@ -10,7 +10,7 @@ const Banner = props => {
         <h1 className='banner-text-small'>{t('common.banner.text-small')}</h1>
       </div>
       <Link to='shop/kimono'>
-        <button className='btn banner-button'>Смотреть</button>
+        <button className='btn banner-button'>{t('common.banner.buttonText')}</button>
       </Link>
     </div>
   )

@@ -9,13 +9,14 @@ import MobileMenu from './components/MobileMenu'
 import AppHeader from './components/AppHeader'
 import AppFooter from './components/AppFooter'
 
-const Shop = React.lazy(() => import('./pure-common/Shop'))
+const Shop = React.lazy(() => import('./pure-common/components/Shop'))
 const Home = React.lazy(() => import('./components/Home/Home'))
 const About = React.lazy(() => import('./components/About'))
 const Delivery = React.lazy(() => import('./components/Delivery'))
 const ShopProduct = React.lazy(() => import('./components/ProductCard/ShopProduct'))
 const Test = React.lazy(() => import('./components/Test'))
 const Cart = React.lazy(() => import('./components/Cart/Cart'))
+const CheckoutView = React.lazy(() => import('./components/Checkout/CheckoutView'))
 
 const {
   useHoverContext,
@@ -26,15 +27,12 @@ const {
 } = contexts
 
 function App() {
-  console.log('App function body')
   const hoverIsOn = useHoverContext()
   useLanguageContext()
 
   const classList = hoverIsOn ? 'App hoveron' : 'App'
   return (
     <>
-      {console.log('App function return statement')}
-
       {/* prettier-ignore */}
       <div className={classList}>
           <ScrollToTop showButton/>
@@ -53,8 +51,9 @@ function App() {
                   <Route path='/shop/:whatToShow'          render={() => <Shop />} />
                   <Route path='/shop'                      render={() => <Shop />} />
                   <Route path='/about'                     render={() => <About />} />
-                  <Route path='/delivery'                  render={() => <Delivery />} />
+                  <Route path='/shipping'                  render={() => <Delivery />} />
                   <Route path='/cart'                      render={() => <Cart />} />
+                  <Route path='/checkout'                  render={() => <CheckoutView />} />
                   <Redirect to='/home' />
                 </Switch>
                 </Suspense>

@@ -23,7 +23,6 @@ export default function SubscriptionBlock() {
         setError('')
         setAgreement(v => {
           const nextState = !v
-          console.log('setting agreement to ' + nextState)
           return nextState
         })
       })

@@ -1,11 +1,8 @@
-import React, { useEffect } from 'react'
-import { createRef } from 'react'
+import React, { useEffect, useMemo, useRef } from 'react'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { contexts } from '../config/setup'
-import { t } from './utils/translation'
-
-const btnRef = createRef()
+import { contexts } from '../../config/setup'
+import { t } from '../utils/translation'
 
 const { useLanguageContext, useHoverContext } = contexts
 
@@ -17,6 +14,48 @@ export default function ShopHeader({ setSortingFunc, setFilterFunc }) {
   const { language } = useLanguageContext()
   const hoverIsOn = useHoverContext()
   const { whatToShow } = useParams()
+  const btnRef = useRef()
+
+  let options = useMemo(
+    () => [
+      {
+        name: tThis('options.recommend'),
+        setterFunc: () => {},
+      },
+      {
+        name: tThis('options.price_asc'),
+        setterFunc: () =>
+          setSortingFunc(() => (p1, p2) => {
+            if (language === 'ru')
+              return p1.priceRub - (p1.discountRub || 0) - (p2.priceRub - (p2.discountUsd || 0))
+            else return p1.priceUsd - (p1.discountUsd || 0) - (p2.priceUsd - (p2.discountUsd || 0))
+          }),
+      },
+      {
+        name: tThis('options.price_desc'),
+        setterFunc: () =>
+          setSortingFunc(() => (p1, p2) => {
+            if (language === 'ru')
+              return p2.priceRub - (p2.discountRub || 0) - (p1.priceRub - (p1.discountRub || 0))
+            else return p2.priceUsd - (p2.discountRub || 0) - (p1.priceUsd - (p1.discountRub || 0))
+          }),
+      },
+      {
+        name: tThis('options.new'),
+        setterFunc: () => setFilterFunc(() => p => p.flagNew),
+      },
+      {
+        name: tThis('options.discount'),
+        setterFunc: () =>
+          setFilterFunc(() => p => (language === 'ru' ? p.discountRub : p.discountUsd)),
+      },
+    ],
+    [language, setSortingFunc, setFilterFunc]
+  )
+
+  useEffect(() => {
+    options[optionsIndex].setterFunc()
+  }, [options, optionsIndex])
 
   useEffect(() => {
     setOptionsIndex(0)
@@ -27,41 +66,7 @@ export default function ShopHeader({ setSortingFunc, setFilterFunc }) {
   let dropdownClasses = 'shop-sort-dropdown '
   if (isDropdowned) dropdownClasses += 'opened'
 
-  const options = [
-    {
-      name: tThis('options.recommend'),
-      setterFunc: () => {},
-    },
-    {
-      name: tThis('options.price_asc'),
-      setterFunc: () =>
-        setSortingFunc(() => (p1, p2) => {
-          if (language === 'ru')
-            return p1.priceRub - (p1.discountRub || 0) - (p2.priceRub - (p2.discountUsd || 0))
-          else return p1.priceUsd - (p1.discountUsd || 0) - (p2.priceUsd - (p2.discountUsd || 0))
-        }),
-    },
-    {
-      name: tThis('options.price_desc'),
-      setterFunc: () =>
-        setSortingFunc(() => (p1, p2) => {
-          if (language === 'ru')
-            return p2.priceRub - (p2.discountRub || 0) - (p1.priceRub - (p1.discountRub || 0))
-          else return p2.priceUsd - (p2.discountRub || 0) - (p1.priceUsd - (p1.discountRub || 0))
-        }),
-    },
-    {
-      name: tThis('options.new'),
-      setterFunc: () => setFilterFunc(() => p => p.flagNew),
-    },
-    {
-      name: tThis('options.discount'),
-      setterFunc: () => setFilterFunc(() => p => p.flagDiscount),
-    },
-  ]
-
   const handleClick = (target, i, setterFunc) => {
-    console.log(target)
     setOptionsIndex(i)
     target.style.height = '0px'
     setIsDropdowned(false)

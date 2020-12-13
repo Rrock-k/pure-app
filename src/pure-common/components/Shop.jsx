@@ -1,28 +1,18 @@
 import React, { useState } from 'react'
-import { useParams, useRouteMatch } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 import ShopHeader from './ShopHeader'
 import ShopNav from './ShopNav'
 import ShopItems from './ShopItems'
 import { useProductsContext } from './ProductsContext'
 
-import './styles/Shop.css'
-import { useEffect } from 'react'
+import '../styles/Shop.css'
 
 export default function Shop({ isAdmin }) {
   const [sortingFunc, setSortingFunc] = useState()
   const [filterFunc, setFilterFunc] = useState()
   const { whatToShow } = useParams()
   const { getProducts } = useProductsContext()
-  const { path, url } = useRouteMatch()
-
-  console.log('path: ' + path)
-  console.log('url: ' + url)
-
-  useEffect(() => {
-    console.log('Shop mounted')
-    return () => console.log('Shop unmounted')
-  }, [])
 
   let items
   if (typeof whatToShow === 'undefined') {

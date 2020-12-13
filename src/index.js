@@ -11,8 +11,6 @@ import * as serviceWorker from './serviceWorker'
 
 const { HoverContext, LanguageContext } = contexts
 
-console.log('index.js started execution')
-
 const RenderReactDOM = () =>
   ReactDOM.render(
     <React.StrictMode>

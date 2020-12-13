@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useLocation } from 'react-router-dom'
 
 import Banner from './Banner'
@@ -8,14 +8,6 @@ import Header from './Header'
 export default function AppHeader() {
   const { pathname } = useLocation()
   const bannerNeeded = pathname === '/home' ? true : false
-
-  useEffect(() => {
-    console.log('AppHeader did mount')
-
-    return () => {
-      console.log('AppHeader did unmount')
-    }
-  })
 
   if (bannerNeeded)
     return (

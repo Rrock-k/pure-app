@@ -1,28 +1,30 @@
-export default [
-  { href: 'new', name: 'Новинки' },
+const menuItems = [
+  { href: 'new', name: 'новинки' },
   {
     href: 'jewelry',
-    name: 'Украшения',
+    name: 'украшения',
     submenu: [
-      { href: 'pendants', name: 'Подвески' },
-      { href: 'rings', name: 'Кольца' },
-      { href: 'earrings', name: 'Серьги' },
-      { href: 'jewelry-sets', name: 'Комплекты' },
+      { href: 'pendants', name: 'подвески' },
+      { href: 'rings', name: 'кольца' },
+      { href: 'earrings', name: 'серьги' },
+      { href: 'jewelry-sets', name: 'комплекты' },
     ],
   },
   {
     href: 'kimono',
-    name: 'Кимоно',
+    name: 'кимоно',
     submenu: [
-      { href: 'kimono-women', name: 'Женские' },
-      { href: 'kimono-men', name: 'Мужские' },
-      { href: 'kimono-linen', name: 'Лён' },
-      { href: 'kimono-silk', name: 'Шёлк' },
-      { href: 'kimono-rayon', name: 'Район' },
-      { href: 'kimono-cotton', name: 'Хлопок' },
-      { href: 'kimono-customizable', name: 'Конструктор' },
+      { href: 'kimono-women', name: 'женские' },
+      { href: 'kimono-men', name: 'мужские' },
+      { href: 'kimono-linen', name: 'лён' },
+      { href: 'kimono-silk', name: 'шёлк' },
+      { href: 'kimono-rayon', name: 'район' },
+      { href: 'kimono-cotton', name: 'хлопок' },
+      { href: 'kimono-customizable', name: 'конструктор' },
     ],
   },
-  { href: 'accessories', name: 'Аксессуары' },
-  { href: 'discount', name: 'Скидки' },
+  { href: 'accessories', name: 'аксессуары' },
+  { href: 'discount', name: 'скидки' },
 ]
+
+export default menuItems

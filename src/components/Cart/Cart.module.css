@@ -58,6 +58,16 @@ td.tdPhoto {
   text-align: left;
 }
 
+.tdName p {
+  margin-bottom: 0.3rem;
+}
+
+.smallText {
+  text-transform: none;
+  font-size: 0.75rem;
+  margin: 0;
+}
+
 .tdPrice,
 .tdSum {
   font-size: 1.25em;
@@ -125,7 +135,6 @@ td.tdPhoto {
 }
 
 .quantityInput {
-  height: var(--button-height);
   font-size: 1em;
   width: auto;
   max-width: min(50px, 9vw);
@@ -136,7 +145,6 @@ td.tdPhoto {
   border: none;
 
   cursor: pointer;
-  min-height: var(--button-height);
   text-transform: none;
 
   --margin-plus-minus-btn: 0.3rem;
@@ -147,12 +155,47 @@ td.tdPhoto {
   margin: var(--margin-plus-minus-btn) 0;
 }
 
-.cart-add-to-cart-btn {
-  font-size: 0.7rem;
-  padding: var(--padding-inside-input);
+.cartInfo {
+  margin-top: 1.5rem;
+  text-align: right;
+  text-transform: none;
+}
 
-  flex: 1 1 50%;
-  background-color: #2d2d2d;
-  color: #f4f4f4;
+.cartInfo p {
+  margin: 0;
+}
+
+.totalPrice {
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 1.5rem 0;
+}
+
+.btnsContainer {
+  margin-top: 1.5rem;
+  text-align: right;
+}
+
+.btn {
+  margin-bottom: 0.8rem;
+  appearance: button;
   margin-left: 0.5rem;
-} /* END OF Quantity input and buttons */
+
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+
+  display: inline-block;
+  vertical-align: middle;
+  background-color: white;
+  border: 1px solid #2d2d2d;
+  text-transform: uppercase;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #2d2d2d;
+  color: white;
+}
+
+/* END OF Quantity input and buttons */

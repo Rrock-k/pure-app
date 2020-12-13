@@ -1,11 +1,10 @@
 import React, { createContext, useCallback, useContext, useEffect, useState } from 'react'
 
-import handleScrollbarWidth from './utils/handleScrollbarWidth'
+import handleScrollbarWidth from '../utils/handleScrollbarWidth'
 
 const MobileMenuContext = createContext({})
 
 export function MobileMenuAndContext({ MobileMenu, children }) {
-  console.log('MobileMenuAndContext code executed')
   const { menuIsOpened, openMenu, closeMenu } = useMenu()
   const context = { openMenu, closeMenu }
 
@@ -31,6 +30,10 @@ function useMenu() {
   useEffect(() => {
     const marginIsNeeded = !!menuIsOpened
     handleScrollbarWidth(marginIsNeeded)
+    if (!marginIsNeeded) {
+      const wrapper = document.querySelector('#mobile-menu')
+      if (wrapper) wrapper.scrollTo(0, 0)
+    }
   }, [menuIsOpened])
 
   useEffect(() => {

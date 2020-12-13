@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import { t } from '../../pure-common/utils/translation'
 
@@ -11,20 +11,14 @@ const { useProductsContext, useLanguageContext } = contexts
 
 const tThis = path => t('home.main_slider.' + path)
 
-function MainSlider() {
-  useEffect(() => {
-    console.log('MainSlider did mount')
-    return () => {
-      console.log('MainSlider did unmount')
-    }
-  }, [])
-
+export default function MainSlider() {
   const { getProducts } = useProductsContext()
   const [slides, setSlides] = useState()
   const [width, setWidth] = useState()
   const [pagesCount, setPagesCount] = useState()
   const [additionalElements, setAdditionalElements] = useState([])
   const { language } = useLanguageContext()
+  const sliderRef = useRef()
 
   useEffect(() => {
     setAdditionalElements([])
@@ -93,12 +87,10 @@ function MainSlider() {
   return (
     <div className='slider-container'>
       {isRendering && <h3>{tThis('title')}</h3>}
-      <Slider {...sliderProps} />
+      <Slider {...sliderProps} sliderRef={sliderRef} />
     </div>
   )
 }
-
-export default MainSlider
 
 function stopTransitionAnimationTemorarily(element) {
   element.classList.add('notransition')

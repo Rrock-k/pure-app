@@ -17,7 +17,7 @@ const menuItemsData = menuItemsRaw
     submenu: item.submenu?.map(subitem => ({ ...subitem, href: addShopRoute(subitem.href) })),
   }))
 
-menuItemsData.push({ href: '/delivery', name: 'Доставка' }, { href: '/about', name: 'О нас' })
+menuItemsData.push({ href: '/delivery', name: 'доставка' }, { href: '/about', name: 'о нас' })
 
 export default function Menu({ fixed, hidden }) {
   const globalHoverIsOn = useHoverContext()

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useRef } from 'react'
 import { useCallback } from 'react'
 
 import left from '../assets/icons/chevron-left.svg'
@@ -16,6 +15,7 @@ export default function Slider({
   pagesCount,
   newPage = null,
   noTransition = false,
+  sliderRef,
 }) {
   const [slideHeight, setSlideHeight] = useState()
   const [page, setPage] = useState(newPage)
@@ -42,7 +42,7 @@ export default function Slider({
   useEffect(() => {
     const el = document.querySelector(`.${className} .slide-image-container`)
     if (el && el.offsetHeight) setSlideHeight(el.offsetHeight)
-  }, [width, pagesCount, slides, heightToWidthFactor])
+  }, [width, pagesCount, slides, heightToWidthFactor, className])
 
   useEffect(() => {
     setPage(page =>
@@ -55,7 +55,7 @@ export default function Slider({
   const translateX = halfWidth - page * pageWidth + pageWidth / 2
   const classIfNoTransition = noTransition ? 'notransition' : ''
 
-  const template = <div className={className + ' slider'} id={className}></div>
+  const template = <div ref={sliderRef} className={className + ' slider'} id={className}></div>
 
   if (!slides.length || !width || pagesCount > slides.length) return template
   if (!page) {
@@ -64,7 +64,7 @@ export default function Slider({
   }
 
   return (
-    <div className={className + ' slider'} id={className}>
+    <div ref={sliderRef} className={className + ' slider'} id={className}>
       <div
         className={'slider-movable-container ' + classIfNoTransition}
         style={{

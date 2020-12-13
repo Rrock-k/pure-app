@@ -79,8 +79,6 @@ export function deleteProduct(id) {
 export function uploadImage(image, objectId) {
   const data = new FormData()
   data.append('image', image, `${objectId || 'missing_object_id'}-${image.name}`)
-  console.log(data)
-  console.log(image)
 
   return axios({
     url: getImagesUploadUrl(),

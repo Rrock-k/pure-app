@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from 'react'
+import _ from 'lodash'
 
 const Context = createContext({})
 
@@ -6,31 +7,31 @@ export function CartContext({ children }) {
   const [items, setItems] = useState(() => validate(getCartFromLocalStorage()))
   saveCartItemsInLocalStorage(items)
 
-  const add = (productId, quantity = 1) => {
+  const add = ({ productId, variationChosen, quantity = 1 }) => {
     quantity = parseInt(quantity)
     if (typeof quantity !== 'number') throw new Error('cannot set quantity to non-number value')
-    if (quantity <= 0) quantity = 1
+    if (quantity < 0) quantity = 1
 
     let found
-    const newItems = items.map(item => {
-      if (item.productId === productId) {
+    const newItems = items.map(({ ...item }) => {
+      if (item.productId === productId && _.isEqual(variationChosen, item.variationChosen)) {
         found = true
         item.quantity += quantity
       }
       return item
     })
-    if (!found) newItems.push({ productId, quantity, additionDate: new Date() })
+    if (!found) newItems.push({ productId, variationChosen, quantity, additionDate: new Date() })
 
     setItems(newItems)
   }
 
-  const remove = productId => setItems(items => items.filter(item => item.productId !== productId))
+  // const remove = productId => setItems(items => items.filter(item => item.productId !== productId))
 
-  const incrementQuantity = (productId, payload) => {
+  const incrementQuantity = (productId, variationChosen, payload) => {
     setItems(items =>
       items
         .map(item =>
-          item.productId === productId
+          item.productId === productId && _.isEqual(variationChosen, item.variationChosen)
             ? { ...item, quantity: item.quantity + (parseInt(payload) || 1) }
             : item
         )
@@ -38,19 +39,21 @@ export function CartContext({ children }) {
     )
   }
 
-  const setQuantity = (productId, payload) => {
+  const setQuantity = (productId, variationChosen, payload) => {
     setItems(items => {
       const newQty = parseInt(payload) || 1
       return items
-        .map(item => (item.productId === productId ? { ...item, quantity: newQty } : item))
+        .map(item =>
+          item.productId === productId && _.isEqual(variationChosen, item.variationChosen)
+            ? { ...item, quantity: newQty }
+            : item
+        )
         .filter(item => item.quantity >= 0)
     })
   }
 
-  console.log('CartContext code executed')
-
   return (
-    <Context.Provider value={{ items, add, remove, setQuantity, incrementQuantity, validate }}>
+    <Context.Provider value={{ items, add, setQuantity, incrementQuantity, validate }}>
       {children}
     </Context.Provider>
   )

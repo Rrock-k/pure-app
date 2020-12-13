@@ -11,8 +11,6 @@ export function LanguageContext({ children }) {
   callbacks.forEach(cb => cb(language))
   currentLanguage = language
 
-  console.log('LanguageContext code executed')
-
   return <Context.Provider value={{ language, setLanguage }}>{children}</Context.Provider>
 }
 

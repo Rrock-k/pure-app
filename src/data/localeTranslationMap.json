@@ -6,6 +6,24 @@
       "title": { "ru": "Новые модели", "en": "New Models" }
     },
     "sections": {
+      "button_text": {
+        "ru": "смотреть все модели",
+        "en": "see all models"
+      },
+      "section_names": {
+        "women_clothes_and_kimono": {
+          "ru": "Женская одежда и кимоно",
+          "en": "Women's wear and kimono"
+        },
+        "jewelry": {
+          "ru": "Украшения",
+          "en": "Jewelry"
+        },
+        "mens_kimono": {
+          "ru": "Мужские кимоно",
+          "en": "Men's kimono"
+        }
+      },
       "section_clothes": {
         "img_alt": { "ru": "раздел одежда", "en": "clothes section" },
         "title": { "ru": "Одежда", "en": "Clothes" },
@@ -117,9 +135,157 @@
     }
   },
   "cart": {
+    "title": {
+      "ru": "Ваша корзина",
+      "en": "Your cart"
+    },
     "empty_cart_message": {
       "ru": "Ваша корзина пока пуста",
       "en": "Your cart is empty"
+    },
+    "table": {
+      "headers": {
+        "product": {
+          "ru": "Продукт",
+          "en": "Product"
+        },
+        "price": {
+          "ru": "Цена",
+          "en": "Price"
+        },
+        "qty": {
+          "ru": "Кол-во",
+          "en": "Qty"
+        },
+        "quantity": {
+          "ru": "Количество",
+          "en": "Quantity"
+        },
+        "sum": {
+          "ru": "Сумма",
+          "en": "Sum"
+        }
+      }
+    },
+    "info": {
+      "main-text": {
+        "ru": "Наши товары выпускаются ограниченными партиями. Не откладывайте оформление вашего заказа, чтобы выбранные вами продукты точно были в наличии.",
+        "en": "Our products are produced in limited quantities. Please, do not postpone your order, to ensure that your choice is still in stock."
+      },
+      "shipping-note": {
+        "ru": "доставка и налоги рассчитываются при оформлении заказа.",
+        "en": "shipping and taxes are calculated at checkout. "
+      },
+      "total-sum": {
+        "ru": "Общая сумма покупки:",
+        "en": "Total:"
+      }
+    },
+    "buttons": {
+      "continue-shopping": {
+        "ru": "Продолжить покупки",
+        "en": "Continue shopping"
+      },
+      "checkout": {
+        "ru": "Оформить заказ",
+        "en": "Checkout"
+      }
+    }
+  },
+  "checkout": {
+    "left": {
+      "title": {
+        "ru": "Ваш заказ",
+        "en": "Your order"
+      },
+      "promo-code": {
+        "ru": "Промо-код",
+        "en": "Promocode"
+      },
+      "submit-promo-code": {
+        "ru": "Подтвердить промокод",
+        "en": "Confirm promocode"
+      },
+      "subtotal-text": {
+        "ru": "Сумма заказа",
+        "en": "Subtotal"
+      },
+      "shipping-price-text": {
+        "ru": "Сумма доставки",
+        "en": "Shipping price"
+      },
+      "final-total-price-text": {
+        "ru": "Общая сумма заказа",
+        "en": "Total"
+      }
+    },
+    "right": {
+      "title": {
+        "ru": "Ваша информация",
+        "en": "Your info"
+      },
+      "placeholders": {
+        "email": {
+          "ru": "Email",
+          "en": "Email"
+        },
+        "firstName": {
+          "ru": "Имя",
+          "en": "First name"
+        },
+        "lastName": {
+          "ru": "Фамилия",
+          "en": "Last name"
+        },
+        "address1": {
+          "ru": "Адрес: Улица; Дом; Корпус; Номер квартиры",
+          "en": "Address 1"
+        },
+        "address2": {
+          "ru": "Адрес 2 строка (необязательно)",
+          "en": "Address 2 (optional)"
+        },
+        "city": {
+          "ru": "Город",
+          "en": "City"
+        },
+        "county": {
+          "ru": "Область / край / республика",
+          "en": "County (optional)"
+        },
+        "postalCode": {
+          "ru": "Почтовый код",
+          "en": "Postal code"
+        },
+        "country": {
+          "ru": "Страна",
+          "en": "Country"
+        },
+        "phone": {
+          "ru": "Номер телефона",
+          "en": "Phone"
+        }
+      },
+      "subscription-prompt": {
+        "ru": "Подписаться на рассылку о спец. акциях и предложениях",
+        "en": "I want to receive newsletters and special offers info"
+      },
+      "address-of-shipping": {
+        "ru": "Адрес доставки",
+        "en": "Shipping address"
+      },
+      "shipping-note": {
+        "ru": "Обратите внимание, если вы заказываете изделия по предзаказу и в наличии вместе, то по умолчанию мы высылаем их вместе по срокам предзакза.Eсли вы хотите получить изделия «в наличии» скорее, то отметьте здесь, чтобы мы отправили ваш заказ двумя посылками.",
+        "en": "Please note that if you order pre-ordered and in stock items together, we will ship them together by default based on the pre-order time. If you would like to receive the item \"in stock\" earlier, please check here so that we will ship your order in two parcels."
+      },
+      "back_to_cart": {
+        "ru": "Вернуться к корзине",
+        "en": "Back to cart"
+      },
+      "proceed_to_payment": {
+        "ru": "Перейти к оплате",
+        "en": "Proceed to payment"
+      }
     }
   },
   "app-footer": {
@@ -161,6 +327,10 @@
         "ru": "готова к предзаказу",
         "en": "ready for preorder",
         "ha": "ты будешь королевой"
+      },
+      "buttonText": {
+        "ru": "Смотреть",
+        "en": "Shop now"
       }
     }
   }

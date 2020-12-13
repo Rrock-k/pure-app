@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import urlArray from './data/menuItems'
-import { t } from './utils/translation'
+import urlArray from '../data/menuItems'
+import { t } from '../utils/translation'
 
 export default function ShopNav({ activeUrl = '' }) {
   const getLinkTemplate = item => (

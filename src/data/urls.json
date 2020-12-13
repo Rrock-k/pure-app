@@ -1,0 +1,5 @@
+{
+  "shop": "/shop",
+  "cart": "/cart",
+  "checkout": "/checkout"
+}

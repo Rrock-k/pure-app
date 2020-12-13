@@ -9,7 +9,7 @@ import magnifyingGlass from '../assets/icons/magnifying-glass.svg'
 import instagramLogo from '../assets/icons/instagram-logo.svg'
 import shoppingBag from '../assets/icons/shopping-bag.svg'
 import openMenuIcon from '../assets/icons/open-menu.svg'
-import { useMobileMenuContext } from '../pure-common/MobileMenuAndContext'
+import { useMobileMenuContext } from '../pure-common/components/MobileMenuAndContext'
 // import UserAccountIcon from './UserAccountIcon'
 
 const Navbar = () => {
