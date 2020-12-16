@@ -1,7 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
-import { subscribeUser } from '../../pure-common/utils/apiQueries'
-import { t } from '../../pure-common/utils/translation'
+import { subscribeUser } from 'pure-common/utils/apiQueries'
+import { t } from 'pure-common/utils/translation'
+
+import './styles/Subscription.css'
 
 const tThis = path => t('home.sections.section_subscription.' + path)
 

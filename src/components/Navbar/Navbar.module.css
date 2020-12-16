@@ -1,0 +1,128 @@
+/* Navbar */
+.container {
+  --navbar-height: min(55px, 20vh, 25vw);
+  --padding-right-left: min(1.2rem, 5vw);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  /* 20vh is for mobile landscape view */
+  min-height: var(--navbar-height);
+  padding: 0 var(--padding-right-left);
+}
+
+.mobileLogoContainer {
+  display: flex;
+  flex: 0 1 50%;
+  margin: auto var(--padding-right-left) auto 0;
+}
+.mobileLogoContainerLink {
+  line-height: 0;
+}
+
+.mobileLogo {
+  max-height: min(33px, 10vh);
+  max-width: 100%;
+  cursor: pointer;
+}
+
+@media (min-width: 760px) and (min-height: 500px) {
+  .mobileLogo {
+    display: none;
+  }
+}
+
+.items {
+  display: flex;
+  flex: 0 1 60%;
+  align-items: stretch;
+  justify-content: flex-end;
+}
+
+.item {
+  flex: 0 1 20px;
+  height: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 min(9px, 6%);
+}
+
+.item:last-child {
+  margin-right: 0;
+}
+
+.item a {
+  line-height: 0;
+}
+
+.item button,
+.hamburgerItem {
+  cursor: pointer;
+  font-size: min(20px, 10vh);
+  display: flex;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  padding: 0;
+  line-height: 1.2rem;
+}
+
+.icon {
+  width: 100%;
+  cursor: pointer;
+
+  max-width: 19px;
+}
+
+.hamburgerItem {
+  padding: 0;
+  flex-basis: 23px;
+}
+
+.hamburgerIcon {
+  width: 100%;
+  max-width: 23px;
+}
+
+@media (min-width: 760px) and (min-height: 500px) {
+  /* Navbar */
+  .hamburgerItem {
+    display: none;
+  }
+}
+
+.languageSwitch {
+  flex: 0 1 1px;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.languageSwitch :global .separator {
+  margin: 0 min(3px, 3vmin);
+  font-size: min(27px, 14vh);
+  cursor: auto;
+  pointer-events: none;
+}
+
+@media (max-width: 450px) {
+  .languageSwitch.item {
+    display: none;
+  }
+}
+
+/* #user-account-navbar-item {
+  position: relative;
+} */
+
+.userAccountPanel {
+  position: absolute;
+  z-index: 99999;
+  top: var(--navbar-height);
+  /* top: 120%; */
+  right: 10px;
+  background-color: rgb(247, 247, 247);
+  border: 1px solid black;
+}

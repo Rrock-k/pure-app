@@ -1,0 +1,109 @@
+/* Menu */
+.menu {
+  display: none;
+}
+
+@media (min-width: 760px) and (min-height: 500px) {
+  /* Menu */
+  .menu {
+    --menuLinkPaddingVertical: min(10px, 2vmin);
+    --menuLinkPaddingHorizontal: min(23px, 8vmin);
+    font-size: min(0.8rem, 4vmin);
+    padding: 20px 3vw;
+
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    flex-wrap: wrap;
+    font-weight: 300;
+    letter-spacing: 0.2px;
+  }
+
+  .menu * {
+    text-transform: uppercase;
+  }
+
+  .menuFixed {
+    position: fixed;
+
+    width: 100%;
+    z-index: 1000;
+    padding: 4px 3vw;
+
+    transition: 0.4s;
+    top: 0;
+  }
+
+  .menuFixedHidden {
+    visibility: hidden;
+    transform: translateY(-100%);
+  }
+
+  .linkDiv {
+    position: relative;
+    margin: var(--menuLinkPaddingVertical) 0;
+  }
+
+  .menu-link-div a {
+    white-space: nowrap;
+  }
+
+  .dropdown {
+    display: none;
+    padding: 10px 0;
+    width: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.25s linear;
+
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    z-index: 9999;
+  }
+
+  .menu a,
+  .menu button {
+    padding: 0 var(--menuLinkPaddingHorizontal);
+    margin: 0.5px 0;
+    background-color: white;
+  }
+
+  .menu button {
+    border: 0;
+    font-weight: 300;
+  }
+
+  .hoveron .menu a:hover {
+    transition: 0.2s;
+    color: rgb(133, 133, 133);
+  }
+
+  .hoveron .dropdown a:hover {
+    color: rgb(233, 233, 233);
+  }
+
+  .dropdown a,
+  .dropdown button {
+    padding: var(--menuLinkPaddingVertical) var(--menuLinkPaddingHorizontal);
+    font-size: min(12px, 3.7vmin);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.335);
+  }
+
+  .dropdown a:hover {
+    transition: 0.2s;
+    color: white;
+    background-color: rgba(74, 87, 95, 0.931);
+  }
+
+  .linkDiv.showDropdowns:hover .dropdown,
+  a:focus ~ .dropdown,
+  button:focus ~ .dropdown,
+  .dropdown:focus-within {
+    width: initial;
+    overflow: visible;
+    opacity: 1;
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react'
-import { t } from '../../pure-common/utils/translation'
-import aboutImg from '../../assets/images/sections/about.jpg'
+import { t } from 'pure-common/utils/translation'
+import aboutImg from 'assets/images/sections/about.jpg'
 
 const tPath = 'home.sections.section_about.'
 const tThis = path => t(tPath + path)

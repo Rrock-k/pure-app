@@ -2,20 +2,20 @@ import {
   LanguageContext,
   useLanguageContext,
   addOnLanguageChangeCallback,
-} from '../components/contexts/LanguageContext'
-import { CartContext, useCartContext } from '../components/contexts/CartContext'
-import { HoverContext, useHoverContext } from '../pure-common/components/HoverContext'
-import { ProductsContext, useProductsContext } from '../pure-common/components/ProductsContext'
+} from 'components/contexts/LanguageContext'
+import { CartContext, useCartContext } from 'components/contexts/CartContext'
+import { HoverContext, useHoverContext } from 'pure-common/components/HoverContext'
+import { ProductsContext, useProductsContext } from 'pure-common/components/ProductsContext'
 import {
   MobileMenuAndContext,
   useMobileMenuContext,
-} from '../pure-common/components/MobileMenuAndContext'
+} from 'pure-common/components/MobileMenuAndContext'
 
-import localeTranslationMap from '../data/localeTranslationMap.json'
-import serverErrorMessagesTranslationMap from '../data/serverErrorMessagesTranslationMap.json'
-import shopLocaleTranslationMap from '../pure-common/data/shopLocaleTranslationMap'
-import navigationLocaleTranslationMap from '../pure-common/data/navigationLocaleTranslationMap'
-import { changeTranslationMap, changeCurrentLanguage } from '../pure-common/utils/translation'
+import localeTranslationMap from 'data/localeTranslationMap.json'
+import serverErrorMessagesTranslationMap from 'data/serverErrorMessagesTranslationMap.json'
+import shopLocaleTranslationMap from 'pure-common/data/shopLocaleTranslationMap'
+import navigationLocaleTranslationMap from 'pure-common/data/navigationLocaleTranslationMap'
+import { changeTranslationMap, changeCurrentLanguage } from 'pure-common/utils/translation'
 
 //setting up translation map for this app
 changeTranslationMap({

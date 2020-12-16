@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 
-import downloadInstagramImages from '../../effects/downloadInstagramImages'
-import { t } from '../../pure-common/utils/translation'
+import downloadInstagramImages from 'effects/downloadInstagramImages'
+import { t } from 'pure-common/utils/translation'
 import Slider from '../Slider'
 
 export default function InstagramSection() {

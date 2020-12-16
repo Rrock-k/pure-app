@@ -1,8 +1,8 @@
 import React from 'react'
-import { t } from '../../pure-common/utils/translation'
+import { t } from 'pure-common/utils/translation'
 
-import clothes from '../../assets/images/sections/clothes.png'
-import jewelry from '../../assets/images/sections/jewelry.png'
+import clothes from 'assets/images/sections/clothes.png'
+import jewelry from 'assets/images/sections/jewelry.png'
 
 export default function Sections() {
   return (

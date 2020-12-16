@@ -1,22 +1,21 @@
 import React from 'react'
+import styles from './ScrollTop.module.css'
 
-export default function ScrollToTop({ showButton, button = ArrowButton }) {
+export default function ScrollToTop({ show = true, Button = ArrowButton }) {
   // const { pathname } = useLocation()
 
   // useEffect(() => {
   //   if (!pathname.split('/').includes('shop')) window.scrollTo(0, 0)
   // }, [pathname])
 
-  const ScrollToTopButton = button
-
-  if (showButton) return <ScrollToTopButton />
+  if (show) return <Button />
   return null
 }
 
 function ArrowButton() {
   return (
     <button
-      className='scroll-to-top-button'
+      className={styles.button}
       onClick={e => {
         window.scrollTo({ top: 0, behavior: 'smooth' })
         e.currentTarget.blur()

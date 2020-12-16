@@ -3,7 +3,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from 'react-router-dom'
 
-import './index.css'
 import { contexts } from './config/setup'
 
 import App from './App.js'

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { t } from '../pure-common/utils/translation'
+import { t } from 'pure-common/utils/translation'
 
 const tThis = path => t('app-footer.' + path)
 

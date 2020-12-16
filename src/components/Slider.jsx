@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useCallback } from 'react'
 
-import left from '../assets/icons/chevron-left.svg'
-import right from '../assets/icons/chevron-right.svg'
+import left from 'assets/icons/chevron-left.svg'
+import right from 'assets/icons/chevron-right.svg'
 
 import './Slider.css'
 

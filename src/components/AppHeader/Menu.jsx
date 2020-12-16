@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import classNames from 'classnames'
 
-import menuItemsRaw from '../pure-common/data/menuItems'
-import { t } from '../pure-common/utils/translation'
-import { contexts } from '../config/setup'
+import menuItemsRaw from 'pure-common/data/menuItems'
+import { t } from 'pure-common/utils/translation'
+import { contexts } from 'config/setup'
+
+import styles from './styles/Menu.module.css'
 
 const { useHoverContext } = contexts
 
@@ -36,8 +39,10 @@ export default function Menu({ fixed, hidden }) {
     turnOffDropdowns()
   }
 
-  let menuItemClassList = 'menu-link-div'
-  if (globalHoverIsOn || dropdownsAreShowing) menuItemClassList += ' show-dropdowns'
+  let menuItemClassList = classNames(
+    styles.linkDiv,
+    (globalHoverIsOn || dropdownsAreShowing) && styles.showDropdowns
+  )
 
   const MenuLink = ({ menuitem }) => {
     if (globalHoverIsOn || (!globalHoverIsOn && !menuitem.submenu))
@@ -49,8 +54,11 @@ export default function Menu({ fixed, hidden }) {
     return <button>{t('navigation.' + menuitem.name)}</button>
   }
 
-  let className = fixed ? 'menu menu-fixed' : 'menu'
-  if (hidden) className = `${className} menu-fixed-hidden`
+  let className = classNames(
+    styles.menu,
+    fixed && styles.menuFixed,
+    fixed && hidden && styles.menuFixedHidden
+  )
   const id = fixed ? 'menu-fixed' : 'main-menu'
 
   return (
@@ -60,7 +68,7 @@ export default function Menu({ fixed, hidden }) {
           <MenuLink menuitem={menuItem} />
 
           {menuItem.submenu && (
-            <div className='menu-item-dropdown' onClick={clickHandlerFunc}>
+            <div className={styles.dropdown} onClick={clickHandlerFunc}>
               {!globalHoverIsOn && (
                 <Link to={menuItem.href} onClick={blurMe}>
                   {t('navigation.все')}

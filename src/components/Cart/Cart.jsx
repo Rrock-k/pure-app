@@ -1,13 +1,13 @@
 import React from 'react'
 import { contexts } from '../../config/setup'
 import styles from './Cart.module.css'
-import urls from '../../data/urls.json'
-
 import { Link } from 'react-router-dom'
-import { getImageSrcFromImageName } from '../../pure-common/utils/apiQueries'
-import { t } from '../../pure-common/utils/translation'
-import getPriceStr from '../../pure-common/utils/getPriceStr'
-import { useLanguageContext } from '../contexts/LanguageContext'
+
+import { getImageSrcFromImageName } from 'pure-common/utils/apiQueries'
+import getPriceStr from 'pure-common/utils/getPriceStr'
+import { t } from 'pure-common/utils/translation'
+import { useLanguageContext } from 'components/contexts/LanguageContext'
+import urls from 'data/urls.json'
 
 const tThis = query => t('cart.' + query)
 

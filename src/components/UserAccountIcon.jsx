@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import userIcon from '../assets/icons/user-profile.svg'
+import userIcon from 'assets/icons/user-profile.svg'
 
 import UserAccountPanel from './UserAccountPanel'
 

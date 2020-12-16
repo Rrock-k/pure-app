@@ -1,5 +1,5 @@
 import React from 'react'
-import { contexts } from '../../config/setup'
+import { contexts } from 'config/setup'
 import ProductSlider from './ProductSlider'
 import ProductDesctiption from './ProductDescription'
 import { Link } from 'react-router-dom'

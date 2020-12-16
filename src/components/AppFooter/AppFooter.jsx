@@ -1,9 +1,10 @@
 import React from 'react'
 
-import instagramLogo from '../assets/icons/instagram-logo.svg'
-import etsyLogo from '../assets/icons/etsy-logo.svg'
+import instagramLogo from 'assets/icons/instagram-logo.svg'
+import etsyLogo from 'assets/icons/etsy-logo.svg'
 
 import FooterNav from './FooterNav'
+import './styles/AppFooter.css'
 
 export default function AppFooter() {
   return (

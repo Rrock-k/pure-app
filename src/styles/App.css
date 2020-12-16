@@ -1,0 +1,109 @@
+@import './config.css';
+
+body {
+  background-color: rgb(88, 87, 77);
+
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  overflow-y: scroll;
+  margin: 0;
+  position: relative;
+}
+
+.App * {
+  font-family: ProbaPro, sans-serif;
+
+  text-decoration: none;
+  color: black;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+.App {
+  overflow-x: hidden;
+  text-transform: uppercase;
+  background-color: white;
+  margin: 0 auto;
+  max-width: min(240vh, 2000px);
+  min-height: 100vh;
+  box-shadow: 0 0 30px rgb(39, 39, 39);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  position: static;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+p {
+  font-size: 0.8rem;
+  letter-spacing: 0.03rem;
+}
+
+h3 {
+  font-size: min(25px, 8vh);
+  font-weight: 500;
+}
+h4 {
+  font-size: min(22px, 6.5vh);
+  font-weight: 500;
+}
+h5 {
+  font-size: min(1.2rem, 5vh);
+  font-weight: 500;
+}
+
+button {
+  letter-spacing: 0.03rem;
+}
+
+hr {
+  margin-top: 0;
+}
+
+del,
+s {
+  text-decoration: line-through !important;
+}
+
+.tab {
+  padding-left: 1.5rem;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.btn {
+  padding: 0.8rem 2rem;
+
+  border: none;
+  cursor: pointer;
+}
+
+.btn-black {
+  background-color: rgb(53, 53, 53);
+  color: white;
+}
+
+.btn-outline-white {
+  border: solid 1px white;
+  color: white;
+}
+
+.btn-link {
+  height: auto;
+  padding: 0;
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  text-decoration: underline;
+}

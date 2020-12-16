@@ -1,0 +1,45 @@
+/*  */
+/* TEST SCROLLBAR */
+/*  */
+
+::-webkit-scrollbar {
+  width: 9px;
+  max-width: 1.2vw;
+  min-width: max(4px, 0.6vw);
+
+  background: rgb(243, 243, 243);
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 4px;
+  border: rgb(243, 243, 243) solid 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: rgb(160, 160, 160);
+  border: rgb(243, 243, 243) solid min(2px, 0.3vw);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(128, 128, 128);
+}
+::-webkit-scrollbar-thumb:active {
+  background: rgb(85, 85, 85);
+}
+
+.mobile-menu::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background: rgba(121, 28, 28, 0.7);
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  border-radius: 4px;
+  background: rgba(114, 114, 114, 0.5);
+}
+
+/* Buttons */
+::-webkit-scrollbar-button:single-button {
+  border-style: solid;
+
+  height: 0;
+} /* end TEST SCROLLBAR */

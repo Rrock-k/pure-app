@@ -1,6 +1,6 @@
 import React from 'react'
-import { noTranslationAvailable } from '../../pure-common/utils/translation'
-import { useLanguageContext } from '../contexts/LanguageContext'
+import { noTranslationAvailable } from 'pure-common/utils/translation'
+import { useLanguageContext } from 'components/contexts/LanguageContext'
 
 export default function FastLanguageSwitch() {
   const { setLanguage } = useLanguageContext()

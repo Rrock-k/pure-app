@@ -1,11 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import womenImg from '../../assets/images/sections/women.jpg'
-import menImg from '../../assets/images/sections/men.jpg'
-import jewwelryImg from '../../assets/images/sections/jewelry.jpg'
+import womenImg from 'assets/images/sections/women.jpg'
+import menImg from 'assets/images/sections/men.jpg'
+import jewwelryImg from 'assets/images/sections/jewelry.jpg'
 
-import { t } from '../../pure-common/utils/translation'
+import './styles/Sections.css'
+
+import { t } from 'pure-common/utils/translation'
 const tThis = path => t('home.sections.section_names.' + path)
 
 export default function Sections() {

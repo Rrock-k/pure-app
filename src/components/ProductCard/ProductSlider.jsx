@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { PHOTOS_URL } from '../../pure-common/utils/apiQueries'
+import { PHOTOS_URL } from 'pure-common/utils/apiQueries'
 import Slider from '../Slider'
 import Thumbs from './Thumbs'
-import { contexts } from '../../config/setup'
+import { contexts } from 'config/setup'
 const { useLanguageContext } = contexts
 
 export default function ProductSlider({ product }) {

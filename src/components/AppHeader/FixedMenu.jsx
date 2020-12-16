@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 
 import Menu from './Menu'
 
-import getCoords from '../utils/getCoords'
+import getCoords from 'utils/getCoords'
 
-export default function FixedMenu() {
+function FixedMenu() {
   const [showMenuOnTop, setShowMenuOnTop] = useState(false)
 
   useEffect(() => {
-    const navMenu = document.getElementById('main-menu')
+    const navMenu = document.querySelector('#main-menu')
 
     const handleScroll = () => {
       const { top: menuTop } = getCoords(navMenu)
@@ -23,3 +23,5 @@ export default function FixedMenu() {
 
   return <Menu fixed hidden={!showMenuOnTop} />
 }
+
+export default React.memo(FixedMenu)

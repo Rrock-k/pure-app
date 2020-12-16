@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { contexts } from '../../config/setup'
-import PriceElement from '../../pure-common/components/PriceElement'
+import { contexts } from 'config/setup'
+import PriceElement from 'pure-common/components/PriceElement'
 import Variation from './Variation'
 
 const { useLanguageContext, useCartContext } = contexts

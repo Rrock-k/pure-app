@@ -1,0 +1,140 @@
+/* SUBSCRIPTION */
+/* ------------ */
+
+.subscription-block {
+  text-align: center;
+  background-color: #e5f0f6;
+  padding: 1.9rem min(2rem, 5vw) 1rem;
+  margin-bottom: 2rem;
+}
+
+.subscription-block.subscribed {
+  padding-bottom: 1.9rem;
+}
+
+.subscription-block.subscribed p {
+  margin-top: 0;
+}
+
+.subscription-block.subscribed .btn-link {
+  background-color: rgba(255, 255, 255, 0.611);
+  padding: 0.5rem 1rem;
+  border-radius: 0.6rem;
+  margin: 1rem 0 0;
+}
+
+.subscription-block form * {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 300px;
+  /* width: min(270px, 100%); */
+
+  text-align: center;
+}
+
+.subscription-block h1 {
+  display: block;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.7rem;
+}
+
+.subscription-block .subscription-block-text {
+  letter-spacing: 0.5px;
+  display: none;
+  margin: 0.8rem auto;
+  line-height: 1.2rem;
+  font-size: 0.67rem;
+  text-transform: uppercase;
+  text-align: center;
+}
+.subscription-block input {
+  height: 51px;
+  display: block;
+  margin: 12px auto 0;
+  box-sizing: border-box;
+  text-transform: none;
+}
+
+.subscription-block .error-label {
+  display: block;
+  text-align: center;
+  background-color: rgb(255, 241, 241);
+  color: rgb(223, 0, 0);
+  font-size: 0.8rem;
+  margin-bottom: 0.7rem;
+  padding: 0.5rem 0;
+}
+
+.subscription-block .btn-subscribe {
+  display: block;
+  background-color: #2d2d2d;
+  color: #f4f4f4;
+  border: none;
+  cursor: pointer;
+
+  margin: 5px auto 5px;
+  height: 51px;
+
+  text-transform: none;
+}
+
+.subscription-block div {
+  margin: 0 auto;
+
+  display: block;
+  align-items: center;
+}
+
+.subscription-block label {
+  flex: 0 0 max-content;
+  display: inline;
+  font-size: 0.65rem;
+  text-align: left;
+  text-transform: none;
+}
+.subscription-block .checkbox {
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+  margin-right: 7px;
+  display: inline;
+  vertical-align: middle;
+}
+
+@media (min-width: 1000px) {
+  .subscription-block {
+    padding-top: 2.5rem;
+    padding-bottom: 1.5rem;
+  }
+  .subscription-block form,
+  .subscription-block h1,
+  .subscription-block div {
+    max-width: unset;
+  }
+  .subscription-block h1 {
+    width: auto;
+    font-size: 2.2rem;
+    font-weight: 600;
+  }
+  .subscription-block .subscription-block-text {
+    display: block;
+    width: auto;
+    max-width: 1000px;
+    font-size: 0.85rem;
+  }
+  .subscription-block input,
+  .subscription-block button {
+    display: inline-block;
+    margin: 0.5rem 0.7rem;
+  }
+  .subscription-block label {
+    font-size: 0.8rem;
+    text-align: left;
+    width: auto;
+  }
+  .subscription-block .checkbox {
+    flex: 0 0 1.2rem;
+  }
+}

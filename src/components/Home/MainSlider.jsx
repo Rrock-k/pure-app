@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-import { t } from '../../pure-common/utils/translation'
+import { t } from 'pure-common/utils/translation'
 
 import Slider from '../Slider'
+import styles from './styles/MainSlider.module.css'
 
-import { contexts } from '../../config/setup'
-import { getImageSrcFromImageName, getProductCardUrl } from '../../pure-common/utils/apiQueries'
+import { contexts } from 'config/setup'
+import { getImageSrcFromImageName, getProductCardUrl } from 'pure-common/utils/apiQueries'
 import { Link } from 'react-router-dom'
 const { useProductsContext, useLanguageContext } = contexts
 
@@ -28,7 +29,7 @@ export default function MainSlider() {
         const imageAbsolutePath = getImageSrcFromImageName(product.mainPhotoUrl)
         setAdditionalElements(arr => [
           ...arr,
-          <div className='main-slider-subtitle-wrapper'>
+          <div className={styles.subtitleWrapper}>
             {language === 'ru' ? product.name : product.nameEn}
           </div>,
         ])
@@ -85,7 +86,7 @@ export default function MainSlider() {
   const isRendering = slides?.length > 0 && width
 
   return (
-    <div className='slider-container'>
+    <div className={styles.container}>
       {isRendering && <h3>{tThis('title')}</h3>}
       <Slider {...sliderProps} sliderRef={sliderRef} />
     </div>

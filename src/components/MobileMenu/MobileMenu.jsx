@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
-import urlArray from '../pure-common/data/menuItems'
-import { t } from '../pure-common/utils/translation'
-import LanguageSwitcher from './LanguageSwitcher'
+import urlArray from 'pure-common/data/menuItems'
+import { t } from 'pure-common/utils/translation'
+import LanguageSwitcher from '../LanguageSwitcher'
+
+import styles from './MobileMenu.module.css'
 
 export default function MobileMenu(props) {
   const firstFocusableElement = useRef()
@@ -33,7 +35,7 @@ export default function MobileMenu(props) {
 
   return (
     <div
-      className='mobile-menu'
+      className={styles.container}
       id='mobile-menu'
       style={{
         visibility,
@@ -41,20 +43,20 @@ export default function MobileMenu(props) {
         transition,
       }}
     >
-      <div className='mobile-menu-nav'>
+      <div className={styles.nav}>
         {urlArrayMobile.map((item, index) => {
           return (
             <React.Fragment key={index}>
-              <div className='mobile-menu-item-div' key={item.href}>
+              <div className={styles.itemDiv} key={item.href}>
                 <MobileMenuLink
                   item={item}
                   close={close}
                   {...(index === 0 ? propsForFirstMenuItem : {})}
                 />
               </div>
-              <div className='mobile-submenu'>
+              <div className={styles.submenu}>
                 {item.submenu?.map((subitem, index) => (
-                  <div className='mobile-menu-item-div' key={subitem.href}>
+                  <div className={styles.itemDiv} key={subitem.href}>
                     <MobileMenuLink item={subitem} close={close} />
                   </div>
                 ))}
@@ -62,13 +64,13 @@ export default function MobileMenu(props) {
             </React.Fragment>
           )
         })}
-        <div className='mobile-menu-item-div'>
-          <LanguageSwitcher className='mobile-menu-language-switcher' />
+        <div className={styles.itemDiv}>
+          <LanguageSwitcher className={styles.languageSwitcher} />
         </div>
       </div>
       <button
         onClick={close}
-        className='mobile-menu-close'
+        className={styles.closeBtn}
         ref={lastFocusableElement}
         onKeyDown={e => {
           if (e.keyCode === 9 && !e.shiftKey) {
@@ -100,7 +102,7 @@ const urlArrayMobile = [
 const MobileMenuLink = ({ item, close, reference, keydownHandler }) => (
   <Link
     ref={reference}
-    className={item.submenu ? 'mobile-menu-item mobile-menu-item-has-subitem' : 'mobile-menu-item'}
+    className={styles.menuItem}
     id={item.href}
     to={item.href}
     onClick={close}
