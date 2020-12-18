@@ -21,10 +21,12 @@ export const getSubscribersUrl = () => BASE_URL + 'api/subscribers'
 export const getImageSrcFromImageName = imgName => PHOTOS_URL + imgName
 export const getProductCardUrl = id => `shop/products/${id || ''}`
 
-export function getProducts() {
+export function getProducts(query) {
+  const dbQuery = JSON.stringify(query)
   return axios({
     method: 'get',
     url: `${getProductsUrl()}`,
+    params: { dbQuery },
   })
 }
 

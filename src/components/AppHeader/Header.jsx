@@ -11,12 +11,14 @@ const Header = () => {
   return (
     <>
       <Navbar />
-      <Link to='/home'>
-        <img className={styles.mainLogo} src={logo} alt='I am in pure logo' />
-      </Link>
+      <center>
+        <Link to='/home'>
+          <img className={styles.mainLogo} src={logo} alt='I am in pure logo' />
+        </Link>
+      </center>
       <Menu />
     </>
   )
 }
 
-export default React.memo(Header)
+export default Header

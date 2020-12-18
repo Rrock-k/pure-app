@@ -1,0 +1,2 @@
+export const freeDeliveryThresholdRub
+export const freeDeliveryThresholdUsd

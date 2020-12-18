@@ -107,3 +107,7 @@ s {
   border: none;
   text-decoration: underline;
 }
+
+.uppercase {
+  text-transform: uppercase;
+}

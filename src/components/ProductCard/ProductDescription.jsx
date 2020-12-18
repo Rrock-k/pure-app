@@ -70,13 +70,17 @@ export default function ProductDesctiption({ product }) {
   return (
     <div className='product-info'>
       <h3 className='product-info-label'>{language === 'ru' ? product.name : product.nameEn}</h3>
-      {numberInStock ? (
-        <li>в наличии</li>
-      ) : product.flagPreorder ? (
-        <li>предзаказ</li>
-      ) : (
-        <li>нет в наличии</li>
-      )}
+      {
+        <li>
+          {numberInStock ? (
+            <span>в наличии</span>
+          ) : product.flagPreorder ? (
+            <span>предзаказ</span>
+          ) : (
+            <span>нет в наличии</span>
+          )}
+        </li>
+      }
       <PriceElement {...propsPriceElement} />
       <details>
         <summary className='product-info-shipping'>
@@ -84,32 +88,34 @@ export default function ProductDesctiption({ product }) {
         </summary>
         <p>Здесь нужно написать текст про то, сколько стоит доставка и от чего это зависит</p>
       </details>
-      <div className='add-to-cart-form'>
-        <button onClick={decrement} className='product-info-plus-btn' type='button'>
-          -
-        </button>
-        <input
-          className='product-info-quantity-input'
-          min={0}
-          value={quantity}
-          onChange={handleQuantityChange}
-          onBlur={handleBlur}
-        />
-        <button onClick={increment} className='product-info-minus-btn' type='button'>
-          +
-        </button>
-        <button
-          className='product-info-add-to-cart-btn'
-          type='button'
-          onClick={handleAddToCart}
-          disabled={variationChosen.length !== product.variations.length}
-        >
-          ДОБАВИТЬ В КОРЗИНУ
-        </button>
+      <div className='add-to-cart-form-wrapper'>
+        <div className='add-to-cart-form'>
+          <button onClick={decrement} className='product-info-plus-btn' type='button'>
+            -
+          </button>
+          <input
+            className='product-info-quantity-input'
+            min={0}
+            value={quantity}
+            onChange={handleQuantityChange}
+            onBlur={handleBlur}
+          />
+          <button onClick={increment} className='product-info-minus-btn' type='button'>
+            +
+          </button>
+          <button
+            className='product-info-add-to-cart-btn'
+            type='button'
+            onClick={handleAddToCart}
+            disabled={variationChosen.length !== product.variations.length}
+          >
+            ДОБАВИТЬ В КОРЗИНУ
+          </button>
+        </div>
         {variationChosen.length !== product.variations.length && (
-          <span className='product-info-choose-variations-alert'>
+          <p className='product-info-choose-variations-alert'>
             прежде чем добавить в корзину, необходимо выбрать вариации
-          </span>
+          </p>
         )}
       </div>
 

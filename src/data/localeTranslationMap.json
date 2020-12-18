@@ -64,8 +64,8 @@
       },
       "section_instagram": {
         "title": {
-          "ru": "следите за нашими новостями в инстаграм @i.am.in.pure",
-          "en": "follow us on instagram @i.am.in.pure"
+          "ru": "следите за нашими новостями в инстаграм",
+          "en": "follow us on instagram"
         }
       },
       "section_about": {
@@ -104,7 +104,7 @@
           "en": "Subscribe to receive our news"
         },
         "text": {
-          "ru": "мы ценим наше и ваше время и не собираемся заваливать вас рекламой и информационным спамом. подписывайтесь на рассылку если хотите получать новости о специальных предложениях, скидках и новых коллекциях",
+          "ru": "Мы ценим наше и ваше время и не собираемся заваливать вас рекламой и информационным спамом. подписывайтесь на рассылку если хотите получать новости о специальных предложениях, скидках и новых коллекциях",
           "en": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum assumenda ducimus eaque veniam, amet neque dolore quo repudiandae laudantium est cumque aspernatur quos, nostrum distinctio consequuntur libero"
         },
         "subscribe_button": {

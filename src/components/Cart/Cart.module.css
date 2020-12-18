@@ -70,6 +70,7 @@ td.tdPhoto {
 
 .tdPrice,
 .tdSum {
+  white-space: nowrap;
   font-size: 1.25em;
   font-weight: 400;
 }
@@ -157,28 +158,33 @@ td.tdPhoto {
 
 .cartInfo {
   margin-top: 1.5rem;
-  text-align: right;
+  text-align: center;
   text-transform: none;
+  padding: 0.3rem;
 }
 
 .cartInfo p {
-  margin: 0;
+  max-width: 85%;
+  margin: 0 auto;
 }
 
 .totalPrice {
   text-transform: uppercase;
   font-weight: 700;
+  text-align: center;
   margin: 1.5rem 0;
 }
 
 .btnsContainer {
-  margin-top: 1.5rem;
-  text-align: right;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .btn {
+  width: auto;
   margin-bottom: 0.8rem;
-  appearance: button;
+  appearance: none;
   margin-left: 0.5rem;
 
   padding: 0.5rem 1rem;
@@ -196,6 +202,23 @@ td.tdPhoto {
 .btn:hover {
   background-color: #2d2d2d;
   color: white;
+}
+
+@media (min-width: 500px) {
+  .cartInfo p {
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  .btnsContainer {
+    display: block;
+  }
+
+  .cartInfo,
+  .totalPrice,
+  .btnsContainer {
+    text-align: right;
+  }
 }
 
 /* END OF Quantity input and buttons */

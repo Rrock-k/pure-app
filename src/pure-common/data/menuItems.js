@@ -20,11 +20,10 @@ const menuItems = [
       { href: 'kimono-silk', name: 'шёлк' },
       { href: 'kimono-rayon', name: 'район' },
       { href: 'kimono-cotton', name: 'хлопок' },
-      { href: 'kimono-customizable', name: 'конструктор' },
     ],
   },
+  { href: 'clothing', name: 'одежда' },
   { href: 'accessories', name: 'аксессуары' },
-  { href: 'discount', name: 'скидки' },
 ]
 
 export default menuItems

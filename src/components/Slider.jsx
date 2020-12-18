@@ -19,7 +19,10 @@ export default function Slider({
 }) {
   const [slideHeight, setSlideHeight] = useState()
   const [page, setPage] = useState(newPage)
+  const [isInitial, setIsInitial] = useState(true)
   pagesCount = pagesCount || getPagesCountDefault(width)
+
+  console.log('page: ' + page)
 
   const {
     length,
@@ -44,10 +47,17 @@ export default function Slider({
     if (el && el.offsetHeight) setSlideHeight(el.offsetHeight)
   }, [width, pagesCount, slides, heightToWidthFactor, className])
 
+  let pagesCountPrev
   useEffect(() => {
-    setPage(page =>
-      getNewPageNumber(newPage || page, pagesCount, length, { sliderWasResized: true })
-    )
+    if (pagesCountPrev !== pagesCount) {
+      setPage(setInitialPage(pagesCount))
+      pagesCountPrev = pagesCount
+    } else {
+      setPage(page =>
+        getNewPageNumber(newPage || page, pagesCount, length, { sliderWasResized: true })
+      )
+    }
+
     const cleanerFunction = SetUpSliderSwipeEvents(goRight, goLeft, className, pagesCount)
     return cleanerFunction
   }, [pagesCount, length, className, goLeft, goRight, newPage])
@@ -57,11 +67,11 @@ export default function Slider({
 
   const template = <div ref={sliderRef} className={className + ' slider'} id={className}></div>
 
-  if (!slides.length || !width || pagesCount > slides.length) return template
   if (!page) {
     setPage(setInitialPage(pagesCount, slides.length))
     return template
   }
+  if (!slides.length || !width || pagesCount > slides.length) return template
 
   return (
     <div ref={sliderRef} className={className + ' slider'} id={className}>
@@ -184,6 +194,7 @@ function getPagesToTheSide(pagesCount) {
 function setInitialPage(pagesCount, images) {
   const pagesToTheSide = getPagesToTheSide(pagesCount)
 
+  if (pagesCount > 1) return pagesToTheSide + 2
   return pagesToTheSide + 1
 }
 
@@ -192,15 +203,15 @@ function getNewPageNumber(page, pagesCount, length, options) {
   const pagesToTheRight = getPagesToTheSide(pagesCount)
 
   const leftmostPosition = pagesToTheLeft + 1
-  const rightmostPosititon = length - pagesToTheRight
+  const rightmostPosition = length - pagesToTheRight
 
   if (options?.sliderWasResized) {
     if (page < leftmostPosition) return leftmostPosition
-    if (page > rightmostPosititon) return rightmostPosititon
+    if (page > rightmostPosition) return rightmostPosition
   }
 
-  if (page < leftmostPosition) return rightmostPosititon
-  if (page > rightmostPosititon) return pagesToTheLeft + 1
+  if (page < leftmostPosition) return rightmostPosition
+  if (page > rightmostPosition) return pagesToTheLeft + 1
   return page
 }
 

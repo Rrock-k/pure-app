@@ -2,10 +2,11 @@ export const whatToShowList = {
   kimono: { category: 'kimono' },
   'kimono-men': { types: 'kimono-men' },
   'kimono-women': { types: 'kimono-women' },
-  'kimono-linen': { types: 'kimono-linen' },
-  'kimono-silk': { types: 'kimono-silk' },
-  'kimono-rayon': { types: 'kimono-rayon' },
-  'kimono-cotton': { types: 'kimono-cotton' },
+  'kimono-linen': { category: 'kimono', types: 'linen' },
+  'kimono-silk': { category: 'kimono', types: 'silk' },
+  'kimono-rayon': { category: 'kimono', types: 'rayon' },
+  'kimono-cotton': { category: 'kimono', types: 'cotton' },
+  clothing: { category: { $in: ['kimono', 'clothing'] } },
   jewelry: { category: 'jewelry' },
   pendants: { types: 'pendants' },
   earrings: { types: 'earrings' },
@@ -20,10 +21,10 @@ export const whatToShowList = {
   notPublished: { isPublished: false },
 }
 
-export function mapToQuery(whatToShow) {
-  if (!whatToShow) return {}
+export function mapToQuery(queryKey) {
+  if (!queryKey) return {}
 
-  const queries = whatToShowList[whatToShow]
+  const queries = whatToShowList[queryKey]
 
   return queries || { category: 'undefined' }
 }

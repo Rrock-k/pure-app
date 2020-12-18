@@ -24,4 +24,4 @@ function FixedMenu() {
   return <Menu fixed hidden={!showMenuOnTop} />
 }
 
-export default React.memo(FixedMenu)
+export default FixedMenu

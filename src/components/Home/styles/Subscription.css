@@ -34,6 +34,8 @@
 
 .subscription-block h1 {
   display: block;
+
+  max-width: unset;
   font-weight: 700;
   font-size: 1.2rem;
   letter-spacing: 0.5px;
@@ -46,7 +48,7 @@
   margin: 0.8rem auto;
   line-height: 1.2rem;
   font-size: 0.67rem;
-  text-transform: uppercase;
+  text-transform: none;
   text-align: center;
 }
 .subscription-block input {
@@ -115,14 +117,15 @@
   }
   .subscription-block h1 {
     width: auto;
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 600;
   }
   .subscription-block .subscription-block-text {
     display: block;
     width: auto;
-    max-width: 1000px;
-    font-size: 0.85rem;
+    max-width: max(70%, 900px);
+    line-height: 1.5rem;
+    font-size: 1rem;
   }
   .subscription-block input,
   .subscription-block button {

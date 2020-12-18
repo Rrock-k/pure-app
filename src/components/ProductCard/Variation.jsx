@@ -26,24 +26,27 @@ export default function Variation({ product, index, selected, setSelected }) {
 
   const header =
     options.length > 1 ? (
-      <SelectInput
-        value={options[selected]?.optionName || ''}
-        label={name}
-        options={options.map(({ optionName }) => optionName)}
-        defaultValue='Выберите опцию'
-        if={`variation-${index}-select`}
-        className='variation-select'
-        onChange={({ target: { value } }) => {
-          let selectedIndex = null
-          options.forEach((option, i) =>
-            option.optionName === value ? (selectedIndex = i) : void 0
-          )
-          setSelected(selectedIndex)
-        }}
-      />
+      <>
+        <p className='variation-label uppercase'>{name}</p>
+        <SelectInput
+          value={options[selected]?.optionName || ''}
+          label={''}
+          options={options.map(({ optionName }) => optionName)}
+          defaultValue='Выберите опцию'
+          if={`variation-${index}-select`}
+          className='variation-select'
+          onChange={({ target: { value } }) => {
+            let selectedIndex = null
+            options.forEach((option, i) =>
+              option.optionName === value ? (selectedIndex = i) : void 0
+            )
+            setSelected(selectedIndex)
+          }}
+        />
+      </>
     ) : (
-      <p>
-        {name}
+      <p className='variation-label'>
+        <span className='uppercase'>{name}</span>
         {onlyOptionNameIfAny && <span>: {onlyOptionNameIfAny}</span>}
       </p>
     )
@@ -57,7 +60,7 @@ export default function Variation({ product, index, selected, setSelected }) {
         </summary>
         {variation.details && <p className='product-info-variation-details-text'>{details}</p>}
         {variation.url && (
-          <Link className='product-info-variation-details-url' to={url}>
+          <Link className='product-info-variation-details-url btn-black uppercase' to={url}>
             {urlName}
           </Link>
         )}

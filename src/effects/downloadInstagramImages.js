@@ -3,6 +3,9 @@ export default async function downloadInstagramImages(number = 10) {
     `https://www.instagram.com/graphql/query/?query_hash=bfa387b2992c3a52dcbe447467b4b771&variables={%22id%22:%229721684379%22,%22first%22:${number}}`
   )
   const { data } = await res.json()
-  const images = data.user.edge_owner_to_timeline_media.edges.map(i => i.node.display_url)
+  const images = data.user.edge_owner_to_timeline_media.edges.map(i => ({
+    url: i.node?.display_url,
+    instaUrl: i.node?.shortcode,
+  }))
   return images
 }

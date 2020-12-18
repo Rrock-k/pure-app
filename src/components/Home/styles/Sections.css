@@ -46,7 +46,7 @@
   .sections {
     padding: 0 1.5rem 1.5rem;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }
   .section {
     flex: 0 1 310px;
@@ -57,11 +57,23 @@
   }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 900px) {
+  .sections {
+    padding: 0 3rem 3rem;
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .section {
+    flex: 0 1 330px;
+    margin: 0 1.2rem 1.2rem;
+  }
+}
+
+@media (min-width: 1300px) {
   .sections {
     padding: 0 4rem 4rem;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }
   .section {
     flex: 0 1 350px;
@@ -158,8 +170,12 @@
 .instagram-section h5 {
   margin: 0 auto 25px;
   padding: 0 10vmin;
-  max-width: 300px;
+  max-width: 360px;
   box-sizing: content-box;
+}
+
+.instagram-section-title-link {
+  text-decoration: underline;
 }
 
 .insta-photos-container {

@@ -25,10 +25,11 @@
 
 @media (min-width: 760px) and (min-height: 500px) {
   .mainLogo {
-    display: block;
+    /* display: block; */
+    display: inline-block;
     width: 30%;
     max-width: 270px;
-    margin: 17px auto 28px;
+    margin: 17px 0 28px;
     cursor: pointer;
   }
 }

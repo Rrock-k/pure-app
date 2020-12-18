@@ -214,8 +214,8 @@ function CartButtons() {
       <Link to={urls.shop} className={styles.btn}>
         {tThis('buttons.continue-shopping')}
       </Link>
-      <Link to={urls.checkout}>
-        <button className={styles.btn}>{tThis('buttons.checkout')}</button>
+      <Link to={urls.checkout} className={styles.btn}>
+        {tThis('buttons.checkout')}
       </Link>
     </div>
   )
