@@ -19,10 +19,7 @@ export default function Slider({
 }) {
   const [slideHeight, setSlideHeight] = useState()
   const [page, setPage] = useState(newPage)
-  const [isInitial, setIsInitial] = useState(true)
   pagesCount = pagesCount || getPagesCountDefault(width)
-
-  console.log('page: ' + page)
 
   const {
     length,
@@ -47,20 +44,13 @@ export default function Slider({
     if (el && el.offsetHeight) setSlideHeight(el.offsetHeight)
   }, [width, pagesCount, slides, heightToWidthFactor, className])
 
-  let pagesCountPrev
   useEffect(() => {
-    if (pagesCountPrev !== pagesCount) {
-      setPage(setInitialPage(pagesCount))
-      pagesCountPrev = pagesCount
-    } else {
-      setPage(page =>
-        getNewPageNumber(newPage || page, pagesCount, length, { sliderWasResized: true })
-      )
-    }
-
     const cleanerFunction = SetUpSliderSwipeEvents(goRight, goLeft, className, pagesCount)
     return cleanerFunction
-  }, [pagesCount, length, className, goLeft, goRight, newPage])
+  }, [pagesCount, className, goLeft, goRight])
+
+  useEffect(() => setPage(setInitialPage(pagesCount)), [pagesCount, setPage])
+  useEffect(() => setPage(newPage), [newPage, setPage])
 
   const translateX = halfWidth - page * pageWidth + pageWidth / 2
   const classIfNoTransition = noTransition ? 'notransition' : ''

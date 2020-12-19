@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const port = process.env.PORT || 5001
-const productionUrl = 'http://46.101.222.34/'
+const productionUrl = 'https://iaminpure/'
 const hostname = window.location.hostname
 const devUrl = `http://${hostname}:${port}/`
 const isLocalhost = hostname === 'localhost' || hostname.startsWith('192')
@@ -18,7 +18,7 @@ export const getAuthUrl = () => BASE_URL + 'api/auth/'
 export const getUsersUrl = () => BASE_URL + 'api/users/'
 export const getFileUploadUrl = () => BASE_URL + 'api/upload-file'
 export const getSubscribersUrl = () => BASE_URL + 'api/subscribers'
-export const getImageSrcFromImageName = imgName => PHOTOS_URL + imgName
+export const getImageSrcFromImageName = imgName => (imgName ? PHOTOS_URL + imgName : null)
 export const getProductCardUrl = id => `shop/products/${id || ''}`
 
 export function getProducts(query) {
@@ -75,6 +75,17 @@ export function deleteProduct(id) {
     method: 'delete',
     url: `${getProductsUrl()}${id}`,
     headers: getAuthHeaderOption(),
+  })
+}
+
+export function deleteProductCompletely(id) {
+  return axios({
+    method: 'delete',
+    url: `${getProductsUrl()}${id}`,
+    headers: getAuthHeaderOption(),
+    params: {
+      deleteCompletely: true,
+    },
   })
 }
 
