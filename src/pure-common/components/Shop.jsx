@@ -4,11 +4,10 @@ import { useParams } from 'react-router-dom'
 import ShopHeader from './ShopHeader'
 import ShopNav from './ShopNav'
 import ShopItems from './ShopItems'
-import { useProductsContext } from './ProductsContext'
-import { getProducts } from 'pure-common/utils/apiQueries'
+import { getProducts } from '../utils/apiQueries'
 
 import '../styles/Shop.css'
-import { mapToQuery } from 'pure-common/utils/mapToQuery'
+import { mapToQuery } from '../utils/mapToQuery'
 
 export default function Shop({ isAdmin }) {
   const [sortingFunc, setSortingFunc] = useState()

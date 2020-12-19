@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect } from 'react'
-import handleScrollbarWidth from '../../pure-common_DO_NOT_CHANGE/utils/handleScrollbarWidth'
+import handleScrollbarWidth from '../../utils/handleScrollbarWidth'
 import styles from './ModalWindow.module.css'
 
 const Context = React.createContext()
