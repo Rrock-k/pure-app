@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const port = process.env.PORT || 5001
-const productionUrl = 'https://iaminpure/'
+const productionUrl = 'https://iaminpure.com/'
 const hostname = window.location.hostname
 const devUrl = `http://${hostname}:${port}/`
 const isLocalhost = hostname === 'localhost' || hostname.startsWith('192')
