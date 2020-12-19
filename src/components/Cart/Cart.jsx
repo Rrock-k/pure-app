@@ -43,7 +43,10 @@ function mapVariationInfoToPrices(product, variationChosen) {
   let priceRub = product.priceRub,
     priceUsd = product.priceUsd
 
-  if (priceRubVariations.length) {
+  console.log(idxs)
+  console.log(product)
+
+  if (priceRubVariations.length && idxs.length) {
     priceRub = priceRubVariations[idxs[0]][idxs[1]] ?? priceRub
     priceUsd = priceUsdVariations[idxs[0]][idxs[1]] ?? priceUsd
   }
