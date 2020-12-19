@@ -1,11 +1,18 @@
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 import _ from 'lodash'
 
 const Context = createContext({})
 
 export function CartContext({ children }) {
-  const [items, setItems] = useState(() => validate(getCartFromLocalStorage()))
+  const [items, setItems] = useState(() => getCartFromLocalStorage())
   saveCartItemsInLocalStorage(items)
+
+  const refreshCartContext = () => setItems(getCartFromLocalStorage())
+
+  useEffect(() => {
+    const interval = setInterval(refreshCartContext, 1500)
+    return () => clearInterval(interval)
+  }, [])
 
   const add = ({ productId, variationChosen, quantity = 1 }) => {
     quantity = parseInt(quantity)
@@ -53,7 +60,9 @@ export function CartContext({ children }) {
   }
 
   return (
-    <Context.Provider value={{ items, add, setQuantity, incrementQuantity, validate }}>
+    <Context.Provider
+      value={{ items, add, setQuantity, incrementQuantity, validate, refreshCartContext }}
+    >
       {children}
     </Context.Provider>
   )
@@ -63,7 +72,7 @@ export function useCartContext() {
   return useContext(Context)
 }
 
-const getCartFromLocalStorage = () => JSON.parse(localStorage.getItem('cart'))
+export const getCartFromLocalStorage = () => validate(JSON.parse(localStorage.getItem('cart')))
 const saveCartItemsInLocalStorage = items => localStorage.setItem('cart', JSON.stringify(items))
 
 function validate(itemsArr) {

@@ -21,12 +21,14 @@ export default function AppFooter() {
         <p id='app-footer-icons'>
           <a
             href='https://www.etsy.com/shop/iaminpure'
+            target='_blank'
             className='app-footer-icon-link etsy-logo-link'
           >
             <img className='app-footer-icon etsy-logo' src={etsyLogo} alt='Etsy.com logo'></img>
           </a>
           <a
             href='https://www.instagram.com/i.am.in.pure/'
+            target='_blank'
             className='app-footer-icon-link etsy-logo-link'
           >
             <img

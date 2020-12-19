@@ -5,10 +5,6 @@ import { t } from 'pure-common/utils/translation'
 import styles from './styles/Banner.module.css'
 
 const Banner = () => {
-  const focusBtn = btn => {
-    console.log(btn)
-  }
-
   return (
     <div className={styles.container}>
       <div className={styles.textContainer}>
@@ -16,9 +12,7 @@ const Banner = () => {
         <h1 className={styles.textSmall}>{t('common.banner.text-small')}</h1>
       </div>
       <Link to='shop/kimono'>
-        <button ref={focusBtn} className={'btn ' + styles.button}>
-          {t('common.banner.buttonText')}
-        </button>
+        <button className={'btn ' + styles.button}>{t('common.banner.buttonText')}</button>
       </Link>
     </div>
   )

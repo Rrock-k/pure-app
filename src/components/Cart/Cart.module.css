@@ -185,7 +185,6 @@ td.tdPhoto {
   width: auto;
   margin-bottom: 0.8rem;
   appearance: none;
-  margin-left: 0.5rem;
 
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
@@ -205,6 +204,10 @@ td.tdPhoto {
 }
 
 @media (min-width: 500px) {
+  .cartInfo {
+    padding: 0;
+  }
+
   .cartInfo p {
     margin-left: auto;
     margin-right: 0;
@@ -212,6 +215,10 @@ td.tdPhoto {
 
   .btnsContainer {
     display: block;
+  }
+
+  .btn {
+    margin-left: 0.5rem;
   }
 
   .cartInfo,

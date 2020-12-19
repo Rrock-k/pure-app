@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { contexts } from '../../config/setup'
 import styles from './Cart.module.css'
 import { Link } from 'react-router-dom'
@@ -42,9 +42,6 @@ function mapVariationInfoToPrices(product, variationChosen) {
 
   let priceRub = product.priceRub,
     priceUsd = product.priceUsd
-
-  console.log(idxs)
-  console.log(product)
 
   if (priceRubVariations.length && idxs.length) {
     priceRub = priceRubVariations[idxs[0]][idxs[1]] ?? priceRub
@@ -136,7 +133,7 @@ function ProductListTable({ cartItemsMapped, cart }) {
                 const totalPriceStr = getPriceStr(totalPrice, language)
                 const priceStr = getPriceStr(price, language)
                 return (
-                  <tr key={nameEn + '_' + productId}>
+                  <tr key={`${productId}_${JSON.stringify(variationChosen)}`}>
                     <td className={styles.tdPhoto}>
                       <Link to={`shop/products/${productId}`}>
                         <img className={styles.photo} src={photo} alt='' />
@@ -224,7 +221,7 @@ function CartButtons() {
   )
 }
 
-function NoProductsInCartYet() {
+function NoProductsInCartYet({ refresh }) {
   return (
     <center>
       <h3>{tThis('empty_cart_message')}</h3>
