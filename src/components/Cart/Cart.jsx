@@ -88,7 +88,7 @@ export default function Cart() {
 
     localStorage.removeItem('cart')
 
-    window.location.reload()
+    // window.location.reload()
   }
 }
 
