@@ -6,7 +6,6 @@
   height: max-content;
   padding: 0;
 
-  overflow: hidden;
   display: flex;
   position: relative;
 }
@@ -19,15 +18,20 @@
 }
 
 .slider-movable-container {
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition-delay: 0.1s;
+  -webkit-backface-visibility: hidden;
+
   display: flex;
 
-  transition: 0.3s;
+  transition: 0.4s ease-out;
+  -webkit-transition: -webkit-transform 0.4s ease-out;
+  -webkit-transition: transform 0.4s ease-out;
 }
 
 .slide {
   flex: 0 0 auto;
   position: relative;
-  overflow: visible;
 }
 
 .notransition *,
@@ -59,6 +63,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
   bottom: 0;
 
   width: 100%;
@@ -67,7 +72,8 @@
   object-fit: cover;
   transition: 0.1s;
 
-  flex: 0 0;
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
 }
 
 .hoveron .slide-image:hover {

@@ -7,7 +7,7 @@ export default function Thumbs({ images, alt, setNewPage, setNoTransition }) {
         return (
           <img
             alt={`${alt}, number ${i + 1}`}
-            key={image}
+            key={image+i}
             src={image}
             className='product-slider-thumb-image'
             onClick={() => {

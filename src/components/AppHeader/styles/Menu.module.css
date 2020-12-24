@@ -8,6 +8,7 @@
   .menu {
     --menuLinkPaddingVertical: min(10px, 2vmin);
     --menuLinkPaddingHorizontal: min(23px, 8vmin);
+    --menuLinkPaddingHorizontal: min(1.5rem, 4vmin, 2.3vw);
     font-size: min(0.8rem, 4vmin);
     padding: 20px 3vw;
 
@@ -24,6 +25,7 @@
   }
 
   .menuFixed {
+    composes: max-content-width from global;
     position: fixed;
 
     width: 100%;
@@ -32,6 +34,8 @@
 
     transition: 0.4s;
     top: 0;
+    right: 0;
+    left: 0;
   }
 
   .menuFixedHidden {
@@ -44,8 +48,16 @@
     margin: var(--menuLinkPaddingVertical) 0;
   }
 
-  .menu-link-div a {
+  .link {
+    composes: underline-on-hover from global;
     white-space: nowrap;
+  }
+  .link:after {
+    bottom: -20%;
+  }
+  .link:hover:after {
+    left: 1.5rem;
+    right: 1.5rem;
   }
 
   .dropdown {

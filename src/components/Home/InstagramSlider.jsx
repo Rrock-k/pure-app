@@ -42,6 +42,7 @@ export default function InstagramSection() {
           className='instagram-section-title-link'
           href={`https://instagram.com/i.am.in.pure`}
           target='_blank'
+          rel='noopener noreferrer'
         >
           @i.am.in.pure
         </a>
@@ -65,6 +66,7 @@ function useGetInstaImagesAndMapToSlides(setImages) {
             <a
               href={`https://instagram.com/p/${instaUrl}`}
               target='_blank'
+              rel='noopener noreferrer'
               style={{
                 width: '100%',
                 height: '100%',
@@ -76,5 +78,5 @@ function useGetInstaImagesAndMapToSlides(setImages) {
         )
       )
       .catch(err => console.error(err))
-  }, [])
+  }, [setImages])
 }

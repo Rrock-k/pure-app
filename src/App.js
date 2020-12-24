@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
+import classnames from 'classnames'
 
 import 'styles/App.css'
 import 'styles/testScrollbar.css'
@@ -13,10 +14,11 @@ import AppFooter from 'components/AppFooter/AppFooter'
 const Shop = React.lazy(() => import('./pure-common/components/Shop'))
 const Home = React.lazy(() => import('./components/Home/Home'))
 const About = React.lazy(() => import('./components/About'))
-const Delivery = React.lazy(() => import('./components/Delivery'))
+const Shipping = React.lazy(() => import('./components/Shipping/Shipping'))
 const ShopProduct = React.lazy(() => import('./components/ProductCard/ShopProduct'))
 const Cart = React.lazy(() => import('./components/Cart/Cart'))
 const CheckoutView = React.lazy(() => import('./components/Checkout/CheckoutView'))
+const Return = React.lazy(() => import('./components/Return/Return'))
 
 const {
   useHoverContext,
@@ -30,7 +32,7 @@ function App() {
   const hoverIsOn = useHoverContext()
   useLanguageContext()
 
-  const classList = hoverIsOn ? 'App hoveron' : 'App'
+  const classList = classnames('App', 'max-content-width', hoverIsOn && 'hoveron')
   return (
     <>
       {/* prettier-ignore */}
@@ -50,7 +52,8 @@ function App() {
                   <Route path='/shop/:whatToShow'          render={() => <Shop />} />
                   <Route path='/shop'                      render={() => <Shop />} />
                   <Route path='/about'                     render={() => <About />} />
-                  <Route path='/shipping'                  render={() => <Delivery />} />
+                  <Route path='/shipping'                  render={() => <Shipping />} />
+                  <Route path='/return'                    render={() => <Return />} />
                   <Route path='/cart'                      render={() => <Cart />} />
                   <Route path='/checkout'                  render={() => <CheckoutView />} />
                   <Redirect to='/home' />

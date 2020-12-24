@@ -134,6 +134,16 @@
       }
     }
   },
+  "product_card": {
+    "no_product_with_id": {
+      "ru": "Нет товара с таким ID",
+      "en": "No product with given ID"
+    },
+    "see_all_products": {
+      "ru": "Смотреть все товары",
+      "en": "Go to shop"
+    }
+  },
   "cart": {
     "title": {
       "ru": "Ваша корзина",
@@ -286,6 +296,10 @@
         "ru": "Перейти к оплате",
         "en": "Proceed to payment"
       }
+    },
+    "prompt_when_quitting": {
+      "ru": "Несохранённые данные могут быть потеряны. Покинуть страницу?",
+      "en": "Not saved data will be lost. Leave page?"
     }
   },
   "app-footer": {
@@ -296,7 +310,7 @@
       },
       "доставка и оплата": {
         "ru": "Доставка и оплата",
-        "en": "Delivery and payment"
+        "en": "Shipping and payment"
       },
       "обмен и возврат": {
         "ru": "Обмен и возврат",

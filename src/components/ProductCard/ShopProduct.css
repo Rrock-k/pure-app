@@ -121,9 +121,14 @@
   color: #bb1f2e;
 }
 
+.product-info summary {
+  list-style: none;
+  list-style-type: none;
+}
+
 .product-info summary * {
   text-decoration: underline;
-  list-style: none;
+
   font-size: var(--small-text-size);
   cursor: pointer;
   margin-left: 0.25rem;

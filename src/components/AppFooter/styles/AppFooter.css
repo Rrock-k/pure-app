@@ -2,6 +2,7 @@
 /* ------ */
 
 .app-footer {
+  --link-padding-y: 0.85rem;
   font-size: min(0.8rem, 4vmin);
   margin-top: 1.3rem;
   margin-bottom: 0.7rem;
@@ -34,9 +35,18 @@
   margin: 1rem 1rem;
 }
 
-.app-footer-nav a {
-  margin: 0.85rem 1rem;
+.app-footer-nav-link {
+  display: block;
+  position: relative;
+  padding: var(--link-padding-y) 1rem;
   white-space: nowrap;
+}
+.app-footer-nav-link:after {
+  bottom: calc(var(--link-padding-y) - 10%);
+}
+.app-footer-nav-link:hover:after {
+  left: 1.5rem;
+  right: 1.5rem;
 }
 
 .app-footer hr {
@@ -71,6 +81,7 @@
 
 @media (min-width: 700px) {
   .app-footer {
+    --link-padding-y: 0.6rem;
     margin-bottom: 0;
   }
 
@@ -84,8 +95,8 @@
     flex-wrap: wrap;
   }
 
-  .app-footer-nav a {
-    margin: 0.6rem 1rem;
+  .app-footer-nav-link {
+    padding: var(--link-padding-y) 1rem;
   }
 
   .app-footer hr {

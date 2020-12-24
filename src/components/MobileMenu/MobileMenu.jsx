@@ -6,12 +6,22 @@ import { t } from 'pure-common/utils/translation'
 import LanguageSwitcher from '../LanguageSwitcher'
 
 import styles from './MobileMenu.module.css'
+import { setUpSwipeLeftRightEvents } from 'effects/swipeEffects'
+import { contexts } from 'config/setup'
+const { useHoverContext } = contexts
 
 export default function MobileMenu(props) {
+  const hoverIsOn = useHoverContext()
+  const menuRef = useRef()
   const firstFocusableElement = useRef()
   const lastFocusableElement = useRef()
 
   const { isOpened, close } = props
+
+  useEffect(() => {
+    const sensitivity = 100
+    if (!hoverIsOn) return setUpSwipeLeftRightEvents(menuRef, close, close, sensitivity)
+  }, [menuRef, close, hoverIsOn])
 
   useEffect(() => {
     if (isOpened)
@@ -27,14 +37,17 @@ export default function MobileMenu(props) {
 
   const propsForFirstMenuItem = {
     keydownHandler: e => {
-      e.preventDefault()
-      if (e.keyCode === 9 && e.shiftKey) lastFocusableElement.current.focus()
+      if (e.keyCode === 9 && e.shiftKey) {
+        e.preventDefault()
+        lastFocusableElement.current.focus()
+      }
     },
     reference: firstFocusableElement,
   }
 
   return (
     <div
+      ref={menuRef}
       className={styles.container}
       id='mobile-menu'
       style={{

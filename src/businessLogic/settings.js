@@ -1,2 +1,2 @@
-export const freeDeliveryThresholdRub
-export const freeDeliveryThresholdUsd
+export const freeShippingThresholdRub
+export const freeShippingThresholdUsd

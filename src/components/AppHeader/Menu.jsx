@@ -20,7 +20,7 @@ const menuItemsData = menuItemsRaw
     submenu: item.submenu?.map(subitem => ({ ...subitem, href: addShopRoute(subitem.href) })),
   }))
 
-menuItemsData.push({ href: '/delivery', name: 'доставка' }, { href: '/about', name: 'о нас' })
+menuItemsData.push({ href: '/shipping', name: 'доставка' }, { href: '/about', name: 'о нас' })
 
 export default function Menu({ fixed, hidden }) {
   const globalHoverIsOn = useHoverContext()
@@ -47,7 +47,7 @@ export default function Menu({ fixed, hidden }) {
   const MenuLink = ({ menuitem }) => {
     if (globalHoverIsOn || (!globalHoverIsOn && !menuitem.submenu))
       return (
-        <Link to={menuitem.href} onClick={turnOnDropdowns}>
+        <Link to={menuitem.href} onClick={turnOnDropdowns} className={styles.link}>
           {t('navigation.' + menuitem.name)}
         </Link>
       )

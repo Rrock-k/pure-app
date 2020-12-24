@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { contexts } from '../../config/setup'
 import styles from './Cart.module.css'
 import { Link } from 'react-router-dom'
@@ -104,10 +104,8 @@ function ProductListTable({ cartItemsMapped, cart }) {
             <th>{tThis('table.headers.product')}</th>
             <th></th>
             <th>{tThis('table.headers.price')}</th>
-            <th>
-              <span className={styles.thQtyMobile}>{tThis('table.headers.qty')}</span>
-              <span className={styles.thQty}>{tThis('table.headers.quantity')}</span>
-            </th>
+            <th className={styles.thQtyMobile}>{tThis('table.headers.qty')}</th>
+            <th className={styles.thQty}>{tThis('table.headers.quantity')}</th>
             <th className={styles.thSum}>{tThis('table.headers.sum')}</th>
           </tr>
         </thead>

@@ -54,17 +54,19 @@ export default function Variation({ product, index, selected, setSelected }) {
   return (
     <div className='product-info-variation'>
       {header}
-      <details>
-        <summary className='product-info-variation-summary'>
-          {variation.summary && <span>{summary}</span>}
-        </summary>
-        {variation.details && <p className='product-info-variation-details-text'>{details}</p>}
-        {variation.url && (
-          <Link className='product-info-variation-details-url btn-black uppercase' to={url}>
-            {urlName}
-          </Link>
-        )}
-      </details>
+      {variation.summary && (
+        <details>
+          <summary className='product-info-variation-summary'>
+            {variation.summary && <span>{summary}</span>}
+          </summary>
+          {variation.details && <p className='product-info-variation-details-text'>{details}</p>}
+          {variation.url && (
+            <Link className='product-info-variation-details-url btn-black uppercase' to={url}>
+              {urlName}
+            </Link>
+          )}
+        </details>
+      )}
     </div>
   )
 }

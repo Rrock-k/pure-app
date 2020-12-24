@@ -13,7 +13,7 @@ export default function FooterNav() {
     },
     {
       name: 'доставка и оплата',
-      href: '/shipping_and_payment',
+      href: '/shipping',
     },
     {
       name: 'обмен и возврат',
@@ -37,7 +37,7 @@ export default function FooterNav() {
     <div className='app-footer-nav' id='app-footer-nav'>
       {menuItemsData.map(menuItem => (
         <Link
-          className='app-footer-nav-link'
+          className='app-footer-nav-link underline-on-hover'
           to={menuItem.href}
           key={menuItem.href}
           onClick={() => window.scrollTo(0, 0)}

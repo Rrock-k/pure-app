@@ -76,7 +76,7 @@
     flex-wrap: nowrap;
   }
   .section {
-    flex: 0 1 350px;
+    flex: 0 1 max(350px, 47vh);
     margin: 0 1.5rem 1.5rem;
   }
 }

@@ -42,13 +42,16 @@
   padding-left: min(4em, 15vw);
   text-align: left;
 }
-.itemDiv:hover {
+:global .hoveron :local .itemDiv:hover {
+  background-color: rgba(255, 255, 255, 0.097);
+}
+.itemDiv .menuItem:hover {
   background-color: rgba(255, 255, 255, 0.097);
 }
 
 .menuItem {
   font-size: 1rem;
-  display: block;
+  display: inline-block;
   font-weight: 300;
   line-height: 3.5rem;
   transition: color 0.2s, transform 0.4s;
@@ -89,4 +92,18 @@
 .languageSwitcher :global .separator {
   margin: 0 calc(0.8 * min(3px, 3vmin)) !important;
   font-size: calc(0.8 * min(27px, 14vh)) !important;
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .itemDiv {
+    padding-left: 0;
+    text-align: center;
+  }
+  .menuItem {
+    font-size: 0.9rem;
+    line-height: 3rem;
+  }
+  .submenu a {
+    padding-left: 0;
+  }
 }

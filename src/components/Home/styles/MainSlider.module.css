@@ -7,17 +7,34 @@
 }
 
 .subtitleWrapper {
+  visibility: hidden;
+  opacity: 0;
+
   margin: 12px 0 0;
   font-size: min(1rem, 3.5vh);
-  font-weight: 500;
+  font-weight: 400;
   text-align: center;
+  text-transform: none;
   padding: 0 4%;
 
   user-select: none;
 }
 
+:global .visible :local .subtitleWrapper {
+  visibility: visible;
+  opacity: 1;
+  transition: 0.4s ease-in-out;
+}
+
 @media (min-width: 700px) {
   .subtitleWrapper {
-    font-size: 0.9rem;
+    font-size: min(1rem, 4vh);
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .subtitleWrapper {
+    font-size: min(0.8rem, 4vh);
+    text-transform: none;
   }
 }

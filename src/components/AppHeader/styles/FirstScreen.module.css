@@ -3,7 +3,9 @@
 /* First Screen */
 .firstScreen {
   --first-screen-padding-bottom: min(40px, 8vh);
+  transform: initial;
   height: 100vh;
+  min-height: 35vw;
 
   display: flex;
   flex-direction: column;
@@ -28,8 +30,9 @@
     /* display: block; */
     display: inline-block;
     width: 30%;
-    max-width: 270px;
+    max-width: min(270px, 42vh);
     margin: 17px 0 28px;
+    margin: 17px 0 min(28px, 3vh);
     cursor: pointer;
   }
 }

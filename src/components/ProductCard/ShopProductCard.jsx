@@ -3,6 +3,7 @@ import { contexts } from 'config/setup'
 import ProductSlider from './ProductSlider'
 import ProductDesctiption from './ProductDescription'
 import { Link } from 'react-router-dom'
+import { t } from 'pure-common/utils/translation'
 const { useProductsContext } = contexts
 
 export default function ShopProductCard({ id }) {
@@ -14,10 +15,10 @@ export default function ShopProductCard({ id }) {
   if (!product)
     return (
       <div className='error-no-product-with-given-id'>
-        <hr></hr>
-        <h4>Нет продукта с таким ID</h4>
+        <hr />
+        <h4>{t('product_card.no_product_with_id')}</h4>
         <Link to='/shop/'>
-          <button className='btn'>Смотреть все продукты</button>
+          <button className='btn'>{t('product_card.see_all_products')}</button>
         </Link>
         <hr></hr>
       </div>

@@ -22,6 +22,7 @@ export default function AppFooter() {
           <a
             href='https://www.etsy.com/shop/iaminpure'
             target='_blank'
+            rel='noopener noreferrer'
             className='app-footer-icon-link etsy-logo-link'
           >
             <img className='app-footer-icon etsy-logo' src={etsyLogo} alt='Etsy.com logo'></img>
@@ -29,6 +30,7 @@ export default function AppFooter() {
           <a
             href='https://www.instagram.com/i.am.in.pure/'
             target='_blank'
+            rel='noopener noreferrer'
             className='app-footer-icon-link etsy-logo-link'
           >
             <img

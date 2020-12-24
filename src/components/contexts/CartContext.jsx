@@ -7,10 +7,8 @@ export function CartContext({ children }) {
   const [items, setItems] = useState(() => getCartFromLocalStorage())
   saveCartItemsInLocalStorage(items)
 
-  const refreshCartContext = () => setItems(getCartFromLocalStorage())
-
   useEffect(() => {
-    const interval = setInterval(refreshCartContext, 1500)
+    const interval = setInterval(() => setItems(getCartFromLocalStorage()), 1500)
     return () => clearInterval(interval)
   }, [])
 
@@ -60,19 +58,15 @@ export function CartContext({ children }) {
   }
 
   return (
-    <Context.Provider
-      value={{ items, add, setQuantity, incrementQuantity, validate, refreshCartContext }}
-    >
+    <Context.Provider value={{ items, add, setQuantity, incrementQuantity, validate }}>
       {children}
     </Context.Provider>
   )
 }
 
-export function useCartContext() {
-  return useContext(Context)
-}
+export const useCartContext = () => useContext(Context)
 
-export const getCartFromLocalStorage = () => validate(JSON.parse(localStorage.getItem('cart')))
+const getCartFromLocalStorage = () => validate(JSON.parse(localStorage.getItem('cart')))
 const saveCartItemsInLocalStorage = items => localStorage.setItem('cart', JSON.stringify(items))
 
 function validate(itemsArr) {
@@ -83,7 +77,7 @@ function validate(itemsArr) {
       if (!quantity || typeof quantity !== 'number' || !productId) notValidIndexes.push(i)
     })
 
-    notValidIndexes.forEach(i => itemsArr.splice(i))
+    notValidIndexes.forEach(i => itemsArr.splice(i, 1))
   } catch (err) {
     valid = false
   }

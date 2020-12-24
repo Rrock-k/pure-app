@@ -2,3 +2,8 @@
   --color-dark: #2d2d2d;
   --section-margin-bottom: 5rem;
 }
+
+.max-content-width {
+  /* max-width: min(240vh, 2000px); */
+  margin: 0 auto;
+}

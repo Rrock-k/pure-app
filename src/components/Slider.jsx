@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useCallback } from 'react'
+import classnames from 'classnames'
 
 import left from 'assets/icons/chevron-left.svg'
 import right from 'assets/icons/chevron-right.svg'
 
 import './Slider.css'
+import { setUpSwipeLeftRightEvents } from 'effects/swipeEffects'
 
 export default function Slider({
   width,
@@ -14,9 +16,10 @@ export default function Slider({
   className = 'default-slider',
   pagesCount,
   newPage = null,
-  noTransition = false,
   sliderRef,
 }) {
+  const fallbackRef = useRef()
+  if (!sliderRef) sliderRef = fallbackRef
   const [slideHeight, setSlideHeight] = useState()
   const [page, setPage] = useState(newPage)
   pagesCount = pagesCount || getPagesCountDefault(width)
@@ -45,36 +48,38 @@ export default function Slider({
   }, [width, pagesCount, slides, heightToWidthFactor, className])
 
   useEffect(() => {
-    const cleanerFunction = SetUpSliderSwipeEvents(goRight, goLeft, className, pagesCount)
-    return cleanerFunction
-  }, [pagesCount, className, goLeft, goRight])
+    const getSensitivity = () => 30 * Math.abs(pagesCount - 2)
+    return setUpSwipeLeftRightEvents(sliderRef, goRight, goLeft, getSensitivity)
+  }, [pagesCount, sliderRef, goLeft, goRight])
 
-  useEffect(() => setPage(setInitialPage(pagesCount)), [pagesCount, setPage])
+  useEffect(() => setPage(setInitialPage(pagesCount, length)), [pagesCount, setPage, length])
   useEffect(() => setPage(newPage), [newPage, setPage])
 
   const translateX = halfWidth - page * pageWidth + pageWidth / 2
-  const classIfNoTransition = noTransition ? 'notransition' : ''
 
   const template = <div ref={sliderRef} className={className + ' slider'} id={className}></div>
+
+  const isFullyVisible = index => Math.abs(index + 1 - page) <= getPagesToTheSide(pagesCount)
 
   if (!page) {
     setPage(setInitialPage(pagesCount, slides.length))
     return template
   }
-  if (!slides.length || !width || pagesCount > slides.length) return template
+  if (!slides.length || !width || Math.floor(pagesCount) > slides.length) return template
 
   return (
     <div ref={sliderRef} className={className + ' slider'} id={className}>
       <div
-        className={'slider-movable-container ' + classIfNoTransition}
+        className={'slider-movable-container '}
         style={{
-          transform: `translateX(${translateX}px)`,
+          transform: `translate(${translateX}px, 0)`,
+          WebkitTransform: `translate(${translateX}px, 0)`,
         }}
       >
         {slides.map((image, index) => (
           <div
             key={index}
-            className={'slide ' + className}
+            className={classnames('slide', isFullyVisible(index) && 'visible', className)}
             style={{
               width: `${pageWidth}px`,
             }}
@@ -181,10 +186,11 @@ function getPagesToTheSide(pagesCount) {
   return Math.floor((pagesCount - 1) / 2)
 }
 
-function setInitialPage(pagesCount, images) {
+function setInitialPage(pagesCount, length) {
   const pagesToTheSide = getPagesToTheSide(pagesCount)
-
-  if (pagesCount > 1) return pagesToTheSide + 2
+  console.log('pagesCount: ' + pagesCount)
+  console.log('length: ' + length)
+  if (pagesCount > 1 && Math.floor(pagesCount) < length) return pagesToTheSide + 2
   return pagesToTheSide + 1
 }
 
@@ -203,54 +209,4 @@ function getNewPageNumber(page, pagesCount, length, options) {
   if (page < leftmostPosition) return rightmostPosition
   if (page > rightmostPosition) return pagesToTheLeft + 1
   return page
-}
-
-function SetUpSliderSwipeEvents(goRight, goLeft, className, pagesCount) {
-  let xInitial = 0
-  let multitouch = false
-
-  const sensitivity = 30 * Math.abs(pagesCount - 2)
-
-  const swipeIfEnoughMovement = deltaX => {
-    if (deltaX > sensitivity) return goRight()
-    if (deltaX < -sensitivity) return goLeft()
-  }
-
-  const onMouseDown = e => (xInitial = e.clientX)
-  const onMouseUp = e => swipeIfEnoughMovement(xInitial - e.clientX)
-
-  const onTouchStart = e => {
-    if (e.touches.length > 1) return (multitouch = true)
-    xInitial = e.touches[0].clientX
-    multitouch = false
-  }
-
-  const onTouchMove = e => {
-    if (e.touches.length > 1) return
-    const deltaX = xInitial - e.changedTouches[0].clientX
-    if (Math.abs(deltaX) > 20 && e.cancelable) {
-      e.preventDefault()
-    }
-  }
-
-  const onTouchEnd = e => {
-    if (multitouch) return
-    const deltaX = xInitial - e.changedTouches[0].clientX
-    swipeIfEnoughMovement(deltaX)
-  }
-
-  const slider = document.getElementById(className)
-  slider.addEventListener('mousedown', onMouseDown)
-  slider.addEventListener('mouseup', onMouseUp)
-  slider.addEventListener('touchstart', onTouchStart)
-  slider.addEventListener('touchmove', onTouchMove)
-  slider.addEventListener('touchend', onTouchEnd)
-
-  return () => {
-    slider.removeEventListener('mousedown', onMouseDown)
-    slider.removeEventListener('mouseup', onMouseUp)
-    slider.removeEventListener('touchstart', onTouchStart)
-    slider.removeEventListener('touchmove', onTouchMove)
-    slider.removeEventListener('touchend', onTouchEnd)
-  }
 }
