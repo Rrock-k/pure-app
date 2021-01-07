@@ -6,7 +6,7 @@ import classNames from 'classnames'
 import logo from 'assets/images/logo_bez_fona.png'
 import magnifyingGlass from 'assets/icons/magnifying-glass.svg'
 import instagramLogo from 'assets/icons/instagram-logo.svg'
-import shoppingBag from 'assets/icons/shopping-bag.svg'
+import shoppingCart from 'assets/icons/shopping-bag.svg'
 import openMenuIcon from 'assets/icons/open-menu.svg'
 
 import LanguageSwitcher from '../LanguageSwitcher'
@@ -14,9 +14,14 @@ import { useMobileMenuContext } from 'pure-common/components/MobileMenuAndContex
 // import UserAccountIcon from './UserAccountIcon'
 
 import styles from './Navbar.module.css'
+import { contexts } from 'config/setup'
+
+const { useCartContext } = contexts
 
 const Navbar = () => {
   const { openMenu } = useMobileMenuContext()
+  const cart = useCartContext()
+
   return (
     <nav className={styles.container}>
       <div className={styles.mobileLogoContainer}>
@@ -26,7 +31,10 @@ const Navbar = () => {
       </div>
       <div className={styles.items}>
         <Link to='/cart' className={styles.item}>
-          <img className={styles.icon} src={shoppingBag} alt='Search'></img>
+          <img className={styles.icon} src={shoppingCart} alt='Shpping cart'></img>
+          {cart.items.length > 0 && (
+            <div className={styles.cartItemsQuantity}>{cart.items.length}</div>
+          )}
         </Link>
         <LanguageSwitcher className={classNames(styles.item, styles.languageSwitch)} />
         {false && (

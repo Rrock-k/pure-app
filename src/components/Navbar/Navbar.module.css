@@ -39,7 +39,26 @@
   justify-content: flex-end;
 }
 
+.cartItemsQuantity {
+  position: absolute;
+  font-size: 10px;
+  bottom: 0;
+  right: 0;
+  transform: translate(30%, 50%);
+
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 0.9rem;
+  min-height: 0.9rem;
+  border: #333 1px solid;
+  border-radius: 0.5rem;
+}
+
 .item {
+  position: relative;
   flex: 0 1 20px;
   height: 20px;
 

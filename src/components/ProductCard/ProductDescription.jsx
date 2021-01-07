@@ -1,7 +1,28 @@
 import React, { useState } from 'react'
+import classNames from 'classnames'
+
 import { contexts } from 'config/setup'
 import PriceElement from 'pure-common/components/PriceElement'
 import Variation from './Variation'
+
+const addingStage = {
+  INITIAL: 'INITIAL',
+  ADDING: 'ADDING',
+  JUST_ADDED: 'JUST_ADDED',
+}
+
+const addToCartButtonParams = {
+  text: {
+    INITIAL: 'ДОБАВИТЬ В КОРЗИНУ',
+    ADDING: 'ДОБАВЛЕНИЕ...',
+    JUST_ADDED: 'ДОБАВЛЕНО',
+  },
+  className: {
+    INITIAL: '',
+    ADDING: 'adding',
+    JUST_ADDED: 'just-added',
+  },
+}
 
 const { useLanguageContext, useCartContext } = contexts
 
@@ -9,6 +30,9 @@ export default function ProductDesctiption({ product }) {
   const { language } = useLanguageContext()
   const cart = useCartContext()
 
+  const [addingToCartStage, setAddingToCartStage] = useState(addingStage.INITIAL)
+
+  const [disabledAddToCartClicked, setDisabledAddToCartClicked] = useState(false)
   const [quantity, setQuantity] = useState(1)
   const [selected0, setSelected0] = useState(
     product.variations?.length && product.variations[0].options?.length > 1 ? null : 0
@@ -32,6 +56,8 @@ export default function ProductDesctiption({ product }) {
       variationChosen.push({ variation: var1, indexOfSelected: selected1 })
   }
 
+  const disabledAddToCart = variationChosen.length !== product.variations.length
+
   const quantityVary = product.variations?.reduce(
     (acc, variation) => acc || variation.quantityVary,
     false
@@ -49,8 +75,25 @@ export default function ProductDesctiption({ product }) {
   }
 
   function handleAddToCart() {
+    setDisabledAddToCartClicked(false)
+    setAddingToCartStage(addingStage.ADDING)
+
     const cartItem = { productId: product._id, variationChosen, quantity }
     cart.add(cartItem)
+
+    const addingToCartUXDelay = 1500
+    const justAddedToCartUXDelay = 750
+    setTimeout(() => {
+      setAddingToCartStage(addingStage.JUST_ADDED)
+      setTimeout(() => {
+        setAddingToCartStage(addingStage.INITIAL)
+      }, justAddedToCartUXDelay)
+    }, addingToCartUXDelay)
+  }
+
+  function handleClick() {
+    if (disabledAddToCart) return setDisabledAddToCartClicked(true)
+    handleAddToCart()
   }
 
   const handleBlur = ({ target: { value } }) => !value && setQuantity(1)
@@ -104,15 +147,18 @@ export default function ProductDesctiption({ product }) {
             +
           </button>
           <button
-            className='product-info-add-to-cart-btn'
+            className={classNames(
+              'product-info-add-to-cart-btn',
+              addToCartButtonParams.className[addingToCartStage]
+            )}
             type='button'
-            onClick={handleAddToCart}
-            disabled={variationChosen.length !== product.variations.length}
+            onClick={handleClick}
+            disabled={addingToCartStage !== addingStage.INITIAL}
           >
-            ДОБАВИТЬ В КОРЗИНУ
+            {addToCartButtonParams.text[addingToCartStage]}
           </button>
         </div>
-        {variationChosen.length !== product.variations.length && (
+        {disabledAddToCartClicked && (
           <p className='product-info-choose-variations-alert'>
             прежде чем добавить в корзину, необходимо выбрать вариации
           </p>

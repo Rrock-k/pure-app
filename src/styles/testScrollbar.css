@@ -27,11 +27,6 @@
   background: rgb(85, 85, 85);
 }
 
-.mobile-menu::-webkit-scrollbar-thumb {
-  border-radius: 4px;
-  background: rgba(121, 28, 28, 0.7);
-}
-
 ::-webkit-scrollbar-thumb:window-inactive {
   border-radius: 4px;
   background: rgba(114, 114, 114, 0.5);
