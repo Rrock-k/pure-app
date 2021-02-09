@@ -1,8 +1,6 @@
 import React from 'react'
-import { contexts } from '../../config/setup'
+import { contexts } from '../../config/contexts'
 import { t } from '../utils/translation'
-
-const { useLanguageContext } = contexts
 
 export default function PriceElement({
   priceRub,
@@ -13,7 +11,7 @@ export default function PriceElement({
   priceUsdVariations,
   variations,
 }) {
-  let { language } = useLanguageContext()
+  let { language } = contexts.useLanguageContext()
 
   const pricesVary = variations?.reduce((acc, variation) => acc || variation.pricesVary, false)
   if (pricesVary) {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import classNames from 'classnames'
 
-import { contexts } from 'config/setup'
+import { contexts } from 'config/contexts'
 import PriceElement from 'pure-common/components/PriceElement'
 import Variation from './Variation'
 
@@ -24,11 +24,9 @@ const addToCartButtonParams = {
   },
 }
 
-const { useLanguageContext, useCartContext } = contexts
-
 export default function ProductDesctiption({ product }) {
-  const { language } = useLanguageContext()
-  const cart = useCartContext()
+  const { language } = contexts.useLanguageContext()
+  const cart = contexts.useCartContext()
 
   const [addingToCartStage, setAddingToCartStage] = useState(addingStage.INITIAL)
 

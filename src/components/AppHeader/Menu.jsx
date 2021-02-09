@@ -4,11 +4,9 @@ import classNames from 'classnames'
 
 import menuItemsRaw from 'pure-common/data/menuItems'
 import { t } from 'pure-common/utils/translation'
-import { contexts } from 'config/setup'
+import { contexts } from 'config/contexts'
 
 import styles from './styles/Menu.module.css'
-
-const { useHoverContext } = contexts
 
 const addShopRoute = href => '/shop/' + href
 
@@ -23,7 +21,7 @@ const menuItemsData = menuItemsRaw
 menuItemsData.push({ href: '/shipping', name: 'доставка' }, { href: '/about', name: 'о нас' })
 
 export default function Menu({ fixed, hidden }) {
-  const globalHoverIsOn = useHoverContext()
+  const globalHoverIsOn = contexts.useHoverContext()
   const [dropdownsAreShowing, setDropdownsAreShowing] = useState(false)
 
   const turnOnDropdowns = () => setDropdownsAreShowing(true)

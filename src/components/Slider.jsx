@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useCallback } from 'react'
 import classnames from 'classnames'
 
@@ -188,8 +188,6 @@ function getPagesToTheSide(pagesCount) {
 
 function setInitialPage(pagesCount, length) {
   const pagesToTheSide = getPagesToTheSide(pagesCount)
-  console.log('pagesCount: ' + pagesCount)
-  console.log('length: ' + length)
   if (pagesCount > 1 && Math.floor(pagesCount) < length) return pagesToTheSide + 2
   return pagesToTheSide + 1
 }

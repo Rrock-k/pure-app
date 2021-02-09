@@ -1,17 +1,17 @@
 import React, { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
-import urlArray from 'pure-common/data/menuItems'
 import { t } from 'pure-common/utils/translation'
-import LanguageSwitcher from '../LanguageSwitcher'
+import urlArray from 'pure-common/data/menuItems'
 
+import { contexts } from 'config/contexts'
 import styles from './MobileMenu.module.css'
 import { setUpSwipeLeftRightEvents } from 'effects/swipeEffects'
-import { contexts } from 'config/setup'
-const { useHoverContext } = contexts
+
+import LanguageSwitcher from '../LanguageSwitcher'
 
 export default function MobileMenu(props) {
-  const hoverIsOn = useHoverContext()
+  const hoverIsOn = contexts.useHoverContext()
   const menuRef = useRef()
   const firstFocusableElement = useRef()
   const lastFocusableElement = useRef()

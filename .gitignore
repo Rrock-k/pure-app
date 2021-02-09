@@ -5,6 +5,7 @@
 */old
 /admin-app
 /commonComponents
+.eslintcache
 
 # dependencies
 /node_modules

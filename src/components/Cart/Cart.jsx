@@ -1,12 +1,11 @@
 import React from 'react'
-import { contexts } from '../../config/setup'
+import { contexts } from '../../config/contexts'
 import styles from './Cart.module.css'
 import { Link } from 'react-router-dom'
 
 import { getImageSrcFromImageName } from 'pure-common/utils/apiQueries'
 import getPriceStr from 'pure-common/utils/getPriceStr'
 import { t } from 'pure-common/utils/translation'
-import { useLanguageContext } from 'components/contexts/LanguageContext'
 import urls from 'data/urls.json'
 
 const tThis = query => t('cart.' + query)
@@ -54,7 +53,7 @@ function mapVariationInfoToPrices(product, variationChosen) {
 export default function Cart() {
   const cart = contexts.useCartContext()
   const { products } = contexts.useProductsContext()
-  const { language } = useLanguageContext()
+  const { language } = contexts.useLanguageContext()
   const isRu = language === 'ru'
 
   if (!cart.items || !cart.items?.length) return <NoProductsInCartYet />
@@ -93,7 +92,7 @@ export default function Cart() {
 }
 
 function ProductListTable({ cartItemsMapped, cart }) {
-  const { language } = useLanguageContext()
+  const { language } = contexts.useLanguageContext()
   const isRu = language === 'ru'
 
   return (
@@ -173,7 +172,7 @@ function ProductListTable({ cartItemsMapped, cart }) {
 }
 
 function VariationInfo({ variation, indexOfSelected }) {
-  const { language } = useLanguageContext()
+  const { language } = contexts.useLanguageContext()
   const isRu = language === 'ru'
 
   if (!variation.options.length) var optionName = null

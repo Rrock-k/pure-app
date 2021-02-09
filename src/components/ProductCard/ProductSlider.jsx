@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { PHOTOS_URL } from 'pure-common/utils/apiQueries'
 import Slider from '../Slider'
 import Thumbs from './Thumbs'
-import { contexts } from 'config/setup'
-const { useLanguageContext } = contexts
+import { contexts } from 'config/contexts'
 
 export default function ProductSlider({ product }) {
+  const { language } = contexts.useLanguageContext()
+
   const [width, setWidth] = useState(window.innerWidth)
   const [newPage, setNewPage] = useState()
   const [noTransition, setNoTransition] = useState(false)
-  const { language } = useLanguageContext()
   let images = [PHOTOS_URL + product.mainPhotoUrl]
   if (product.secondPhotoUrl) images.push(PHOTOS_URL + product.secondPhotoUrl)
   if (product.photoUrls) product.photoUrls.forEach(url => images.push(PHOTOS_URL + url))

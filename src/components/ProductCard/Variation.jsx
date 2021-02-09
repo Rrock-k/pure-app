@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import SelectInput from 'pure-common/common/SelectInput'
-import { useLanguageContext } from 'components/contexts/LanguageContext'
+import { contexts } from 'config/contexts'
 
 export default function Variation({ product, index, selected, setSelected }) {
-  const { language } = useLanguageContext()
+  const { language } = contexts.useLanguageContext()
 
   const variation = product.variations[index]
   const { options, url } = variation

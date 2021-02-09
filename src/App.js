@@ -1,8 +1,7 @@
 import React, { Suspense } from 'react'
-import classnames from 'classnames'
 
 import 'styles/App.css'
-import 'styles/testScrollbar.css'
+import 'config/setup'
 
 import ScrollToTop from 'components/ScrollTopButton/ScrollTop'
 import MobileMenu from 'components/MobileMenu/MobileMenu'
@@ -10,14 +9,7 @@ import AppHeader from 'components/AppHeader/AppHeader'
 import AppFooter from 'components/AppFooter/AppFooter'
 import { Switch, Route, Redirect } from 'react-router-dom'
 
-import { contexts } from 'config/setup'
-const {
-  useHoverContext,
-  MobileMenuAndContext,
-  ProductsContext,
-  useLanguageContext,
-  CartContext,
-} = contexts
+import { contexts } from 'config/contexts'
 
 const Shop = React.lazy(() => import('./pure-common/components/Shop'))
 const Home = React.lazy(() => import('./components/Home/Home'))
@@ -29,19 +21,17 @@ const ShopProduct = React.lazy(() => import('./components/ProductCard/ShopProduc
 const CheckoutView = React.lazy(() => import('./components/Checkout/CheckoutView'))
 
 function App() {
-  const hoverIsOn = useHoverContext()
-  useLanguageContext()
+  const hoverIsOn = contexts.useHoverContext()
+  contexts.useLanguageContext()
 
-  const classList = classnames('App', 'max-content-width', hoverIsOn && 'hoveron')
+  const classList = `App max-content-width ${hoverIsOn ? 'hoveron' : ''}`
+
   return (
     <>
       {/* prettier-ignore */}
       <div className={classList}>
           <ScrollToTop/>
-          <ProductsContext>
-          <CartContext>
-            <MobileMenuAndContext MobileMenu={MobileMenu}>
-              
+            <contexts.MobileMenuAndContext MobileMenu={MobileMenu}>
               <div>
                 <AppHeader  />
 
@@ -63,9 +53,7 @@ function App() {
 
               <AppFooter/>
 
-            </MobileMenuAndContext>
-            </CartContext>
-            </ProductsContext>
+            </contexts.MobileMenuAndContext>
       </div>
     </>
   )

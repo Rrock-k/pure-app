@@ -1,15 +1,4 @@
-import {
-  LanguageContext,
-  useLanguageContext,
-  addOnLanguageChangeCallback,
-} from 'components/contexts/LanguageContext'
-import { CartContext, useCartContext } from 'components/contexts/CartContext'
-import { HoverContext, useHoverContext } from 'pure-common/components/HoverContext'
-import { ProductsContext, useProductsContext } from 'pure-common/components/ProductsContext'
-import {
-  MobileMenuAndContext,
-  useMobileMenuContext,
-} from 'pure-common/components/MobileMenuAndContext'
+import { addOnLanguageChangeCallback } from 'contexts/contexts/LanguageContext'
 
 import localeTranslationMap from 'data/localeTranslationMap.json'
 import serverErrorMessagesTranslationMap from 'data/serverErrorMessagesTranslationMap.json'
@@ -26,20 +15,3 @@ changeTranslationMap({
 })
 
 addOnLanguageChangeCallback(lang => changeCurrentLanguage(lang))
-
-export const contexts = {
-  LanguageContext,
-  useLanguageContext,
-
-  HoverContext,
-  useHoverContext,
-
-  ProductsContext,
-  useProductsContext,
-
-  CartContext,
-  useCartContext,
-
-  MobileMenuAndContext,
-  useMobileMenuContext,
-}

@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { PHOTOS_URL } from '../utils/apiQueries'
 
-import { contexts } from '../../config/setup'
+import { contexts } from '../../config/contexts'
 import PriceElement from './PriceElement'
 const {
   useLanguageContext = () => ({

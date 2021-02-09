@@ -5,20 +5,20 @@ import { t } from 'pure-common/utils/translation'
 import Slider from '../Slider'
 import styles from './styles/MainSlider.module.css'
 
-import { contexts } from 'config/setup'
+import { contexts } from 'config/contexts'
 import { getImageSrcFromImageName, getProductCardUrl } from 'pure-common/utils/apiQueries'
 import { Link } from 'react-router-dom'
-const { useProductsContext, useLanguageContext } = contexts
 
 const tThis = path => t('home.main_slider.' + path)
 
 export default function MainSlider() {
-  const { getProducts } = useProductsContext()
+  const { getProducts } = contexts.useProductsContext()
+  const { language } = contexts.useLanguageContext()
+
   const [slides, setSlides] = useState()
   const [width, setWidth] = useState()
   const [pagesCount, setPagesCount] = useState()
   const [additionalElements, setAdditionalElements] = useState([])
-  const { language } = useLanguageContext()
   const sliderRef = useRef()
 
   useEffect(() => {

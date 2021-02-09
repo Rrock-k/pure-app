@@ -1,13 +1,12 @@
 import React from 'react'
-import { contexts } from 'config/setup'
+import { contexts } from 'config/contexts'
 import ProductSlider from './ProductSlider'
 import ProductDesctiption from './ProductDescription'
 import { Link } from 'react-router-dom'
 import { t } from 'pure-common/utils/translation'
-const { useProductsContext } = contexts
 
 export default function ShopProductCard({ id }) {
-  const { getProductById } = useProductsContext()
+  const { getProductById } = contexts.useProductsContext()
 
   const product = getProductById(id)
   const hasVideo = false

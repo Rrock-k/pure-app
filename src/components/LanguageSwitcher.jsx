@@ -1,8 +1,8 @@
 import React from 'react'
-import { useLanguageContext } from 'components/contexts/LanguageContext'
+import { contexts } from 'config/contexts'
 
 const LanguageSwitcher = ({ className }) => {
-  const { setLanguage } = useLanguageContext()
+  const { setLanguage } = contexts.useLanguageContext()
 
   return (
     <div className={`language-switch ${className}`}>

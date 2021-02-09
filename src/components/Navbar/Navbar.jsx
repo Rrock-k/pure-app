@@ -14,13 +14,11 @@ import { useMobileMenuContext } from 'pure-common/components/MobileMenuAndContex
 // import UserAccountIcon from './UserAccountIcon'
 
 import styles from './Navbar.module.css'
-import { contexts } from 'config/setup'
-
-const { useCartContext } = contexts
+import { contexts } from 'config/contexts'
 
 const Navbar = () => {
   const { openMenu } = useMobileMenuContext()
-  const cart = useCartContext()
+  const cart = contexts.useCartContext()
 
   return (
     <nav className={styles.container}>

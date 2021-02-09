@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 
-import { LanguageContext, currentLanguage } from '../components/contexts/LanguageContext'
+import { LanguageContext, currentLanguage } from '../contexts/contexts/LanguageContext'
 import { getLocale, noLocalisationList, translate } from './translation'
 
 console.log('language patch code execution')

@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef } from 'react'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { contexts } from '../../config/setup'
+import { contexts } from '../../config/contexts'
 import { t } from '../utils/translation'
 
 const { useLanguageContext, useHoverContext } = contexts
