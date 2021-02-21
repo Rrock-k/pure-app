@@ -6,6 +6,7 @@
 /admin-app
 /commonComponents
 .eslintcache
+.vscode
 
 # dependencies
 /node_modules
