@@ -174,15 +174,12 @@ export default function ProductDesctiption({ product }) {
       ))}
 
       <h3 className='product-description-header'>Информация о товаре</h3>
-      <p
-        className={
-          product.description.length < 100
-            ? 'product-description-p short-description'
-            : 'product-description-p'
-        }
-      >
-        {product.description}
-      </p>
+      
+      {(language === 'ru' ? product.description : product.descriptionEn).split('\n').map(str => {
+        return <p className='product-description-p'>
+          {str}
+        </p>
+      })}
     </div>
   )
 }
